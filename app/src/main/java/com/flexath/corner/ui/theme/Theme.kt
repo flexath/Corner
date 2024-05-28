@@ -53,7 +53,7 @@ fun CornerTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = getTypography(CustomFont.Noe),
+        typography = getTypography(CustomFont.Charter),
         content = content
     )
 }

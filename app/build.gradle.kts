@@ -1,8 +1,12 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.googleDaggerHiltAndroid)
     alias(libs.plugins.googleDevToolsKsp)
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
     id ("kotlin-parcelize")
 }
 
@@ -32,6 +36,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            val p = Properties()
+            p.load(project.rootProject.file("local.properties").reader())
+            val firebaseServerWebId: String = p.getProperty("FIREBASE_SERVER_SIDE_ID")
+            buildConfigField("String", "FIREBASE_SERVER_SIDE_ID", "\"$firebaseServerWebId\"")
         }
 
         debug {
@@ -41,6 +50,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            val p = Properties()
+            p.load(project.rootProject.file("local.properties").reader())
+            val firebaseServerWebId: String = p.getProperty("FIREBASE_SERVER_SIDE_ID")
+            buildConfigField("String", "FIREBASE_SERVER_SIDE_ID", "\"$firebaseServerWebId\"")
         }
     }
     compileOptions {
@@ -52,6 +66,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.11"
@@ -162,4 +177,14 @@ dependencies {
     implementation(libs.androidx.paging.compose)
 
     implementation(libs.accompanist.flowlayout)
+
+    // firebase
+    implementation(platform(libs.firebase.bom))
+
+    implementation(libs.firebase.auth)
+    implementation(libs.play.services.auth)
+    implementation(libs.firebase.auth.ktx)
+
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.crashlytics)
 }

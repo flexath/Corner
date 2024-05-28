@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Corner</string>
+    <string name="lbl_fuel_your_potential_with_community_knowledge">Fuel your potential with community knowledge.</string>
+    <string name="lbl_unlock_wisdom_and_insight">Unlock\nWisdom and\nInsight</string>
+    <string name="lbl_sign_up_with_google">Sign Up with Google</string>
+    <string name="lbl_sign_up_with_email">Sign Up with Email</string>
+    <string name="lbl_sign_up_with_facebook">Sign up with Facebook</string>
 </resources>
