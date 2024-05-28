@@ -34,6 +34,11 @@ object Dimens {
     val ExtraLargePadding3 = 46.dp
     val ExtraLargePadding4 = 48.dp
     val ExtraLargePadding5 = 50.dp
+    val ExtraLargePadding6 = 52.dp
+    val ExtraLargePadding7 = 54.dp
+    val ExtraLargePadding8 = 56.dp
+    val ExtraLargePadding9 = 58.dp
+    val ExtraLargePadding10 = 60.dp
     val ExtraLargePadding5_2x = 100.dp
 
     val ProductCardWidth = 160.dp
@@ -69,4 +74,21 @@ object Dimens {
     val ExtraLargeText3 = 46.sp
     val ExtraLargeText4 = 48.sp
     val ExtraLargeText5 = 50.sp
+    val ExtraLargeText6 = 52.sp
+    val ExtraLargeText7 = 54.sp
+    val ExtraLargeText8 = 56.sp
+    val ExtraLargeText9 = 58.sp
+    val ExtraLargeText10 = 60.sp
+    val ExtraLargeText11 = 62.sp
+    val ExtraLargeText12 = 64.sp
+    val ExtraLargeText13 = 66.sp
+    val ExtraLargeText14 = 68.sp
+    val ExtraLargeText15 = 70.sp
+    val ExtraLargeText16 = 72.sp
+    val ExtraLargeText17 = 74.sp
+    val ExtraLargeText18 = 76.sp
+    val ExtraLargeText19 = 78.sp
+    val ExtraLargeText20 = 80.sp
+
+
 }

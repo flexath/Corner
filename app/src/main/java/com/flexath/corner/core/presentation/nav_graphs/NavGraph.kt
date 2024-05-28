@@ -1,5 +1,6 @@
 package com.flexath.corner.core.presentation.nav_graphs
 
+import android.content.Context
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -12,8 +13,9 @@ import com.flexath.corner.features.main.presentation.nav_graphs.MainSubGraph
 
 @Composable
 fun NavGraph(
+    applicationContext: Context,
     modifier: Modifier = Modifier,
-    startGraph: String
+    startGraph: String,
 ) {
     val navController = rememberNavController()
 
@@ -29,6 +31,7 @@ fun NavGraph(
                 route = Route.AuthStartDestination.route
             ) {
                 AuthSubGraph(
+                    applicationContext = applicationContext,
                     modifier = Modifier.fillMaxSize()
                 )
             }

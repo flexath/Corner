@@ -1,10 +1,9 @@
 package com.flexath.corner.features.auth.presentation.google_sign_in
 
-import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import com.flexath.corner.BuildConfig
-import com.flexath.corner.features.auth.presentation.states.SignInResultState
+import com.flexath.corner.features.auth.presentation.states.RegisterResultState
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.firebase.auth.GoogleAuthProvider
@@ -15,7 +14,6 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class GoogleAuthUiClient @Inject constructor(
-    private val context: Context,
     private val signInClient: SignInClient
 ) {
     private val auth = Firebase.auth
@@ -33,14 +31,14 @@ class GoogleAuthUiClient @Inject constructor(
         return task?.pendingIntent?.intentSender
     }
 
-    suspend fun signInWithIntent(intent: Intent): SignInResultState {
+    suspend fun signInWithIntent(intent: Intent): RegisterResultState {
         val credential = signInClient.getSignInCredentialFromIntent(intent)
         val googleIdToken = credential.googleIdToken
         val googleCredentials = GoogleAuthProvider.getCredential(googleIdToken, null)
 
         return try {
             val user = auth.signInWithCredential(googleCredentials).await().user
-            SignInResultState(
+            RegisterResultState(
                 userData = user?.run {
                     UserData(
                         userId = uid,
@@ -53,7 +51,7 @@ class GoogleAuthUiClient @Inject constructor(
         } catch (e: Exception) {
             e.printStackTrace()
             if (e is CancellationException) throw e
-            SignInResultState(
+            RegisterResultState(
                 userData = null,
                 error = e.message
             )

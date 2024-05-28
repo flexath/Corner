@@ -17,6 +17,6 @@ class AuthModule {
     fun provideGoogleAuthUiClient(
         @ApplicationContext context: Context
     ): GoogleAuthUiClient {
-        return GoogleAuthUiClient(context, Identity.getSignInClient(context))
+        return GoogleAuthUiClient(Identity.getSignInClient(context))
     }
 }
