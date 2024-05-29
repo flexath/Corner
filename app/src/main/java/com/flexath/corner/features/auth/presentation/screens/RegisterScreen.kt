@@ -36,6 +36,7 @@ import androidx.constraintlayout.compose.Dimension
 import com.flexath.corner.R
 import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargePadding2
 import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargePadding7
+import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargeText10
 import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargeText12
 import com.flexath.corner.core.presentation.constants.Dimens.LargePadding10
 import com.flexath.corner.core.presentation.constants.Dimens.LargePadding2
@@ -43,38 +44,20 @@ import com.flexath.corner.core.presentation.constants.Dimens.LargePadding5
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding1
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding2
-import com.flexath.corner.features.auth.presentation.google_sign_in.GoogleAuthUiClient
+import com.flexath.corner.features.auth.presentation.google_sign_in.UserData
 import com.flexath.corner.features.auth.presentation.states.RegisterState
 import com.flexath.corner.ui.theme.CustomFont
 import com.flexath.corner.ui.theme.colorPrimary
 import com.flexath.corner.ui.theme.getTypography
 import com.flexath.corner.ui.theme.textColorPrimary
-import com.google.android.gms.auth.api.identity.Identity
 
 @Composable
 fun RegisterScreen(
-    registerState: RegisterState,
-    googleAuthUiClient: GoogleAuthUiClient,
     modifier: Modifier = Modifier,
-    goToNextScreen: () -> Unit
+    onClickGoogleSignUpButton: () -> Unit,
+    onClickFacebookSignUpButton: () -> Unit,
+    onClickEmailSignUpButton: () -> Unit
 ) {
-
-    val context = LocalContext.current
-
-    LaunchedEffect(key1 = Unit) {
-        if(googleAuthUiClient.getSignInUserInformation() != null) {
-            goToNextScreen()
-        }
-    }
-
-    LaunchedEffect(key1 = registerState.isSignInSuccessful) {
-        if(registerState.isSignInSuccessful) {
-            Toast.makeText(context,"Register Successfully",Toast.LENGTH_SHORT).show()
-
-            goToNextScreen()
-        }
-    }
-
     ConstraintLayout(
         modifier = modifier.padding(vertical = LargePadding5)
     ) {
@@ -120,7 +103,7 @@ fun RegisterScreen(
         Text(
             text = stringResource(R.string.lbl_unlock_wisdom_and_insight),
             style = getTypography(CustomFont.Noe).displayLarge.copy(
-                fontSize = ExtraLargeText12,
+                fontSize = ExtraLargeText10,
                 lineHeight = 70.sp,
                 fontWeight = FontWeight.Normal
             ),
@@ -161,7 +144,7 @@ fun RegisterScreen(
                 height = Dimension.wrapContent
             },
             onClick = {
-
+                onClickGoogleSignUpButton()
             }
         ) {
             Icon(
@@ -192,7 +175,7 @@ fun RegisterScreen(
                 height = Dimension.wrapContent
             },
             onClick = {
-
+                onClickFacebookSignUpButton()
             }
         ) {
             Icon(
@@ -223,7 +206,7 @@ fun RegisterScreen(
                 height = Dimension.wrapContent
             },
             onClick = {
-
+                onClickEmailSignUpButton()
             }
         ) {
             Icon(
@@ -327,11 +310,15 @@ fun RegisterScreen(
 @Composable
 private fun RegisterScreenPreview() {
     RegisterScreen(
-        registerState = RegisterState(),
-        googleAuthUiClient = GoogleAuthUiClient(
-            Identity.getSignInClient(LocalContext.current)
-        ),
         modifier = Modifier.fillMaxSize(),
-        goToNextScreen = {}
+        onClickGoogleSignUpButton = {
+
+        },
+        onClickFacebookSignUpButton = {
+
+        },
+        onClickEmailSignUpButton = {
+
+        }
     )
 }
