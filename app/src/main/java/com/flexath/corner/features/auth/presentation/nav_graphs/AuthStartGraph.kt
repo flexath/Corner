@@ -93,14 +93,17 @@ fun AuthSubGraph(
         ) {
             val registerViewModel: RegisterViewModel = hiltViewModel()
             val userData = registerViewModel.getUserInformation()
+            val coroutineScope = rememberCoroutineScope()
 
             LoginScreen(
                 userData = userData,
                 modifier = Modifier.fillMaxSize(),
                 onNavigateBack = {
-                    registerViewModel.signOut()
+                    coroutineScope.launch {
+                        registerViewModel.signOut()
+                        navController.popBackStack()
+                    }
                     Toast.makeText(context, "Sign Out!", Toast.LENGTH_SHORT).show()
-                    navController.popBackStack()
                 }
             )
         }

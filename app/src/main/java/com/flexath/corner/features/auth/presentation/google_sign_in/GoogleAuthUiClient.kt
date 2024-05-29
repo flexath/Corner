@@ -60,8 +60,8 @@ class GoogleAuthUiClient @Inject constructor(
 
     suspend fun signOut() {
         try {
-            signInClient.signOut().await()
             auth.signOut()
+            signInClient.signOut().await()
         } catch (e: Exception) {
             e.printStackTrace()
             if (e is CancellationException) throw e

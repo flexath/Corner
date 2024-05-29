@@ -41,11 +41,7 @@ class RegisterViewModel @Inject constructor(
 
     fun resetRegisterState() {
         _registerState.update {
-            it.copy(
-                userData = null,
-                isSignInSuccessful = false,
-                error = null
-            )
+            RegisterState()
         }
     }
 
@@ -64,10 +60,8 @@ class RegisterViewModel @Inject constructor(
 
     suspend fun signIn() = googleAuthUiClient.signIn()
 
-    fun signOut() {
-        viewModelScope.launch {
-            googleAuthUiClient.signOut()
-        }
+    suspend fun signOut() {
+        googleAuthUiClient.signOut()
     }
 
     fun getUserInformation() = googleAuthUiClient.getSignInUserInformation()

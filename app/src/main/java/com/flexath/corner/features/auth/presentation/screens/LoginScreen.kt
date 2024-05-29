@@ -75,7 +75,7 @@ fun LoginScreen(
     }
 }
 
-@Preview
+@Preview(showSystemUi = true, showBackground = true)
 @Composable
 private fun LoginScreenPreview() {
     LoginScreen(
