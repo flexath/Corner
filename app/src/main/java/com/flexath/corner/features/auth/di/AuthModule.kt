@@ -1,6 +1,7 @@
 package com.flexath.corner.features.auth.di
 
 import android.content.Context
+import com.flexath.corner.features.auth.presentation.FacebookAuthUiClient
 import com.flexath.corner.features.auth.presentation.google_sign_in.GoogleAuthUiClient
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
@@ -24,4 +25,9 @@ object AuthModule {
 
     @Provides
     fun provideSignInClient(@ApplicationContext context: Context): SignInClient = Identity.getSignInClient(context)
+
+    @Provides
+    fun provideFacebookAuthUiClient(): FacebookAuthUiClient {
+        return FacebookAuthUiClient()
+    }
 }

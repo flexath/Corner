@@ -1,5 +1,6 @@
 package com.flexath.corner.features.auth.presentation.screens
 
+import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -30,6 +31,11 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import com.flexath.corner.features.auth.presentation.google_sign_in.UserData
 import com.flexath.corner.features.auth.presentation.viewmodels.RegisterViewModel
 import com.google.firebase.crashlytics.internal.model.CrashlyticsReport.Session.User

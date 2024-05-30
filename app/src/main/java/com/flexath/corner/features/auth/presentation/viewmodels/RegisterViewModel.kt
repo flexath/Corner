@@ -1,12 +1,13 @@
 package com.flexath.corner.features.auth.presentation.viewmodels
 
 import android.content.Intent
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.flexath.corner.features.auth.presentation.events.RegisterEvent
+import com.facebook.AccessToken
+import com.flexath.corner.features.auth.presentation.FacebookAuthUiClient
+import com.flexath.corner.features.auth.presentation.events.SignOutEvent
+import com.flexath.corner.features.auth.presentation.events.SignUpEvent
 import com.flexath.corner.features.auth.presentation.google_sign_in.GoogleAuthUiClient
-import com.flexath.corner.features.auth.presentation.states.RegisterResultState
 import com.flexath.corner.features.auth.presentation.states.RegisterState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,23 +18,40 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
-    private val googleAuthUiClient: GoogleAuthUiClient
+    private val googleAuthUiClient: GoogleAuthUiClient,
+    private val facebookAuthUiClient: FacebookAuthUiClient
 ) : ViewModel() {
 
     private var _registerState = MutableStateFlow(RegisterState())
     val registerState get() = _registerState.asStateFlow()
 
-    fun onEvent(event: RegisterEvent) {
+    fun onSignInEvent(event: SignUpEvent) {
         when (event) {
-            is RegisterEvent.GoogleSignUpEvent -> {
-                signInWithIntent(event.intent)
+            is SignUpEvent.GoogleSignUpEvent -> {
+                signInWithGoogle(event.intent)
             }
 
-            RegisterEvent.FacebookSignUpEvent -> {
-
+            is SignUpEvent.FacebookSignUpEvent -> {
+                signInWithFacebook(event.accessToken)
             }
 
-            RegisterEvent.EmailSignUpEvent -> {
+            SignUpEvent.EmailSignUpEvent -> {
+
+            }
+        }
+    }
+
+    fun onSignOutEvent(event: SignOutEvent) {
+        when(event) {
+            SignOutEvent.GoogleSignOutEvent -> {
+                viewModelScope.launch {
+                    signOutWithGoogle()
+                }
+            }
+            SignOutEvent.FacebookSignOutEvent -> {
+                signOutWithFacebook()
+            }
+            SignOutEvent.EmailSignOutEvent -> {
 
             }
         }
@@ -45,7 +63,7 @@ class RegisterViewModel @Inject constructor(
         }
     }
 
-    private fun signInWithIntent(intent: Intent) {
+    private fun signInWithGoogle(intent: Intent) {
         viewModelScope.launch {
             val registerResult = googleAuthUiClient.signInWithIntent(intent)
             _registerState.update {
@@ -58,11 +76,30 @@ class RegisterViewModel @Inject constructor(
         }
     }
 
-    suspend fun signIn() = googleAuthUiClient.signIn()
+    private fun signInWithFacebook(accessToken: AccessToken) {
+        viewModelScope.launch {
+            val registerResult = facebookAuthUiClient.signIn(accessToken)
+            _registerState.update {
+                it.copy(
+                    userData = registerResult.userData,
+                    error = registerResult.error,
+                    isSignInSuccessful = registerResult.userData != null
+                )
+            }
+        }
+    }
 
-    suspend fun signOut() {
+    suspend fun signInWithGoogle() = googleAuthUiClient.signIn()
+
+    private suspend fun signOutWithGoogle() {
         googleAuthUiClient.signOut()
     }
 
-    fun getUserInformation() = googleAuthUiClient.getSignInUserInformation()
+    private fun signOutWithFacebook() {
+        facebookAuthUiClient.signOut()
+    }
+
+    fun getUserInformationFromGoogle() = googleAuthUiClient.getSignInUserInformation()
+
+    fun getUserInformationFromFacebook() = facebookAuthUiClient.getSignInUserInformation()
 }
