@@ -15,12 +15,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
-import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargePadding2
-import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargePadding3
 import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargePadding4
-import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargePadding5
-import com.flexath.corner.core.presentation.constants.Dimens.LargePadding10
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding3
+import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding1
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.ui.theme.CustomFont
 import com.flexath.corner.ui.theme.alertColor
@@ -49,7 +45,7 @@ fun OutlinedTextFieldWithTitle(
             maxLines = 1,
         )
 
-        Spacer(modifier = Modifier.height(MediumPadding3))
+        Spacer(modifier = Modifier.height(MediumPadding1))
 
         OutlinedTextField(
             value = query,

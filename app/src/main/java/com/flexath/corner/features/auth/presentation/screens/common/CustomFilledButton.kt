@@ -1,26 +1,18 @@
 package com.flexath.corner.features.auth.presentation.screens.common
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import com.flexath.corner.core.presentation.constants.Dimens
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding5
 import com.flexath.corner.ui.theme.CustomFont
-import com.flexath.corner.ui.theme.colorBackground
 import com.flexath.corner.ui.theme.colorOnPrimary
 import com.flexath.corner.ui.theme.colorPrimary
 import com.flexath.corner.ui.theme.getTypography
 import com.flexath.corner.ui.theme.textColorPrimary
-import com.flexath.corner.ui.theme.textColorSecondary
 import com.flexath.corner.ui.theme.textFieldUnFocusedBackground
 
 @Composable

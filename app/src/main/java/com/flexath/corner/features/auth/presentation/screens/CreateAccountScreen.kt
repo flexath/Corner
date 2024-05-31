@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -28,7 +29,6 @@ import androidx.constraintlayout.compose.Dimension
 import com.flexath.corner.R
 import com.flexath.corner.core.presentation.constants.Dimens
 import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargePadding5
-import com.flexath.corner.core.presentation.constants.Dimens.LargePadding10
 import com.flexath.corner.core.presentation.constants.Dimens.LargePadding2
 import com.flexath.corner.core.presentation.constants.Dimens.LargePadding5
 import com.flexath.corner.core.presentation.constants.Dimens.LargePadding6
@@ -188,6 +188,8 @@ fun CreateAccountScreen(
                 }
             )
         }
+
+        Spacer(modifier = Modifier.height(LargePadding2))
     }
 }
 
