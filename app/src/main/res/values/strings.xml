@@ -10,4 +10,11 @@
     <string name="facebook_app_id">752859977012803</string>
     <string name="fb_login_protocol_scheme">fb752859977012803</string>
     <string name="facebook_client_token">dea9e1e1df5a6bcf1c053df43391d743</string>
+    <string name="navigate_back">Navigate Back</string>
+    <string name="lbl_create_your_account">Create your account</string>
+    <string name="lbl_your_email">Your email</string>
+    <string name="lbl_your_full_name">Your full name</string>
+    <string name="lbl_input_your_first_name_and_last_name">Input your first name and last name</string>
+    <string name="lbl_flexath11_gmail_com">flexath11@gmail.com</string>
+    <string name="lbl_create_account">Create account</string>
 </resources>

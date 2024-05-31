@@ -1,4 +1,4 @@
-package com.flexath.corner.features.auth.presentation.google_sign_in
+package com.flexath.corner.features.auth.presentation.firebase
 
 data class UserData(
     val userId: String? = null,

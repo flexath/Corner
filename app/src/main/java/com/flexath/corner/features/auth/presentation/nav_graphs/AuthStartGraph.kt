@@ -26,6 +26,7 @@ import com.facebook.login.LoginResult
 import com.flexath.corner.core.presentation.nav_graphs.Route
 import com.flexath.corner.features.auth.presentation.events.SignOutEvent
 import com.flexath.corner.features.auth.presentation.events.SignUpEvent
+import com.flexath.corner.features.auth.presentation.screens.CreateAccountScreen
 import com.flexath.corner.features.auth.presentation.screens.LoginScreen
 import com.flexath.corner.features.auth.presentation.screens.RegisterScreen
 import com.flexath.corner.features.auth.presentation.viewmodels.RegisterViewModel
@@ -122,7 +123,7 @@ fun AuthSubGraph(
                     fbLauncher.launch(listOf("email","public_profile"))
                 },
                 onClickEmailSignUpButton = {
-
+                    navController.navigate(Route.CreateAccountScreen.route)
                 }
             )
         }
@@ -147,6 +148,17 @@ fun AuthSubGraph(
                         navController.popBackStack()
                     }
                     Toast.makeText(context, "Sign Out!", Toast.LENGTH_SHORT).show()
+                }
+            )
+        }
+
+        composable(
+            route = Route.CreateAccountScreen.route
+        ) {
+            CreateAccountScreen(
+                modifier = Modifier.fillMaxSize(),
+                onNavigateBack = {
+                    navController.popBackStack()
                 }
             )
         }

@@ -1,4 +1,4 @@
-package com.flexath.corner.features.auth.presentation.google_sign_in
+package com.flexath.corner.features.auth.presentation.firebase
 
 import android.content.Intent
 import android.content.IntentSender

@@ -16,6 +16,7 @@ import com.flexath.corner.core.presentation.constants.Dimens.LargeText10
 import com.flexath.corner.core.presentation.constants.Dimens.LargeText2
 import com.flexath.corner.core.presentation.constants.Dimens.LargeText3
 import com.flexath.corner.core.presentation.constants.Dimens.LargeText5
+import com.flexath.corner.core.presentation.constants.Dimens.LargeText6
 import com.flexath.corner.core.presentation.constants.Dimens.LargeText8
 import com.flexath.corner.core.presentation.constants.Dimens.MediumText1
 import com.flexath.corner.core.presentation.constants.Dimens.MediumText2
@@ -80,7 +81,7 @@ fun getTypography(font: CustomFont): Typography {
         displaySmall = TextStyle(
             fontFamily = getFont(font),
             fontWeight = FontWeight.Normal,
-            fontSize = LargeText8,
+            fontSize = LargeText6,
             lineHeight = 26.04.sp,
             letterSpacing = 0.sp
         ),

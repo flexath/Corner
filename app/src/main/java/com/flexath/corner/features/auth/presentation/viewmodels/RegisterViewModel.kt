@@ -4,10 +4,11 @@ import android.content.Intent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.facebook.AccessToken
-import com.flexath.corner.features.auth.presentation.FacebookAuthUiClient
+import com.flexath.corner.features.auth.presentation.firebase.FacebookAuthUiClient
 import com.flexath.corner.features.auth.presentation.events.SignOutEvent
 import com.flexath.corner.features.auth.presentation.events.SignUpEvent
-import com.flexath.corner.features.auth.presentation.google_sign_in.GoogleAuthUiClient
+import com.flexath.corner.features.auth.presentation.firebase.EmailPasswordAuthUiClient
+import com.flexath.corner.features.auth.presentation.firebase.GoogleAuthUiClient
 import com.flexath.corner.features.auth.presentation.states.RegisterState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,7 +20,8 @@ import javax.inject.Inject
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
     private val googleAuthUiClient: GoogleAuthUiClient,
-    private val facebookAuthUiClient: FacebookAuthUiClient
+    private val facebookAuthUiClient: FacebookAuthUiClient,
+    private val emailPasswordAuthUiClient: EmailPasswordAuthUiClient
 ) : ViewModel() {
 
     private var _registerState = MutableStateFlow(RegisterState())
@@ -35,22 +37,24 @@ class RegisterViewModel @Inject constructor(
                 signInWithFacebook(event.accessToken)
             }
 
-            SignUpEvent.EmailSignUpEvent -> {
-
+            is SignUpEvent.EmailSignUpEvent -> {
+                signInWithEmailPassword(email = event.email, password = event.password)
             }
         }
     }
 
     fun onSignOutEvent(event: SignOutEvent) {
-        when(event) {
+        when (event) {
             SignOutEvent.GoogleSignOutEvent -> {
                 viewModelScope.launch {
                     signOutWithGoogle()
                 }
             }
+
             SignOutEvent.FacebookSignOutEvent -> {
                 signOutWithFacebook()
             }
+
             SignOutEvent.EmailSignOutEvent -> {
 
             }
@@ -89,6 +93,19 @@ class RegisterViewModel @Inject constructor(
         }
     }
 
+    private fun signInWithEmailPassword(email: String, password: String) {
+        viewModelScope.launch {
+            val registerResult = emailPasswordAuthUiClient.signIn(email, password)
+            _registerState.update {
+                it.copy(
+                    userData = registerResult.userData,
+                    error = registerResult.error,
+                    isSignInSuccessful = registerResult.userData != null
+                )
+            }
+        }
+    }
+
     suspend fun signInWithGoogle() = googleAuthUiClient.signIn()
 
     private suspend fun signOutWithGoogle() {
@@ -97,6 +114,10 @@ class RegisterViewModel @Inject constructor(
 
     private fun signOutWithFacebook() {
         facebookAuthUiClient.signOut()
+    }
+
+    private fun signOutWithEmailPassword() {
+        emailPasswordAuthUiClient.signOut()
     }
 
     fun getUserInformationFromGoogle() = googleAuthUiClient.getSignInUserInformation()

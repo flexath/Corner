@@ -12,6 +12,7 @@ object NavGraphConstants {
 
     const val LOGIN_SCREEN = "loginScreen"
     const val REGISTER_SCREEN = "registerScreen"
+    const val CREATE_ACCOUNT_SCREEN = "createAccountScreen"
 
     // sub nav graphs
     const val AUTH_SUB_GRAPH = "authSubGraph"

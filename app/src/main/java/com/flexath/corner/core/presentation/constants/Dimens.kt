@@ -39,6 +39,18 @@ object Dimens {
     val ExtraLargePadding8 = 56.dp
     val ExtraLargePadding9 = 58.dp
     val ExtraLargePadding10 = 60.dp
+
+    val DoubleExtraLargePadding1 = 62.dp
+    val DoubleExtraLargePadding2 = 64.dp
+    val DoubleExtraLargePadding3 = 66.dp
+    val DoubleExtraLargePadding4 = 68.dp
+    val DoubleExtraLargePadding5 = 70.dp
+    val DoubleExtraLargePadding6 = 72.dp
+    val DoubleExtraLargePadding7 = 74.dp
+    val DoubleExtraLargePadding8 = 76.dp
+    val DoubleExtraLargePadding9 = 78.dp
+    val DoubleExtraLargePadding10 = 80.dp
+
     val ExtraLargePadding5_2x = 100.dp
 
     val ProductCardWidth = 160.dp

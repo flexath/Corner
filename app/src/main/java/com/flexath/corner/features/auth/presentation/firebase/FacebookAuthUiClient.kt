@@ -1,8 +1,6 @@
-package com.flexath.corner.features.auth.presentation
+package com.flexath.corner.features.auth.presentation.firebase
 
-import android.util.Log
 import com.facebook.AccessToken
-import com.flexath.corner.features.auth.presentation.google_sign_in.UserData
 import com.flexath.corner.features.auth.presentation.states.RegisterResultState
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.ktx.auth
@@ -16,8 +14,6 @@ class FacebookAuthUiClient @Inject constructor() {
     private val auth = Firebase.auth
 
     suspend fun signIn(token: AccessToken): RegisterResultState {
-        Log.d("FacebookToken", "handleFacebookAccessToken:$token")
-
         val credential = FacebookAuthProvider.getCredential(token.token)
 
         return try {

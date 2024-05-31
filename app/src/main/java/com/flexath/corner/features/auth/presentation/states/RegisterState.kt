@@ -1,6 +1,6 @@
 package com.flexath.corner.features.auth.presentation.states
 
-import com.flexath.corner.features.auth.presentation.google_sign_in.UserData
+import com.flexath.corner.features.auth.presentation.firebase.UserData
 
 data class RegisterState(
     val userData: UserData? = null,
