@@ -16,6 +16,7 @@ import com.flexath.corner.core.presentation.constants.Dimens.LargeText10
 import com.flexath.corner.core.presentation.constants.Dimens.LargeText2
 import com.flexath.corner.core.presentation.constants.Dimens.LargeText3
 import com.flexath.corner.core.presentation.constants.Dimens.LargeText5
+import com.flexath.corner.core.presentation.constants.Dimens.LargeText6
 import com.flexath.corner.core.presentation.constants.Dimens.LargeText8
 import com.flexath.corner.core.presentation.constants.Dimens.MediumText1
 import com.flexath.corner.core.presentation.constants.Dimens.MediumText2
@@ -31,6 +32,7 @@ val Charter = FontFamily(
         Font(R.font.charter_regular, FontWeight.Medium),
         Font(R.font.charter_regular, FontWeight.SemiBold),
         Font(R.font.charter_bold, FontWeight.Bold),
+        Font(R.font.charter_bold, FontWeight.ExtraBold),
     )
 )
 
@@ -41,6 +43,7 @@ val Noe = FontFamily(
         Font(R.font.noe_medium, FontWeight.Medium),
         Font(R.font.noe_medium, FontWeight.SemiBold),
         Font(R.font.noe_bold, FontWeight.Bold),
+        Font(R.font.noe_bold, FontWeight.ExtraBold),
     )
 )
 
@@ -80,7 +83,7 @@ fun getTypography(font: CustomFont): Typography {
         displaySmall = TextStyle(
             fontFamily = getFont(font),
             fontWeight = FontWeight.Normal,
-            fontSize = LargeText8,
+            fontSize = LargeText6,
             lineHeight = 26.04.sp,
             letterSpacing = 0.sp
         ),

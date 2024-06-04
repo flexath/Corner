@@ -187,4 +187,6 @@ dependencies {
 
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)
+
+    implementation("com.facebook.android:facebook-android-sdk:latest.release")
 }

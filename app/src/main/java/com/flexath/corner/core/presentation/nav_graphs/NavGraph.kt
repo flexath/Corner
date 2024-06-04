@@ -31,7 +31,6 @@ fun NavGraph(
                 route = Route.AuthStartDestination.route
             ) {
                 AuthSubGraph(
-                    applicationContext = applicationContext,
                     modifier = Modifier.fillMaxSize()
                 )
             }
