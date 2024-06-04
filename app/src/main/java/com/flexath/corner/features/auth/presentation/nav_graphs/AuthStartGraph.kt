@@ -29,6 +29,7 @@ import com.flexath.corner.features.auth.presentation.events.SignUpEvent
 import com.flexath.corner.features.auth.presentation.screens.CreateAccountScreen
 import com.flexath.corner.features.auth.presentation.screens.LoginScreen
 import com.flexath.corner.features.auth.presentation.screens.RegisterScreen
+import com.flexath.corner.features.auth.presentation.screens.WelcomeScreen
 import com.flexath.corner.features.auth.presentation.viewmodels.RegisterViewModel
 import com.google.android.gms.auth.api.identity.SignInClient
 import kotlinx.coroutines.launch
@@ -159,6 +160,20 @@ fun AuthSubGraph(
                 modifier = Modifier.fillMaxSize(),
                 onNavigateBack = {
                     navController.popBackStack()
+                },
+                onClickCreateAccountButton = {
+                    navController.navigate(Route.WelcomeScreen.route)
+                }
+            )
+        }
+
+        composable(
+            route = Route.WelcomeScreen.route
+        ) {
+            WelcomeScreen(
+                modifier = Modifier.fillMaxSize(),
+                onClickContinueButton = {
+
                 }
             )
         }

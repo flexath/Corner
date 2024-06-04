@@ -32,6 +32,7 @@ val Charter = FontFamily(
         Font(R.font.charter_regular, FontWeight.Medium),
         Font(R.font.charter_regular, FontWeight.SemiBold),
         Font(R.font.charter_bold, FontWeight.Bold),
+        Font(R.font.charter_bold, FontWeight.ExtraBold),
     )
 )
 
@@ -42,6 +43,7 @@ val Noe = FontFamily(
         Font(R.font.noe_medium, FontWeight.Medium),
         Font(R.font.noe_medium, FontWeight.SemiBold),
         Font(R.font.noe_bold, FontWeight.Bold),
+        Font(R.font.noe_bold, FontWeight.ExtraBold),
     )
 )
 

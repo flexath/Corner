@@ -68,7 +68,7 @@ fun RegisterScreen(
                 googleSignUpButtonRef,
                 facebookSignUpButtonRef,
                 emailSignUpButtonRef,
-                alreadyHaveAnAccountRef,
+                alreadyHaveAnAccountTextRef,
                 agreeTermsOfServiceRef
             ) = createRefs()
 
@@ -228,7 +228,7 @@ fun RegisterScreen(
             }
 
             Row(
-                modifier = Modifier.constrainAs(alreadyHaveAnAccountRef) {
+                modifier = Modifier.constrainAs(alreadyHaveAnAccountTextRef) {
                     top.linkTo(emailSignUpButtonRef.bottom, margin = LargePadding10)
                     start.linkTo(parent.start, margin = MediumPadding5)
                     end.linkTo(parent.end, margin = MediumPadding5)
@@ -262,7 +262,7 @@ fun RegisterScreen(
                 color = textColorPrimary,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.constrainAs(agreeTermsOfServiceRef) {
-                    top.linkTo(alreadyHaveAnAccountRef.bottom, margin = DoubleExtraLargePadding10)
+                    top.linkTo(alreadyHaveAnAccountTextRef.bottom, margin = DoubleExtraLargePadding10)
                     start.linkTo(parent.start, margin = MediumPadding5)
                     end.linkTo(parent.end, margin = MediumPadding5)
                     width = Dimension.fillToConstraints

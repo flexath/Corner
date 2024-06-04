@@ -44,9 +44,9 @@ import com.flexath.corner.ui.theme.textColorPrimary
 @Composable
 fun CreateAccountScreen(
     modifier: Modifier = Modifier,
-    onNavigateBack: () -> Unit
+    onNavigateBack: () -> Unit,
+    onClickCreateAccountButton: () -> Unit
 ) {
-
     val scrollState = rememberScrollState()
 
     Column(
@@ -170,7 +170,7 @@ fun CreateAccountScreen(
                 text = stringResource(R.string.lbl_create_account),
                 isEnabled = true,
                 onClick = {
-
+                    onClickCreateAccountButton()
                 }
             )
 
@@ -199,6 +199,9 @@ private fun CreateAccountScreenPreview() {
     CreateAccountScreen(
         modifier = Modifier.fillMaxSize(),
         onNavigateBack = {
+
+        },
+        onClickCreateAccountButton = {
 
         }
     )
