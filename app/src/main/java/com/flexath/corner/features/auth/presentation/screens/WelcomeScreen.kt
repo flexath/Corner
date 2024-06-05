@@ -95,7 +95,7 @@ fun WelcomeScreen(
 
         Text(
             text = stringResource(R.string.lbl_let_s_find_people_to_follow_based_on_your_interests),
-            style = getTypography(CustomFont.Charter).titleSmall,
+            style = getTypography(CustomFont.Charter).bodyLarge,
             color = textColorPrimary,
             textAlign = TextAlign.Center,
             modifier = Modifier.constrainAs(letFindPeopleTextRef) {

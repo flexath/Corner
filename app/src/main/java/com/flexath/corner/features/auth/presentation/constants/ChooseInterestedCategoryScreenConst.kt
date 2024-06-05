@@ -1,252 +1,207 @@
 package com.flexath.corner.features.auth.presentation.constants
 
 object ChooseInterestedCategoryScreenConst {
-    val categoryList = listOf<Category>(
+    val categoryList = listOf(
         Category(
             id = 1,
-            name = "Programming",
-            isSelected = false
+            name = "Programming"
         ),
         Category(
             id = 2,
-            name = "Data Science",
-            isSelected = false
+            name = "Data Science"
         ),
         Category(
             id = 3,
-            name = "Technology",
-            isSelected = false
+            name = "Technology"
         ),
         Category(
             id = 4,
-            name = "Self Improvement",
-            isSelected = false
+            name = "Self Improvement"
         ),
         Category(
             id = 5,
-            name = "Writing",
-            isSelected = false
+            name = "Writing"
         ),
         Category(
             id = 6,
-            name = "Relationships",
-            isSelected = false
+            name = "Relationships"
         ),
         Category(
             id = 7,
-            name = "Machine Learning",
-            isSelected = false
+            name = "Machine Learning"
         ),
         Category(
             id = 8,
-            name = "Productivity",
-            isSelected = false
+            name = "Productivity"
         ),
         Category(
             id = 9,
-            name = "Politics",
-            isSelected = false
+            name = "Politics"
         ),
         Category(
             id = 10,
-            name = "Cryptocurrency",
-            isSelected = false
+            name = "Cryptocurrency"
         ),
         Category(
             id = 11,
-            name = "Psychology",
-            isSelected = false
+            name = "Psychology"
         ),
         Category(
             id = 12,
-            name = "Money",
-            isSelected = false
+            name = "Money"
         ),
         Category(
             id = 13,
-            name = "Business",
-            isSelected = false
+            name = "Business"
         ),
         Category(
             id = 14,
-            name = "Android",
-            isSelected = false
+            name = "Android"
         ),
         Category(
             id = 15,
-            name = "Health",
-            isSelected = false
+            name = "Health"
         ),
         Category(
             id = 16,
-            name = "Science",
-            isSelected = false
+            name = "Science"
         ),
         Category(
             id = 17,
-            name = "Mental Health",
-            isSelected = false
+            name = "Mental Health"
         ),
         Category(
             id = 18,
-            name = "Life",
-            isSelected = false
+            name = "Life"
         ),
         Category(
             id = 19,
-            name = "Software Development",
-            isSelected = false
+            name = "Software Development"
         ),
         Category(
             id = 20,
-            name = "Start Up",
-            isSelected = false
+            name = "Start Up"
         ),
         Category(
             id = 21,
-            name = "Design",
-            isSelected = false
+            name = "Design"
         ),
         Category(
             id = 22,
-            name = "Javascript",
-            isSelected = false
+            name = "Javascript"
         ),
         Category(
             id = 23,
-            name = "Artificial Intelligence",
-            isSelected = false
+            name = "Artificial Intelligence"
         ),
         Category(
             id = 24,
-            name = "Culture",
-            isSelected = false
+            name = "Culture"
         ),
         Category(
             id = 25,
-            name = "Software Engineering",
-            isSelected = false
+            name = "Software Engineering"
         ),
         Category(
             id = 26,
-            name = "Blockchain",
-            isSelected = false
+            name = "Blockchain"
         ),
         Category(
             id = 27,
-            name = "Coding",
-            isSelected = false
+            name = "Coding"
         ),
         Category(
             id = 28,
-            name = "Entrepreneurship",
-            isSelected = false
+            name = "Entrepreneurship"
         ),
         Category(
             id = 29,
-            name = "React",
-            isSelected = false
+            name = "React"
         ),
         Category(
             id = 30,
-            name = "UX",
-            isSelected = false
+            name = "UX"
         ),
         Category(
             id = 31,
-            name = "Education",
-            isSelected = false
+            name = "Education"
         ),
         Category(
             id = 32,
-            name = "History",
-            isSelected = false
+            name = "History"
         ),
         Category(
             id = 30,
-            name = "Humor",
-            isSelected = false
+            name = "Humor"
         ),
         Category(
             id = 31,
-            name = "Web Development",
-            isSelected = false
+            name = "Web Development"
         ),
         Category(
             id = 32,
-            name = "Work",
-            isSelected = false
+            name = "Work"
         ),
         Category(
             id = 33,
-            name = "Lifestyle",
-            isSelected = false
+            name = "Lifestyle"
         ),
         Category(
             id = 34,
-            name = "Society",
-            isSelected = false
+            name = "Society"
         ),
         Category(
             id = 35,
-            name = "Deep Learning",
-            isSelected = false
+            name = "Deep Learning"
         ),
         Category(
             id = 36,
-            name = "Marketing",
-            isSelected = false
+            name = "Marketing"
         ),
         Category(
             id = 37,
-            name = "Books",
-            isSelected = false
+            name = "Books"
         ),
         Category(
             id = 38,
-            name = "Social Media",
-            isSelected = false
+            name = "Social Media"
         ),
         Category(
             id = 39,
-            name = "Leadership",
-            isSelected = false
+            name = "Leadership"
         ),
         Category(
             id = 40,
-            name = "Apple",
-            isSelected = false
+            name = "Apple"
         ),
         Category(
             id = 41,
-            name = "Women",
-            isSelected = false
+            name = "Women"
         ),
         Category(
             id = 42,
-            name = "Mindfulness",
-            isSelected = false
+            name = "Mindfulness"
         ),
         Category(
             id = 43,
-            name = "Sexuality",
-            isSelected = false
+            name = "Sexuality"
         ),
         Category(
             id = 44,
-            name = "Fitness",
-            isSelected = false
+            name = "Fitness"
         ),
         Category(
             id = 45,
-            name = "AWS",
-            isSelected = false
+            name = "AWS"
+        ),
+        Category(
+            id = 46,
+            name = "Flutter"
         )
     )
 }
 
 data class Category(
     val id: Int,
-    val name: String,
-    var isSelected: Boolean
+    val name: String
 )

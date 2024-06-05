@@ -7,6 +7,7 @@ import com.flexath.corner.core.presentation.nav_graphs.NavGraphConstants.HOME_SC
 import com.flexath.corner.core.presentation.nav_graphs.NavGraphConstants.LOGIN_SCREEN
 import com.flexath.corner.core.presentation.nav_graphs.NavGraphConstants.MAIN_SUB_GRAPH
 import com.flexath.corner.core.presentation.nav_graphs.NavGraphConstants.PROFILE_SCREEN
+import com.flexath.corner.core.presentation.nav_graphs.NavGraphConstants.RECOMMENDED_FOR_YOU_SCREEN
 import com.flexath.corner.core.presentation.nav_graphs.NavGraphConstants.REGISTER_SCREEN
 import com.flexath.corner.core.presentation.nav_graphs.NavGraphConstants.SEARCH_SCREEN
 import com.flexath.corner.core.presentation.nav_graphs.NavGraphConstants.WELCOME_SCREEN
@@ -27,6 +28,7 @@ sealed class Route(val route: String) {
     data object CreateAccountScreen : Route(CREATE_ACCOUNT_SCREEN)
     data object WelcomeScreen : Route(WELCOME_SCREEN)
     data object ChooseInterestedCategoryScreen: Route(CHOOSE_INTERESTED_CATEGORY_SCREEN)
+    data object RecommendedForYouScreen: Route(RECOMMENDED_FOR_YOU_SCREEN)
 
     // sub-graphs
     data object AuthSubGraph : Route(AUTH_SUB_GRAPH)
