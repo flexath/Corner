@@ -20,6 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.flexath.corner.R
@@ -78,6 +79,7 @@ fun WelcomeScreen(
             text = stringResource(R.string.lbl_make_corner_yours),
             style = getTypography(CustomFont.Noe).displayMedium.copy(
                 fontWeight = FontWeight.SemiBold,
+                lineHeight = 40.sp,
             ),
             color = textColorPrimary,
             overflow = TextOverflow.Ellipsis,

@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -24,14 +25,18 @@ import com.facebook.FacebookException
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.flexath.corner.core.presentation.nav_graphs.Route
+import com.flexath.corner.features.auth.presentation.events.CreateAccountFormEvent
 import com.flexath.corner.features.auth.presentation.events.SignOutEvent
 import com.flexath.corner.features.auth.presentation.events.SignUpEvent
+import com.flexath.corner.features.auth.presentation.events.ValidationEvent
+import com.flexath.corner.features.auth.presentation.screens.ChooseInterestedCategoryScreen
 import com.flexath.corner.features.auth.presentation.screens.CreateAccountScreen
 import com.flexath.corner.features.auth.presentation.screens.LoginScreen
 import com.flexath.corner.features.auth.presentation.screens.RegisterScreen
 import com.flexath.corner.features.auth.presentation.screens.WelcomeScreen
+import com.flexath.corner.features.auth.presentation.viewmodels.CreateAccountViewModel
 import com.flexath.corner.features.auth.presentation.viewmodels.RegisterViewModel
-import com.google.android.gms.auth.api.identity.SignInClient
+import com.flexath.corner.ui.theme.colorBackground
 import kotlinx.coroutines.launch
 
 @Composable
@@ -43,7 +48,7 @@ fun AuthSubGraph(
 
     NavHost(
         navController = navController,
-        startDestination = Route.RegisterScreen.route
+        startDestination = Route.ChooseInterestedCategoryScreen.route
     ) {
         composable(
             route = Route.RegisterScreen.route
@@ -156,13 +161,39 @@ fun AuthSubGraph(
         composable(
             route = Route.CreateAccountScreen.route
         ) {
+            val viewModel: CreateAccountViewModel = hiltViewModel()
+            val createAccountFormState = viewModel.createAccountState.collectAsStateWithLifecycle()
+
+            LaunchedEffect(key1 = context) {
+                viewModel.validationEvent.collect {
+                    when (it) {
+                        ValidationEvent.Success -> {
+                            Toast.makeText(context,"Created account successfully!",Toast.LENGTH_SHORT).show()
+                            navController.navigate(Route.WelcomeScreen.route)
+                        }
+                        ValidationEvent.Failed -> {
+                            Toast.makeText(context,"Account creation failed!",Toast.LENGTH_SHORT).show()
+                            Log.i("CreateFormState","Error: ${createAccountFormState.value.fullNameError}")
+                            Log.i("CreateFormState","Error: ${createAccountFormState.value.emailError}")
+                        }
+                    }
+                }
+            }
+
             CreateAccountScreen(
                 modifier = Modifier.fillMaxSize(),
+                createAccountFormState = createAccountFormState.value,
                 onNavigateBack = {
                     navController.popBackStack()
                 },
                 onClickCreateAccountButton = {
-                    navController.navigate(Route.WelcomeScreen.route)
+                    viewModel.onCreateAccountEvent(CreateAccountFormEvent.Submit)
+                },
+                onFullNameChanged = {
+                    viewModel.onCreateAccountEvent(CreateAccountFormEvent.UserNameChanged(it))
+                },
+                onEmailChanged = {
+                    viewModel.onCreateAccountEvent(CreateAccountFormEvent.EmailChanged(it))
                 }
             )
         }
@@ -172,6 +203,20 @@ fun AuthSubGraph(
         ) {
             WelcomeScreen(
                 modifier = Modifier.fillMaxSize(),
+                onClickContinueButton = {
+                    navController.navigate(Route.ChooseInterestedCategoryScreen.route)
+                }
+            )
+        }
+
+        composable(
+            route = Route.ChooseInterestedCategoryScreen.route
+        ) {
+            ChooseInterestedCategoryScreen(
+                modifier = Modifier.fillMaxSize().background(colorBackground),
+                onNavigateBack = {
+                    navController.popBackStack()
+                },
                 onClickContinueButton = {
 
                 }

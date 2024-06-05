@@ -73,7 +73,7 @@ fun OutlinedTextFieldWithTitle(
                 unfocusedBorderColor = Color.Transparent
             ),
             singleLine = true,
-            modifier = Modifier.fillMaxWidth().height(ExtraLargePadding4)
+            modifier = Modifier.fillMaxWidth()
         )
     }
 }

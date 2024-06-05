@@ -21,4 +21,6 @@
     <string name="lbl_make_corner_yours">Make Corner yours</string>
     <string name="lbl_welcome_to_corner">Welcome to Corner</string>
     <string name="lbl_continue">Continue</string>
+    <string name="lbl_what_are_you_interested_in">What are you interested in?</string>
+    <string name="lbl_choose_three_or_more">Choose three or more</string>
 </resources>

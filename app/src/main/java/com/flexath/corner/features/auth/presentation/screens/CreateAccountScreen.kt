@@ -12,8 +12,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -34,18 +33,24 @@ import com.flexath.corner.core.presentation.constants.Dimens.LargePadding5
 import com.flexath.corner.core.presentation.constants.Dimens.LargePadding6
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding1
+import com.flexath.corner.core.presentation.screens.common.TopAppBarWithNavButtonAndTitle
 import com.flexath.corner.features.auth.presentation.screens.common.CustomFilledButton
 import com.flexath.corner.features.auth.presentation.screens.common.OutlinedTextFieldWithTitle
 import com.flexath.corner.features.auth.presentation.screens.common.getAnnotatedStringForServiceTerms
+import com.flexath.corner.features.auth.presentation.states.CreateAccountFormState
 import com.flexath.corner.ui.theme.CustomFont
 import com.flexath.corner.ui.theme.getTypography
 import com.flexath.corner.ui.theme.textColorPrimary
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CreateAccountScreen(
     modifier: Modifier = Modifier,
+    createAccountFormState: CreateAccountFormState,
     onNavigateBack: () -> Unit,
-    onClickCreateAccountButton: () -> Unit
+    onClickCreateAccountButton: () -> Unit,
+    onFullNameChanged: (query: String) -> Unit,
+    onEmailChanged: (query: String) -> Unit
 ) {
     val scrollState = rememberScrollState()
 
@@ -56,7 +61,7 @@ fun CreateAccountScreen(
             modifier = modifier
         ) {
             val (
-                backButtonRef,
+                topAppBarRef,
                 appNameWithLogo,
                 headlineTextRef,
                 fullNameTextFieldWithTitleRef,
@@ -65,28 +70,24 @@ fun CreateAccountScreen(
                 agreeTermsOfServiceRef
             ) = createRefs()
 
-            IconButton(
-                onClick = {
-                    onNavigateBack()
-                },
+            TopAppBarWithNavButtonAndTitle(
                 modifier = Modifier
-                    .constrainAs(backButtonRef) {
-                        top.linkTo(parent.top, margin = MediumPadding5)
+                    .constrainAs(topAppBarRef) {
+                        top.linkTo(parent.top)
                         start.linkTo(parent.start)
                     }
-                    .padding(horizontal = SmallPadding1)
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_back),
-                    contentDescription = stringResource(R.string.navigate_back),
-                )
-            }
+                    .padding(horizontal = SmallPadding1),
+                title = "",
+                onNavigateBack = {
+                    onNavigateBack()
+                }
+            )
 
             Row(
                 modifier = Modifier
                     .wrapContentHeight()
                     .constrainAs(appNameWithLogo) {
-                        top.linkTo(backButtonRef.bottom, margin = LargePadding5)
+                        top.linkTo(topAppBarRef.bottom, margin = LargePadding5)
                         start.linkTo(parent.start, margin = MediumPadding5)
                         end.linkTo(parent.end, margin = MediumPadding5)
                         width = Dimension.wrapContent
@@ -137,9 +138,9 @@ fun CreateAccountScreen(
                 },
                 title = stringResource(R.string.lbl_your_full_name),
                 placeholder = stringResource(R.string.lbl_input_your_first_name_and_last_name),
-                query = "",
+                query = createAccountFormState.fullName,
                 onQueryChange = {
-
+                    onFullNameChanged(it)
                 }
             )
 
@@ -153,9 +154,9 @@ fun CreateAccountScreen(
                 },
                 title = stringResource(R.string.lbl_your_email),
                 placeholder = stringResource(R.string.lbl_flexath11_gmail_com),
-                query = "",
+                query = createAccountFormState.email,
                 onQueryChange = {
-
+                    onEmailChanged(it)
                 }
             )
 
@@ -198,10 +199,17 @@ fun CreateAccountScreen(
 private fun CreateAccountScreenPreview() {
     CreateAccountScreen(
         modifier = Modifier.fillMaxSize(),
+        createAccountFormState = CreateAccountFormState(),
         onNavigateBack = {
 
         },
         onClickCreateAccountButton = {
+
+        },
+        onFullNameChanged = {
+
+        },
+        onEmailChanged = {
 
         }
     )

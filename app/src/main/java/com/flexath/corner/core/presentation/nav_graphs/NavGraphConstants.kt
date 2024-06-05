@@ -14,6 +14,7 @@ object NavGraphConstants {
     const val REGISTER_SCREEN = "registerScreen"
     const val CREATE_ACCOUNT_SCREEN = "createAccountScreen"
     const val WELCOME_SCREEN = "welcomeScreen"
+    const val CHOOSE_INTERESTED_CATEGORY_SCREEN = "chooseInterestedCategoryScreen"
 
     // sub nav graphs
     const val AUTH_SUB_GRAPH = "authSubGraph"
