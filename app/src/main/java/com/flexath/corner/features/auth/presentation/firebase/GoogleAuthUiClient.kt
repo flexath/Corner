@@ -1,4 +1,4 @@
-package com.flexath.corner.features.auth.presentation.google_sign_in
+package com.flexath.corner.features.auth.presentation.firebase
 
 import android.content.Intent
 import android.content.IntentSender
@@ -60,8 +60,8 @@ class GoogleAuthUiClient @Inject constructor(
 
     suspend fun signOut() {
         try {
-            signInClient.signOut().await()
             auth.signOut()
+            signInClient.signOut().await()
         } catch (e: Exception) {
             e.printStackTrace()
             if (e is CancellationException) throw e

@@ -6,4 +6,21 @@
     <string name="lbl_sign_up_with_email">Sign up with Email</string>
     <string name="lbl_sign_up_with_facebook">Sign up with Facebook</string>
     <string name="lbl_terms_of_service">Terms of Service</string>
+
+    <string name="facebook_app_id">752859977012803</string>
+    <string name="fb_login_protocol_scheme">fb752859977012803</string>
+    <string name="facebook_client_token">dea9e1e1df5a6bcf1c053df43391d743</string>
+    <string name="navigate_back">Navigate Back</string>
+    <string name="lbl_create_your_account">Create your account</string>
+    <string name="lbl_your_email">Your email</string>
+    <string name="lbl_your_full_name">Your full name</string>
+    <string name="lbl_input_your_first_name_and_last_name">Input your first name and last name</string>
+    <string name="lbl_flexath11_gmail_com">flexath11@gmail.com</string>
+    <string name="lbl_create_account">Create account</string>
+    <string name="lbl_let_s_find_people_to_follow_based_on_your_interests">Let\'s find people to follow based on your interests.</string>
+    <string name="lbl_make_corner_yours">Make Corner yours</string>
+    <string name="lbl_welcome_to_corner">Welcome to Corner</string>
+    <string name="lbl_continue">Continue</string>
+    <string name="lbl_what_are_you_interested_in">What are you interested in?</string>
+    <string name="lbl_choose_three_or_more">Choose three or more</string>
 </resources>

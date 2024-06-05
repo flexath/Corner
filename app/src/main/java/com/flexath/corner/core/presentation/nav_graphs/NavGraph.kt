@@ -13,7 +13,6 @@ import com.flexath.corner.features.main.presentation.nav_graphs.MainSubGraph
 
 @Composable
 fun NavGraph(
-    applicationContext: Context,
     modifier: Modifier = Modifier,
     startGraph: String,
 ) {

@@ -39,7 +39,6 @@ class MainActivity : ComponentActivity() {
                     color = colorBackground
                 ) {
                     NavGraph(
-                        applicationContext = applicationContext,
                         modifier = Modifier.fillMaxSize(),
                         startGraph = Route.AuthSubGraph.route
                     )
