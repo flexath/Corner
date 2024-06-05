@@ -1,8 +1,8 @@
 package com.flexath.corner.features.auth.presentation.screens
 
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,16 +13,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.SuggestionChipDefaults
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -30,23 +31,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.constraintlayout.compose.Dimension
 import com.flexath.corner.R
-import com.flexath.corner.core.presentation.constants.Dimens
-import com.flexath.corner.core.presentation.constants.Dimens.LargePadding10
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding1
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding3
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding2
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding4
+import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding5
 import com.flexath.corner.core.presentation.screens.common.TopAppBarWithNavButtonAndTitle
+import com.flexath.corner.features.auth.presentation.constants.Category
 import com.flexath.corner.features.auth.presentation.constants.ChooseInterestedCategoryScreenConst
 import com.flexath.corner.features.auth.presentation.screens.common.CustomFilledButton
 import com.flexath.corner.ui.theme.CustomFont
@@ -65,44 +62,59 @@ fun ChooseInterestedCategoryScreen(
     onClickContinueButton: () -> Unit
 ) {
     val scrollState = rememberScrollState()
+    val selectedCategoryList = remember {
+        mutableStateListOf<Category>()
+    }
 
-    ConstraintLayout(
-        modifier = modifier
-    ) {
-        val (
-            topAppBarRef,
-            scrollableColumnRef,
-            continueButtonRef
-        ) = createRefs()
+    LaunchedEffect(key1 = selectedCategoryList.size) {
+        Log.i("CategoryList","List: ${selectedCategoryList.toList()}")
+    }
 
-        TopAppBarWithNavButtonAndTitle(
-            modifier = Modifier
-                .constrainAs(topAppBarRef) {
-                    top.linkTo(parent.top)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
+    Scaffold(
+        topBar = {
+            TopAppBarWithNavButtonAndTitle(
+                modifier = Modifier.fillMaxWidth().background(colorBackground),
+                title = stringResource(id = R.string.lbl_welcome_to_corner),
+                onNavigateBack = {
+                    onNavigateBack()
                 }
-                .padding(horizontal = Dimens.SmallPadding1),
-            title = stringResource(id = R.string.lbl_welcome_to_corner),
-            onNavigateBack = {
-                onNavigateBack()
+            )
+        },
+        bottomBar = {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .shadow(elevation = 2.dp)
+                    .background(colorBackground)
+                    .padding(vertical = MediumPadding1),
+                contentAlignment = Alignment.Center
+            ) {
+                CustomFilledButton(
+                    text = stringResource(R.string.lbl_continue),
+                    isEnabled = true,
+                    onClick = {
+                        onClickContinueButton()
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = MediumPadding5)
+                )
             }
-        )
-
+        }
+    ) {
+        val bottomPadding = it.calculateBottomPadding()
+        val topPadding = it.calculateTopPadding()
         Column(
-            modifier = Modifier.constrainAs(scrollableColumnRef) {
-                    top.linkTo(topAppBarRef.bottom, margin = LargePadding10)
-                    start.linkTo(parent.start, margin = MediumPadding5)
-                    end.linkTo(parent.end, margin = MediumPadding5)
-                    width = Dimension.matchParent
-                    height = Dimension.wrapContent
-                }.verticalScroll(scrollState),
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(scrollState),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
+            Spacer(modifier = modifier.height(topPadding + (topPadding/2)))
+            
             Text(
                 text = stringResource(R.string.lbl_what_are_you_interested_in),
-                style = getTypography(CustomFont.Charter).titleLarge.copy(
+                style = getTypography(CustomFont.Charter).headlineSmall.copy(
                     fontWeight = FontWeight.Bold
                 ),
                 color = textColorPrimary
@@ -129,6 +141,11 @@ fun ChooseInterestedCategoryScreen(
                     SuggestionChip(
                         onClick = {
                             isSelected = !isSelected
+                            if(isSelected) {
+                                selectedCategoryList.add(category)
+                            } else {
+                                selectedCategoryList.remove(category)
+                            }
                         },
                         label = {
                             Text(
@@ -161,32 +178,8 @@ fun ChooseInterestedCategoryScreen(
                     )
                 }
             }
-        }
 
-        Box(
-            modifier = Modifier
-                .constrainAs(continueButtonRef) {
-                    bottom.linkTo(parent.bottom)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                    width = Dimension.matchParent
-                    height = Dimension.wrapContent
-                }
-                .shadow(elevation = 2.dp)
-                .background(colorBackground)
-                .padding(vertical = MediumPadding1),
-            contentAlignment = Alignment.Center
-        ) {
-            CustomFilledButton(
-                text = stringResource(R.string.lbl_create_account),
-                isEnabled = true,
-                onClick = {
-                    onClickContinueButton()
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = MediumPadding5)
-            )
+            Spacer(modifier = modifier.height(bottomPadding + SmallPadding5))
         }
     }
 }

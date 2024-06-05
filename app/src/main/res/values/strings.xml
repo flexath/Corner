@@ -23,4 +23,9 @@
     <string name="lbl_continue">Continue</string>
     <string name="lbl_what_are_you_interested_in">What are you interested in?</string>
     <string name="lbl_choose_three_or_more">Choose three or more</string>
+    <string name="lbl_finish">Finish</string>
+    <string name="lbl_recommended_for_you">Recommended for you.</string>
+    <string name="lbl_here_are_some_top_writers_based_on_your_interests">Here are some top writers based on your interests.</string>
+    <string name="lbl_follow">Follow</string>
+    <string name="lbl_following">Following</string>
 </resources>

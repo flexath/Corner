@@ -42,7 +42,7 @@ fun CustomFilledButton(
     ) {
         Text(
             text = text,
-            style = getTypography(CustomFont.Charter).bodyLarge.copy(
+            style = getTypography(CustomFont.Charter).bodyMedium.copy(
                 fontWeight = FontWeight.Bold
             ),
             color = if (isEnabled) {

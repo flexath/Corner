@@ -15,6 +15,7 @@ object NavGraphConstants {
     const val CREATE_ACCOUNT_SCREEN = "createAccountScreen"
     const val WELCOME_SCREEN = "welcomeScreen"
     const val CHOOSE_INTERESTED_CATEGORY_SCREEN = "chooseInterestedCategoryScreen"
+    const val RECOMMENDED_FOR_YOU_SCREEN = "recommendedForYouScreen"
 
     // sub nav graphs
     const val AUTH_SUB_GRAPH = "authSubGraph"

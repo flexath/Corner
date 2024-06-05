@@ -32,6 +32,7 @@ import com.flexath.corner.features.auth.presentation.events.ValidationEvent
 import com.flexath.corner.features.auth.presentation.screens.ChooseInterestedCategoryScreen
 import com.flexath.corner.features.auth.presentation.screens.CreateAccountScreen
 import com.flexath.corner.features.auth.presentation.screens.LoginScreen
+import com.flexath.corner.features.auth.presentation.screens.RecommendedForYouScreen
 import com.flexath.corner.features.auth.presentation.screens.RegisterScreen
 import com.flexath.corner.features.auth.presentation.screens.WelcomeScreen
 import com.flexath.corner.features.auth.presentation.viewmodels.CreateAccountViewModel
@@ -48,7 +49,7 @@ fun AuthSubGraph(
 
     NavHost(
         navController = navController,
-        startDestination = Route.ChooseInterestedCategoryScreen.route
+        startDestination = Route.RegisterScreen.route
     ) {
         composable(
             route = Route.RegisterScreen.route
@@ -218,6 +219,20 @@ fun AuthSubGraph(
                     navController.popBackStack()
                 },
                 onClickContinueButton = {
+                    navController.navigate(Route.RecommendedForYouScreen.route)
+                }
+            )
+        }
+
+        composable(
+            route = Route.RecommendedForYouScreen.route
+        ) {
+            RecommendedForYouScreen(
+                modifier = Modifier.fillMaxSize(),
+                onNavigateBack = {
+                    navController.popBackStack()
+                },
+                onClickFinishButton = {
 
                 }
             )
