@@ -27,7 +27,7 @@ import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding5
 import com.flexath.corner.core.presentation.screens.common.TopAppBarWithNavButtonAndTitle
 import com.flexath.corner.core.presentation.screens.common.writerCardList
-import com.flexath.corner.features.auth.presentation.constants.WriterCardDummyList
+import com.flexath.corner.features.auth.presentation.screens.model.WriterCardDummyList
 import com.flexath.corner.features.auth.presentation.screens.common.CustomFilledButton
 import com.flexath.corner.ui.theme.CustomFont
 import com.flexath.corner.ui.theme.colorBackground

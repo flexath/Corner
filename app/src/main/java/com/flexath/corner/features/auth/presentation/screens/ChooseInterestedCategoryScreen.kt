@@ -43,8 +43,8 @@ import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding2
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding5
 import com.flexath.corner.core.presentation.screens.common.TopAppBarWithNavButtonAndTitle
-import com.flexath.corner.features.auth.presentation.constants.Category
-import com.flexath.corner.features.auth.presentation.constants.ChooseInterestedCategoryScreenConst
+import com.flexath.corner.features.auth.presentation.screens.model.Category
+import com.flexath.corner.features.auth.presentation.screens.model.ChooseInterestedCategoryScreenConst
 import com.flexath.corner.features.auth.presentation.screens.common.CustomFilledButton
 import com.flexath.corner.ui.theme.CustomFont
 import com.flexath.corner.ui.theme.colorBackground
@@ -134,7 +134,7 @@ fun ChooseInterestedCategoryScreen(
                 maxItemsInEachRow = 3,
                 horizontalArrangement = Arrangement.Center
             ) {
-                ChooseInterestedCategoryScreenConst.categoryList.forEachIndexed { index, category ->
+                ChooseInterestedCategoryScreenConst.categoryList.forEachIndexed { _, category ->
                     var isSelected by remember {
                         mutableStateOf(false)
                     }

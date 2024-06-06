@@ -69,7 +69,7 @@ class RegisterViewModel @Inject constructor(
 
     private fun signInWithGoogle(intent: Intent) {
         viewModelScope.launch {
-            val registerResult = googleAuthUiClient.signInWithIntent(intent)
+            val registerResult = googleAuthUiClient.signIn(intent)
             _registerState.update {
                 it.copy(
                     userData = registerResult.userData,
@@ -106,7 +106,7 @@ class RegisterViewModel @Inject constructor(
         }
     }
 
-    suspend fun signInWithGoogle() = googleAuthUiClient.signIn()
+    suspend fun signInWithGoogle() = googleAuthUiClient.signInWithIntentSender()
 
     private suspend fun signOutWithGoogle() {
         googleAuthUiClient.signOut()

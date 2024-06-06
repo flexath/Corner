@@ -30,8 +30,8 @@ import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding3
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding0
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding4
-import com.flexath.corner.features.auth.presentation.constants.WelcomeScreenConst.firstRowPeopleImageList
-import com.flexath.corner.features.auth.presentation.constants.WelcomeScreenConst.secondRowPeopleImageList
+import com.flexath.corner.features.auth.presentation.screens.model.WelcomeScreenConst.firstRowPeopleImageList
+import com.flexath.corner.features.auth.presentation.screens.model.WelcomeScreenConst.secondRowPeopleImageList
 import com.flexath.corner.features.auth.presentation.screens.common.CustomFilledButton
 import com.flexath.corner.ui.theme.CustomFont
 import com.flexath.corner.ui.theme.getTypography

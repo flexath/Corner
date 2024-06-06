@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     NavGraph(
                         modifier = Modifier.fillMaxSize(),
-                        startGraph = Route.AuthSubGraph.route
+                        startGraph = Route.MainSubGraph.route
                     )
                 }
             }
