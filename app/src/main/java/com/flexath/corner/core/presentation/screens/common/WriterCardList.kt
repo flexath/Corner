@@ -3,14 +3,9 @@ package com.flexath.corner.core.presentation.screens.common
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.shape.CircleShape
@@ -35,15 +30,11 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.flexath.corner.R
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding1
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding3
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding2
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding3
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding4
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding5
-import com.flexath.corner.features.auth.presentation.constants.Writer
-import com.flexath.corner.features.auth.presentation.constants.WriterCardDummyList
+import com.flexath.corner.features.auth.presentation.screens.model.Writer
+import com.flexath.corner.features.auth.presentation.screens.model.WriterCardDummyList
 import com.flexath.corner.ui.theme.CustomFont
 import com.flexath.corner.ui.theme.colorOnPrimary
 import com.flexath.corner.ui.theme.colorPrimary
@@ -51,7 +42,6 @@ import com.flexath.corner.ui.theme.getTypography
 import com.flexath.corner.ui.theme.textColorPrimary
 import com.flexath.corner.ui.theme.textColorSecondary
 import com.flexath.corner.ui.theme.textFieldStrokeColor
-import com.flexath.corner.ui.theme.textFieldUnFocusedBackground
 
 fun LazyListScope.writerCardList(
     modifier: Modifier,

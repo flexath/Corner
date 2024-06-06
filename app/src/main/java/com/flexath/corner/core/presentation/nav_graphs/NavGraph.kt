@@ -42,7 +42,9 @@ fun NavGraph(
             composable(
                 route = Route.MainStartDestination.route
             ) {
-                MainSubGraph()
+                MainSubGraph(
+                    modifier = Modifier.fillMaxSize()
+                )
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.flexath.corner.features.auth.presentation.constants
+package com.flexath.corner.features.auth.presentation.screens.model
 
 object ChooseInterestedCategoryScreenConst {
     val categoryList = listOf(

@@ -1,6 +1,7 @@
 package com.flexath.corner.core.presentation.nav_graphs
 
 import com.flexath.corner.core.presentation.nav_graphs.NavGraphConstants.AUTH_SUB_GRAPH
+import com.flexath.corner.core.presentation.nav_graphs.NavGraphConstants.BOOKMARK_SCREEN
 import com.flexath.corner.core.presentation.nav_graphs.NavGraphConstants.CHOOSE_INTERESTED_CATEGORY_SCREEN
 import com.flexath.corner.core.presentation.nav_graphs.NavGraphConstants.CREATE_ACCOUNT_SCREEN
 import com.flexath.corner.core.presentation.nav_graphs.NavGraphConstants.HOME_SCREEN
@@ -19,8 +20,9 @@ sealed class Route(val route: String) {
 
     // Main
     data object HomeScreen : Route(HOME_SCREEN)
-    data object ProfileScreen : Route(PROFILE_SCREEN)
     data object SearchScreen : Route(SEARCH_SCREEN)
+    data object BookmarkScreen : Route(BOOKMARK_SCREEN)
+    data object ProfileScreen : Route(PROFILE_SCREEN)
 
     // Auth
     data object LoginScreen : Route(LOGIN_SCREEN)

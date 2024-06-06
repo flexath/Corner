@@ -18,7 +18,7 @@ class GoogleAuthUiClient @Inject constructor(
 ) {
     private val auth = Firebase.auth
 
-    suspend fun signIn(): IntentSender? {
+    suspend fun signInWithIntentSender(): IntentSender? {
         val task = try {
             signInClient.beginSignIn(
                 beginSignInRequest()
@@ -31,7 +31,7 @@ class GoogleAuthUiClient @Inject constructor(
         return task?.pendingIntent?.intentSender
     }
 
-    suspend fun signInWithIntent(intent: Intent): RegisterResultState {
+    suspend fun signIn(intent: Intent): RegisterResultState {
         val credential = signInClient.getSignInCredentialFromIntent(intent)
         val googleIdToken = credential.googleIdToken
         val googleCredentials = GoogleAuthProvider.getCredential(googleIdToken, null)
