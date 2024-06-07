@@ -18,17 +18,21 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.flexath.corner.R
 import com.flexath.corner.core.presentation.nav_graphs.Route
+import com.flexath.corner.features.main.presentation.events.MainWidgetEvent
 import com.flexath.corner.features.main.presentation.screens.BookmarkScreen
 import com.flexath.corner.features.main.presentation.screens.HomeScreen
 import com.flexath.corner.features.main.presentation.screens.ProfileScreen
 import com.flexath.corner.features.main.presentation.screens.SearchScreen
 import com.flexath.corner.features.main.presentation.screens.common.MainBottomBar
+import com.flexath.corner.features.main.presentation.viewmodels.MainWidgetViewModel
 import com.flexath.corner.ui.theme.colorBackground
 import com.flexath.corner.ui.theme.colorPrimary
 
@@ -93,8 +97,18 @@ fun MainSubGraph(
             composable(
                 route = Route.HomeScreen.route
             ) {
+                val mainWidgetViewModel: MainWidgetViewModel = hiltViewModel()
+                val dialogIsShownState = mainWidgetViewModel.isBecomeAFriendDialogShown.collectAsStateWithLifecycle()
+
                 HomeScreen(
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier.fillMaxSize(),
+                    dialogIsShown = dialogIsShownState.value,
+                    onDismissDialog = {
+                        mainWidgetViewModel.onWidgetEvent(MainWidgetEvent.BecomeAFriendDialog(false))
+                    },
+                    onClickLearnMoreDialog = {
+
+                    }
                 )
             }
 
