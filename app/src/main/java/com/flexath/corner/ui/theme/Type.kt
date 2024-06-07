@@ -43,20 +43,54 @@ val Noe = FontFamily(
     )
 )
 
+val Inter = FontFamily(
+    fonts = listOf(
+        Font(R.font.inter_light, FontWeight.Light),
+        Font(R.font.inter_regular, FontWeight.Normal),
+        Font(R.font.inter_medium, FontWeight.Medium),
+        Font(R.font.inter_semi_bold, FontWeight.SemiBold),
+        Font(R.font.inter_bold, FontWeight.Bold),
+        Font(R.font.inter_extra_bold, FontWeight.ExtraBold),
+    )
+)
+
+val Urbanist = FontFamily(
+    fonts = listOf(
+        Font(R.font.urbanist_light, FontWeight.Light),
+        Font(R.font.urbanist_regular, FontWeight.Normal),
+        Font(R.font.urbanist_medium, FontWeight.Medium),
+        Font(R.font.urbanist_semi_bold, FontWeight.SemiBold),
+        Font(R.font.urbanist_bold, FontWeight.Bold),
+        Font(R.font.urbanist_extra_bold, FontWeight.ExtraBold),
+    )
+)
+
+val Poppins = FontFamily(
+    fonts = listOf(
+        Font(R.font.poppins_light, FontWeight.Light),
+        Font(R.font.poppins_regular, FontWeight.Normal),
+        Font(R.font.poppins_medium, FontWeight.Medium),
+        Font(R.font.poppins_semi_bold, FontWeight.SemiBold),
+        Font(R.font.poppins_bold, FontWeight.Bold),
+        Font(R.font.poppins_extra_bold, FontWeight.ExtraBold),
+    )
+)
+
 enum class CustomFont {
     Charter,
-    Noe
+    Noe,
+    Urbanist,
+    Inter,
+    Poppins
 }
 
 fun getFont(font: CustomFont): FontFamily {
     return when (font) {
-        CustomFont.Charter -> {
-            Charter
-        }
-
-        CustomFont.Noe -> {
-            Noe
-        }
+        CustomFont.Charter -> Charter
+        CustomFont.Noe -> Noe
+        CustomFont.Urbanist -> Urbanist
+        CustomFont.Inter -> Inter
+        CustomFont.Poppins -> Poppins
     }
 }
 

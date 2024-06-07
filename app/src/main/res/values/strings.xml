@@ -28,4 +28,9 @@
     <string name="lbl_here_are_some_top_writers_based_on_your_interests">Here are some top writers based on your interests.</string>
     <string name="lbl_follow">Follow</string>
     <string name="lbl_following">Following</string>
+    <string name="lbl_learn_more">Learn more</string>
+    <string name="lbl_join_our_new_membership">Join our new membership level to increase your contribution to writers and strengthen your support for our independent, ad free platform</string>
+    <string name="lbl_maybe_later">Maybe later</string>
+    <string name="lbl_become_a_friend_of_corner">Become a Friend of Corner</string>
+    <string name="lbl_home">Home</string>
 </resources>
