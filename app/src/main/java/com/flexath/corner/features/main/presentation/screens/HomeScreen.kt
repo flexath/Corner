@@ -1,5 +1,7 @@
 package com.flexath.corner.features.main.presentation.screens
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
@@ -8,14 +10,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -23,8 +23,6 @@ import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -38,19 +36,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.flexath.corner.R
 import com.flexath.corner.core.presentation.constants.Dimens.LargePadding2
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding2
 import com.flexath.corner.core.presentation.screens.extensions.isScrolled
+import com.flexath.corner.features.main.data.remote.dto.dummy.dummyPostList
+import com.flexath.corner.features.main.presentation.screens.common.getPostList
 import com.flexath.corner.features.main.presentation.screens.widget.BecomeAFriendDialog
 import com.flexath.corner.ui.theme.CustomFont
 import com.flexath.corner.ui.theme.colorBackground
 import com.flexath.corner.ui.theme.getTypography
 import com.flexath.corner.ui.theme.textColorPrimary
 
-@OptIn(ExperimentalMaterial3Api::class)
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
@@ -58,7 +57,6 @@ fun HomeScreen(
     onDismissDialog: () -> Unit,
     onClickLearnMoreDialog: () -> Unit
 ) {
-    val scrollingBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
     val lazyListState = rememberLazyListState()
 
     if (dialogIsShown) {
@@ -80,7 +78,7 @@ fun HomeScreen(
                     .fillMaxWidth()
                     .fillMaxWidth()
                     .animateContentSize(
-                        animationSpec = tween(durationMillis = 500)
+                        animationSpec = tween(durationMillis = 300)
                     )
                     .background(color = colorBackground)
                     .height(
@@ -96,8 +94,8 @@ fun HomeScreen(
                 ) {
                     Text(
                         text = stringResource(R.string.lbl_home),
-                        style = getTypography(CustomFont.Inter).headlineLarge.copy(
-                            fontWeight = FontWeight.Bold
+                        style = getTypography(CustomFont.Inter).titleLarge.copy(
+                            fontWeight = FontWeight.SemiBold
                         ),
                         textAlign = TextAlign.Center,
                         color = textColorPrimary,
@@ -124,7 +122,7 @@ fun HomeScreen(
         val animatedPadding by animateDpAsState(
             targetValue = if (lazyListState.isScrolled()) 0.dp else 124.dp,
             label = "Padding",
-            animationSpec = tween(durationMillis = 500)
+            animationSpec = tween(durationMillis = 300)
         )
 
         var tabSelectedIndex by remember {
@@ -134,6 +132,7 @@ fun HomeScreen(
         Column(
             modifier = Modifier.padding(top = topPadding)
         ) {
+
             CategoryScrollableTabRow(
                 tabSelectedIndex = tabSelectedIndex,
                 onTabSelect = {
@@ -147,13 +146,10 @@ fun HomeScreen(
                     .background(colorBackground),
                 state = lazyListState
             ) {
-                items(
-                    count = 50,
-                    key = { it }
-                ) {
-                    Text(text = "Item $it", fontSize = 20.sp)
-                    Spacer(modifier = Modifier.height(30.dp))
-                }
+                getPostList(
+                    modifier = Modifier.fillMaxWidth(),
+                    postList = dummyPostList
+                )
             }
         }
     }
@@ -184,7 +180,8 @@ fun CategoryScrollableTabRow(
         contentColor = textColorPrimary,
         indicator = {
             Box(
-                modifier = Modifier.tabIndicatorOffset(it[tabSelectedIndex])
+                modifier = Modifier
+                    .tabIndicatorOffset(it[tabSelectedIndex])
                     .padding(horizontal = 20.dp)
                     .height(2.dp)
                     .background(color = textColorPrimary)
@@ -216,6 +213,7 @@ fun CategoryScrollableTabRow(
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun HomeScreenPreview() {
