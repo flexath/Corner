@@ -10,6 +10,8 @@ object NavGraphConstants {
     const val PROFILE_SCREEN = "profileScreen"
     const val SEARCH_SCREEN = "searchScreen"
 
+    const val POST_DETAIL = "postDetail"
+
     const val LOGIN_SCREEN = "loginScreen"
     const val REGISTER_SCREEN = "registerScreen"
     const val CREATE_ACCOUNT_SCREEN = "createAccountScreen"

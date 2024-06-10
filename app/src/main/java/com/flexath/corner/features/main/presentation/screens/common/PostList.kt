@@ -2,18 +2,14 @@ package com.flexath.corner.features.main.presentation.screens.common
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.shape.CircleShape
@@ -33,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import coil.compose.AsyncImage
 import com.flexath.corner.R
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding1
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
@@ -52,14 +49,18 @@ import com.flexath.corner.ui.theme.textColorPrimary
 @RequiresApi(Build.VERSION_CODES.O)
 fun LazyListScope.getPostList(
     modifier: Modifier,
-    postList: List<PostVO>
+    postList: List<PostVO>,
+    onClickPost: () -> Unit
 ) {
     items(
         count = postList.size
     ) {
         Post(
             modifier = modifier,
-            post = postList[it]
+            post = postList[it],
+            onClickPost = {
+                onClickPost()
+            }
         )
 
         if (it != postList.lastIndex) {
@@ -72,10 +73,13 @@ fun LazyListScope.getPostList(
 @Composable
 fun Post(
     modifier: Modifier = Modifier,
-    post: PostVO
+    post: PostVO,
+    onClickPost: () -> Unit
 ) {
     ConstraintLayout(
-        modifier = modifier.padding(all = MediumPadding5)
+        modifier = modifier.padding(all = MediumPadding5).clickable {
+            onClickPost()
+        }
     ) {
         val (
             profileImageRef,
@@ -87,10 +91,8 @@ fun Post(
             endSectionRowRef
         ) = createRefs()
 
-        val guideLine50 = createGuidelineFromStart(0.6f)
-
-        Image(
-            painter = painterResource(id = R.drawable.dummy_profile),
+        AsyncImage(
+            model = R.drawable.dummy_profile,
             contentDescription = "Author Profile Image",
             modifier = Modifier
                 .constrainAs(profileImageRef) {
@@ -134,10 +136,10 @@ fun Post(
             }
         )
 
-        Image(
-            painter = painterResource(id = R.drawable.dummy_post_cover),
+        AsyncImage(
+            model = R.drawable.dummy_post_cover,
             contentDescription = "Post Cover Photo",
-            contentScale = ContentScale.Crop,
+            contentScale = ContentScale.Fit,
             modifier = Modifier.constrainAs(postImageRef) {
                 top.linkTo(titleTextRef.top)
                 end.linkTo(parent.end)
@@ -246,7 +248,10 @@ private fun GetPostListPreview() {
     ) {
         getPostList(
             modifier = Modifier.fillMaxWidth(),
-            postList = dummyPostList
+            postList = dummyPostList,
+            onClickPost = {
+
+            }
         )
     }
 }

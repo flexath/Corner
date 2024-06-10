@@ -55,7 +55,8 @@ fun HomeScreen(
     modifier: Modifier = Modifier,
     dialogIsShown: Boolean,
     onDismissDialog: () -> Unit,
-    onClickLearnMoreDialog: () -> Unit
+    onClickLearnMoreDialog: () -> Unit,
+    onClickPost: () -> Unit
 ) {
     val lazyListState = rememberLazyListState()
 
@@ -148,7 +149,10 @@ fun HomeScreen(
             ) {
                 getPostList(
                     modifier = Modifier.fillMaxWidth(),
-                    postList = dummyPostList
+                    postList = dummyPostList,
+                    onClickPost = {
+                        onClickPost()
+                    }
                 )
             }
         }
@@ -224,6 +228,9 @@ private fun HomeScreenPreview() {
 
         },
         onClickLearnMoreDialog = {
+
+        },
+        onClickPost = {
 
         }
     )

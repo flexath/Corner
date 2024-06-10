@@ -14,7 +14,7 @@ class MainWidgetViewModel @Inject constructor(
 
 ): ViewModel() {
 
-    private var _isBecomeAFriendDialogShown = MutableStateFlow(true)
+    private var _isBecomeAFriendDialogShown = MutableStateFlow(false)
     val isBecomeAFriendDialogShown = _isBecomeAFriendDialogShown.asStateFlow()
 
     fun onWidgetEvent(event: MainWidgetEvent) {

@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -25,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import coil.compose.AsyncImage
 import com.flexath.corner.R
 import com.flexath.corner.core.presentation.constants.Dimens
 import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargePadding5
@@ -95,13 +97,14 @@ fun CreateAccountScreen(
                     },
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.corner),
+                AsyncImage(
+                    model = R.drawable.logo,
                     contentDescription = "App Logo",
+                    contentScale = ContentScale.Fit,
                     modifier = Modifier.size(30.dp)
                 )
 
-                Spacer(modifier = Modifier.width(Dimens.SmallPadding2))
+                Spacer(modifier = Modifier.width(Dimens.SmallPadding4))
 
                 Text(
                     text = stringResource(id = R.string.app_name),

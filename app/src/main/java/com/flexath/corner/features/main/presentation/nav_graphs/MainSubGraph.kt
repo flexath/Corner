@@ -1,6 +1,8 @@
 package com.flexath.corner.features.main.presentation.nav_graphs
 
+import android.os.Build
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.foundation.layout.fillMaxSize
@@ -29,6 +31,7 @@ import com.flexath.corner.core.presentation.nav_graphs.Route
 import com.flexath.corner.features.main.presentation.events.MainWidgetEvent
 import com.flexath.corner.features.main.presentation.screens.BookmarkScreen
 import com.flexath.corner.features.main.presentation.screens.HomeScreen
+import com.flexath.corner.features.main.presentation.screens.PostDetail
 import com.flexath.corner.features.main.presentation.screens.ProfileScreen
 import com.flexath.corner.features.main.presentation.screens.SearchScreen
 import com.flexath.corner.features.main.presentation.screens.common.MainBottomBar
@@ -36,6 +39,7 @@ import com.flexath.corner.features.main.presentation.viewmodels.MainWidgetViewMo
 import com.flexath.corner.ui.theme.colorBackground
 import com.flexath.corner.ui.theme.colorPrimary
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MainSubGraph(
     modifier: Modifier = Modifier
@@ -53,9 +57,17 @@ fun MainSubGraph(
         }
     }
 
+    val fabVisibility by remember(key1 = backStackEntry) {
+        derivedStateOf {
+            backStackEntry?.destination?.route == Route.HomeScreen.route ||
+                    backStackEntry?.destination?.route == Route.SearchScreen.route ||
+                    backStackEntry?.destination?.route == Route.ProfileScreen.route
+        }
+    }
+
     Scaffold(
         floatingActionButton = {
-            if (backStackEntry?.destination?.route != Route.BookmarkScreen.route) {
+            if (fabVisibility) {
                 FloatingActionButton(
                     onClick = {
                         Toast.makeText(context,"It is clicked",Toast.LENGTH_SHORT).show()
@@ -108,6 +120,9 @@ fun MainSubGraph(
                     },
                     onClickLearnMoreDialog = {
 
+                    },
+                    onClickPost = {
+                        navHostController.navigate(Route.PostDetail.route)
                     }
                 )
             }
@@ -135,10 +150,19 @@ fun MainSubGraph(
                     modifier = Modifier.fillMaxSize()
                 )
             }
+
+            composable(
+                route = Route.PostDetail.route
+            ) {
+                PostDetail(
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
         }
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview
 @Composable
 private fun MainSubGraphPreview() {
