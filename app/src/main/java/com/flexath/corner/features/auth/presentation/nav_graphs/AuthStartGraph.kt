@@ -152,7 +152,7 @@ fun AuthSubGraph(
                 onNavigateBack = {
                     coroutineScope.launch {
                         registerViewModel.onSignOutEvent(event = SignOutEvent.GoogleSignOutEvent)
-                        navController.popBackStack()
+                        navController.navigateUp()
                     }
                     Toast.makeText(context, "Sign Out!", Toast.LENGTH_SHORT).show()
                 }
@@ -185,7 +185,7 @@ fun AuthSubGraph(
                 modifier = Modifier.fillMaxSize(),
                 createAccountFormState = createAccountFormState.value,
                 onNavigateBack = {
-                    navController.popBackStack()
+                    navController.navigateUp()
                 },
                 onClickCreateAccountButton = {
                     viewModel.onCreateAccountEvent(CreateAccountFormEvent.Submit)
@@ -216,7 +216,7 @@ fun AuthSubGraph(
             ChooseInterestedCategoryScreen(
                 modifier = Modifier.fillMaxSize().background(colorBackground),
                 onNavigateBack = {
-                    navController.popBackStack()
+                    navController.navigateUp()
                 },
                 onClickContinueButton = {
                     navController.navigate(Route.RecommendedForYouScreen.route)
@@ -230,7 +230,7 @@ fun AuthSubGraph(
             RecommendedForYouScreen(
                 modifier = Modifier.fillMaxSize(),
                 onNavigateBack = {
-                    navController.popBackStack()
+                    navController.navigateUp()
                 },
                 onClickFinishButton = {
 

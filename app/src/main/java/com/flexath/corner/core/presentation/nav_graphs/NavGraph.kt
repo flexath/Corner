@@ -1,6 +1,7 @@
 package com.flexath.corner.core.presentation.nav_graphs
 
-import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -11,6 +12,7 @@ import androidx.navigation.navigation
 import com.flexath.corner.features.auth.presentation.nav_graphs.AuthSubGraph
 import com.flexath.corner.features.main.presentation.nav_graphs.MainSubGraph
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun NavGraph(
     modifier: Modifier = Modifier,

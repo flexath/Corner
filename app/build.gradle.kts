@@ -187,6 +187,10 @@ dependencies {
 
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)
-
-    implementation("com.facebook.android:facebook-android-sdk:latest.release")
+    
+    // facebook sdk
+    implementation(libs.facebook.android.sdk)
+    
+    // window sizes
+    implementation(libs.androidx.material3.window)
 }

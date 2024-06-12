@@ -15,7 +15,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
-import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargePadding4
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding1
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.ui.theme.CustomFont
