@@ -34,9 +34,7 @@ import coil.compose.AsyncImage
 import com.flexath.corner.R
 import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargePadding5
 import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargePadding5_2x
-import com.flexath.corner.core.presentation.constants.Dimens.LargePadding10
 import com.flexath.corner.core.presentation.constants.Dimens.LargePadding4
-import com.flexath.corner.core.presentation.constants.Dimens.LargePadding5
 import com.flexath.corner.core.presentation.constants.Dimens.LargePadding9
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding1
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding4
@@ -45,15 +43,13 @@ import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding2
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding4
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding5
 import com.flexath.corner.core.presentation.screens.extensions.shimmerEffect
+import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.features.main.data.remote.dto.dummy.PostVO
 import com.flexath.corner.features.main.data.remote.dto.dummy.dummyPostList
 import com.flexath.corner.features.main.presentation.utils.TimeFormatConverter
 import com.flexath.corner.ui.theme.CustomFont
-import com.flexath.corner.ui.theme.colorBackground
+import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
-import com.flexath.corner.ui.theme.starColor
-import com.flexath.corner.ui.theme.strokeColor
-import com.flexath.corner.ui.theme.textColorPrimary
 
 @RequiresApi(Build.VERSION_CODES.O)
 fun LazyListScope.getPostList(
@@ -119,13 +115,13 @@ fun Post(
                     height = Dimension.value(24.dp)
                 }
                 .clip(CircleShape)
-                .border(width = 0.3.dp, color = strokeColor, shape = CircleShape)
+                .border(width = 0.3.dp, color = getAppColor(AppColors.STROKE_COLOR), shape = CircleShape)
         )
 
         Text(
             text = post.authorName ?: "Author Name",
             style = getTypography(CustomFont.Inter).bodyMedium,
-            color = textColorPrimary,
+            color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
             modifier = Modifier.constrainAs(authorNameTextRef) {
                 top.linkTo(profileImageRef.top)
                 bottom.linkTo(profileImageRef.bottom)
@@ -143,7 +139,7 @@ fun Post(
             ),
             maxLines = 3,
             overflow = TextOverflow.Ellipsis,
-            color = textColorPrimary,
+            color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
             modifier = Modifier.constrainAs(titleTextRef) {
                 top.linkTo(profileImageRef.bottom, margin = MediumPadding5)
                 start.linkTo(parent.start)
@@ -170,7 +166,7 @@ fun Post(
             style = getTypography(CustomFont.Inter).bodyLarge,
             maxLines = 3,
             overflow = TextOverflow.Ellipsis,
-            color = textColorPrimary,
+            color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
             modifier = Modifier.constrainAs(descriptionTextRef) {
                 top.linkTo(titleTextRef.bottom, margin = SmallPadding5)
                 start.linkTo(parent.start)
@@ -192,7 +188,7 @@ fun Post(
             Icon(
                 painter = painterResource(id = R.drawable.ic_star),
                 contentDescription = "Compass Icon",
-                tint = starColor
+                tint = getAppColor(AppColors.STAR_COLOR)
             )
 
             Spacer(modifier = Modifier.width(MediumPadding1))
@@ -200,7 +196,7 @@ fun Post(
             Text(
                 text = TimeFormatConverter.formatMonthWithDay(post.createdDate),
                 style = getTypography(CustomFont.Inter).bodyMedium,
-                color = textColorPrimary
+                color = getAppColor(AppColors.TEXT_COLOR_PRIMARY)
             )
 
             Spacer(modifier = Modifier.width(MediumPadding1))
@@ -282,7 +278,7 @@ fun PostShimmer(
                         height = Dimension.value(24.dp)
                     }
                     .clip(CircleShape)
-                    .border(width = 0.3.dp, color = strokeColor, shape = CircleShape)
+                    .border(width = 0.3.dp, color = getAppColor(AppColors.STROKE_COLOR), shape = CircleShape)
                     .shimmerEffect()
             )
 
@@ -375,12 +371,12 @@ private fun GetPostListPreview() {
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
-            .background(colorBackground)
+            .background(getAppColor(AppColors.COLOR_BACKGROUND))
     ) {
         getPostList(
             modifier = Modifier.fillMaxWidth(),
             postList = dummyPostList,
-            isLoading = true,
+            isLoading = false,
             onClickPost = {
 
             }

@@ -31,11 +31,10 @@ import com.flexath.corner.R
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding3
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding4
+import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.ui.theme.CustomFont
-import com.flexath.corner.ui.theme.colorBackground
-import com.flexath.corner.ui.theme.colorPrimary
+import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
-import com.flexath.corner.ui.theme.textColorPrimary
 
 @Composable
 fun BecomeAFriendDialog(
@@ -54,7 +53,7 @@ fun BecomeAFriendDialog(
             modifier = Modifier
                 .fillMaxWidth(0.8f)
                 .clip(RoundedCornerShape(MediumPadding3))
-                .background(color = colorBackground, shape = RoundedCornerShape(MediumPadding3))
+                .background(color = getAppColor(AppColors.COLOR_BACKGROUND), shape = RoundedCornerShape(MediumPadding3))
         ) {
             val (
                 profileImageRef,
@@ -83,7 +82,7 @@ fun BecomeAFriendDialog(
                 style = getTypography(CustomFont.Inter).bodyLarge.copy(
                     fontWeight = FontWeight.Bold
                 ),
-                color = textColorPrimary,
+                color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.constrainAs(titleTextRef) {
                     top.linkTo(profileImageRef.bottom, margin = MediumPadding5)
@@ -97,7 +96,7 @@ fun BecomeAFriendDialog(
             Text(
                 text = stringResource(R.string.lbl_join_our_new_membership),
                 style = getTypography(CustomFont.Inter).bodyMedium,
-                color = textColorPrimary,
+                color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.constrainAs(descriptionTextRef) {
                     top.linkTo(titleTextRef.bottom, margin = MediumPadding5)
@@ -129,7 +128,7 @@ fun BecomeAFriendDialog(
                         style = getTypography(CustomFont.Inter).bodyMedium.copy(
                             fontWeight = FontWeight.Medium
                         ),
-                        color = textColorPrimary,
+                        color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                         textAlign = TextAlign.Center,
                     )
                 }
@@ -146,7 +145,7 @@ fun BecomeAFriendDialog(
                         style = getTypography(CustomFont.Inter).bodyMedium.copy(
                             fontWeight = FontWeight.Medium
                         ),
-                        color = colorPrimary,
+                        color = getAppColor(AppColors.COLOR_PRIMARY),
                         textAlign = TextAlign.Center,
                     )
                 }

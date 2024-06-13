@@ -9,7 +9,8 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import com.flexath.corner.R
-import com.flexath.corner.ui.theme.textColorPrimary
+import com.flexath.corner.core.presentation.utils.AppColors
+import com.flexath.corner.ui.theme.getAppColor
 
 @Composable
 fun getAnnotatedStringForServiceTerms(modifier: Modifier = Modifier): AnnotatedString {
@@ -22,7 +23,7 @@ fun getAnnotatedStringForServiceTerms(modifier: Modifier = Modifier): AnnotatedS
         )
         withStyle(
             style = SpanStyle(
-                color = textColorPrimary,
+                color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 textDecoration = TextDecoration.Underline
             )
         ) {
@@ -38,7 +39,7 @@ fun getAnnotatedStringForServiceTerms(modifier: Modifier = Modifier): AnnotatedS
         )
         withStyle(
             style = SpanStyle(
-                color = textColorPrimary,
+                color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 textDecoration = TextDecoration.Underline
             )
         ) {

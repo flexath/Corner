@@ -43,16 +43,13 @@ import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding2
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding5
 import com.flexath.corner.core.presentation.screens.common.TopAppBarWithNavButtonAndTitle
+import com.flexath.corner.core.presentation.utils.AppColors
+import com.flexath.corner.features.auth.presentation.screens.common.CustomFilledButton
 import com.flexath.corner.features.auth.presentation.screens.model.Category
 import com.flexath.corner.features.auth.presentation.screens.model.ChooseInterestedCategoryScreenConst
-import com.flexath.corner.features.auth.presentation.screens.common.CustomFilledButton
 import com.flexath.corner.ui.theme.CustomFont
-import com.flexath.corner.ui.theme.colorBackground
-import com.flexath.corner.ui.theme.colorOnPrimary
-import com.flexath.corner.ui.theme.colorPrimary
+import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
-import com.flexath.corner.ui.theme.strokeColor
-import com.flexath.corner.ui.theme.textColorPrimary
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -73,7 +70,7 @@ fun ChooseInterestedCategoryScreen(
     Scaffold(
         topBar = {
             TopAppBarWithNavButtonAndTitle(
-                modifier = Modifier.fillMaxWidth().background(colorBackground),
+                modifier = Modifier.fillMaxWidth().background(getAppColor(AppColors.COLOR_BACKGROUND)),
                 title = stringResource(id = R.string.lbl_welcome_to_corner),
                 onNavigateBack = {
                     onNavigateBack()
@@ -85,7 +82,7 @@ fun ChooseInterestedCategoryScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .shadow(elevation = 2.dp)
-                    .background(colorBackground)
+                    .background(getAppColor(AppColors.COLOR_BACKGROUND))
                     .padding(vertical = MediumPadding1),
                 contentAlignment = Alignment.Center
             ) {
@@ -117,7 +114,7 @@ fun ChooseInterestedCategoryScreen(
                 style = getTypography(CustomFont.Charter).headlineSmall.copy(
                     fontWeight = FontWeight.Bold
                 ),
-                color = textColorPrimary
+                color = getAppColor(AppColors.TEXT_COLOR_PRIMARY)
             )
 
             Spacer(modifier = Modifier.height(MediumPadding1))
@@ -125,7 +122,7 @@ fun ChooseInterestedCategoryScreen(
             Text(
                 text = stringResource(R.string.lbl_choose_three_or_more),
                 style = getTypography(CustomFont.Charter).bodyLarge,
-                color = textColorPrimary
+                color = getAppColor(AppColors.TEXT_COLOR_PRIMARY)
             )
 
             Spacer(modifier = Modifier.height(MediumPadding1))
@@ -153,24 +150,24 @@ fun ChooseInterestedCategoryScreen(
                                 style = getTypography(CustomFont.Charter).bodyLarge,
                                 textAlign = TextAlign.Center,
                                 color = if (isSelected) {
-                                    colorOnPrimary
+                                    getAppColor(AppColors.COLOR_ON_PRIMARY)
                                 } else {
-                                    textColorPrimary
+                                    getAppColor(AppColors.TEXT_COLOR_PRIMARY)
                                 },
                                 maxLines = 1
                             )
                         },
                         border = BorderStroke(
                             width = 1.dp,
-                            color = strokeColor
+                            color = getAppColor(AppColors.STROKE_COLOR)
                         ),
                         colors = SuggestionChipDefaults.suggestionChipColors(
                             containerColor = if (isSelected) {
-                                colorPrimary
+                                getAppColor(AppColors.COLOR_PRIMARY)
                             } else {
                                 Color.Transparent
                             },
-                            labelColor = textColorPrimary,
+                            labelColor = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                             disabledContainerColor = Color.Transparent
                         ),
                         shape = RoundedCornerShape(MediumPadding3),

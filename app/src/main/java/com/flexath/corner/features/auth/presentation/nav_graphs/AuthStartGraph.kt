@@ -25,6 +25,7 @@ import com.facebook.FacebookException
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.flexath.corner.core.presentation.nav_graphs.Route
+import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.features.auth.presentation.events.CreateAccountFormEvent
 import com.flexath.corner.features.auth.presentation.events.SignOutEvent
 import com.flexath.corner.features.auth.presentation.events.SignUpEvent
@@ -37,7 +38,7 @@ import com.flexath.corner.features.auth.presentation.screens.RegisterScreen
 import com.flexath.corner.features.auth.presentation.screens.WelcomeScreen
 import com.flexath.corner.features.auth.presentation.viewmodels.CreateAccountViewModel
 import com.flexath.corner.features.auth.presentation.viewmodels.RegisterViewModel
-import com.flexath.corner.ui.theme.colorBackground
+import com.flexath.corner.ui.theme.getAppColor
 import kotlinx.coroutines.launch
 
 @Composable
@@ -214,7 +215,7 @@ fun AuthSubGraph(
             route = Route.ChooseInterestedCategoryScreen.route
         ) {
             ChooseInterestedCategoryScreen(
-                modifier = Modifier.fillMaxSize().background(colorBackground),
+                modifier = Modifier.fillMaxSize().background(getAppColor(AppColors.COLOR_BACKGROUND)),
                 onNavigateBack = {
                     navController.navigateUp()
                 },

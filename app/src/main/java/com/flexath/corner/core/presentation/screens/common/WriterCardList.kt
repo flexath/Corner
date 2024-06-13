@@ -3,6 +3,7 @@ package com.flexath.corner.core.presentation.screens.common
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -33,15 +34,19 @@ import com.flexath.corner.R
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding4
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding5
+import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.features.auth.presentation.screens.model.Writer
 import com.flexath.corner.features.auth.presentation.screens.model.WriterCardDummyList
 import com.flexath.corner.ui.theme.CustomFont
-import com.flexath.corner.ui.theme.colorOnPrimary
-import com.flexath.corner.ui.theme.colorPrimary
+import com.flexath.corner.ui.theme.colorBackgroundDarkMode
+import com.flexath.corner.ui.theme.colorBackgroundLightMode
+import com.flexath.corner.ui.theme.colorPrimaryDarkMode
+import com.flexath.corner.ui.theme.colorPrimaryLightMode
+import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
-import com.flexath.corner.ui.theme.textColorPrimary
-import com.flexath.corner.ui.theme.textColorSecondary
-import com.flexath.corner.ui.theme.textFieldStrokeColor
+import com.flexath.corner.ui.theme.textColorPrimaryDarkMode
+import com.flexath.corner.ui.theme.textColorPrimaryLightMode
+import com.flexath.corner.ui.theme.textColorSecondaryLightMode
 
 fun LazyListScope.writerCardList(
     modifier: Modifier,
@@ -96,7 +101,7 @@ fun WriterCard(
                     height = Dimension.value(40.dp)
                 }
                 .clip(CircleShape)
-                .background(textColorSecondary)
+                .background(getAppColor(AppColors.TEXT_COLOR_SECONDARY))
         )
 
         Text(
@@ -139,22 +144,32 @@ fun WriterCard(
             border = BorderStroke(
                 width = 1.dp,
                 color = if(isFollowed) {
-                    textFieldStrokeColor
+                    getAppColor(AppColors.TEXT_FIELD_STROKE_COLOR)
                 } else {
                     Color.Transparent
                 }
             ),
             colors = ButtonDefaults.buttonColors(
                 containerColor = if (isFollowed) {
-                    Color.Transparent
+                    if(!isSystemInDarkTheme()) {
+                        Color.Transparent
+                    } else {
+                        Color.Transparent
+                    }
                 } else {
-                    textColorPrimary
+                    if(!isSystemInDarkTheme()) {
+                        colorBackgroundDarkMode
+                    } else {
+                        colorBackgroundLightMode
+                    }
                 }
             ),
-            modifier = Modifier.constrainAs(followButtonRef) {
-                top.linkTo(parent.top)
-                end.linkTo(parent.end)
-            }.defaultMinSize(minHeight = 1.dp)
+            modifier = Modifier
+                .constrainAs(followButtonRef) {
+                    top.linkTo(parent.top)
+                    end.linkTo(parent.end)
+                }
+                .defaultMinSize(minHeight = 1.dp)
         ) {
             Text(
                 text = if (isFollowed) {
@@ -166,9 +181,17 @@ fun WriterCard(
                     fontWeight = FontWeight.Bold
                 ),
                 color = if (isFollowed) {
-                    colorPrimary
+                    if(!isSystemInDarkTheme()) {
+                        colorPrimaryLightMode
+                    } else {
+                        colorPrimaryDarkMode
+                    }
                 } else {
-                    colorOnPrimary
+                    if(!isSystemInDarkTheme()) {
+                        textColorPrimaryDarkMode
+                    } else {
+                        textColorPrimaryLightMode
+                    }
                 },
                 maxLines = 1
             )

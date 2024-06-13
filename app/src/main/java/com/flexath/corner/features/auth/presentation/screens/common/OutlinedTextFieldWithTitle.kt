@@ -17,14 +17,10 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding1
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
+import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.ui.theme.CustomFont
-import com.flexath.corner.ui.theme.alertColor
-import com.flexath.corner.ui.theme.colorBackground
+import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
-import com.flexath.corner.ui.theme.textColorPrimary
-import com.flexath.corner.ui.theme.textColorSecondary
-import com.flexath.corner.ui.theme.textFieldStrokeColor
-import com.flexath.corner.ui.theme.textFieldUnFocusedBackground
 
 @Composable
 fun OutlinedTextFieldWithTitle(
@@ -40,7 +36,7 @@ fun OutlinedTextFieldWithTitle(
         Text(
             text = title,
             style = getTypography(CustomFont.Charter).bodyLarge,
-            color = textColorPrimary,
+            color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
             maxLines = 1,
         )
 
@@ -52,7 +48,7 @@ fun OutlinedTextFieldWithTitle(
             placeholder = {
                 Text(
                     text = placeholder,
-                    color = textColorSecondary,
+                    color = getAppColor(AppColors.TEXT_COLOR_SECONDARY),
                     style = getTypography(CustomFont.Charter).bodyMedium,
                     maxLines = 1
                 )
@@ -62,13 +58,13 @@ fun OutlinedTextFieldWithTitle(
                 imeAction = ImeAction.Done
             ),
             colors = OutlinedTextFieldDefaults.colors(
-                focusedTextColor = textColorPrimary,
-                unfocusedTextColor = textColorPrimary,
-                cursorColor = textColorPrimary,
-                errorCursorColor = alertColor,
-                focusedContainerColor = colorBackground,
-                unfocusedContainerColor = textFieldUnFocusedBackground,
-                focusedBorderColor = textFieldStrokeColor,
+                focusedTextColor = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
+                unfocusedTextColor = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
+                cursorColor = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
+                errorCursorColor = getAppColor(AppColors.ALERT_COLOR),
+                focusedContainerColor = getAppColor(AppColors.COLOR_BACKGROUND),
+                unfocusedContainerColor = getAppColor(AppColors.TEXT_FIELD_UNFOCUSED_BACKGROUND),
+                focusedBorderColor = getAppColor(AppColors.TEXT_FIELD_STROKE_COLOR),
                 unfocusedBorderColor = Color.Transparent
             ),
             singleLine = true,

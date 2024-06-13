@@ -1,7 +1,6 @@
 package com.flexath.corner.core.presentation.screens.common
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -18,10 +17,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.flexath.corner.R
+import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.ui.theme.CustomFont
-import com.flexath.corner.ui.theme.colorBackground
+import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
-import com.flexath.corner.ui.theme.textColorPrimary
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,7 +37,7 @@ fun TopAppBarWithNavButtonAndTitle(
                     style = getTypography(CustomFont.Charter).titleSmall.copy(
                         fontWeight = FontWeight.ExtraBold
                     ),
-                    color = textColorPrimary,
+                    color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     textAlign = TextAlign.Center

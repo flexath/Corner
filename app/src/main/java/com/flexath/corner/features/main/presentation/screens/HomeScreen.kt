@@ -43,13 +43,13 @@ import com.flexath.corner.core.presentation.constants.Dimens.LargePadding2
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding2
 import com.flexath.corner.core.presentation.screens.extensions.isScrolled
+import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.features.main.data.remote.dto.dummy.dummyPostList
 import com.flexath.corner.features.main.presentation.screens.common.getPostList
 import com.flexath.corner.features.main.presentation.screens.widget.BecomeAFriendDialog
 import com.flexath.corner.ui.theme.CustomFont
-import com.flexath.corner.ui.theme.colorBackground
+import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
-import com.flexath.corner.ui.theme.textColorPrimary
 import kotlinx.coroutines.delay
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -75,7 +75,7 @@ fun HomeScreen(
     }
 
     Scaffold(
-        modifier = modifier.background(colorBackground),
+        modifier = modifier.background(getAppColor(AppColors.COLOR_BACKGROUND)),
         topBar = {
             Box(
                 modifier = Modifier
@@ -84,7 +84,7 @@ fun HomeScreen(
                     .animateContentSize(
                         animationSpec = tween(durationMillis = 300)
                     )
-                    .background(color = colorBackground)
+                    .background(color = getAppColor(AppColors.COLOR_BACKGROUND))
                     .height(
                         height = if (lazyListState.isScrolled()) 0.dp else 144.dp
                     )
@@ -102,7 +102,7 @@ fun HomeScreen(
                             fontWeight = FontWeight.SemiBold
                         ),
                         textAlign = TextAlign.Center,
-                        color = textColorPrimary,
+                        color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                         modifier = Modifier.padding(start = MediumPadding5)
                     )
 
@@ -138,7 +138,7 @@ fun HomeScreen(
         }
 
         LaunchedEffect(key1 = isLoading) {
-            delay(5000)
+            delay(3000)
             isLoading = false
         }
 
@@ -156,7 +156,7 @@ fun HomeScreen(
             LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(colorBackground),
+                    .background(getAppColor(AppColors.COLOR_BACKGROUND)),
                 state = lazyListState
             ) {
                 getPostList(
@@ -193,15 +193,15 @@ fun CategoryScrollableTabRow(
     ScrollableTabRow(
         edgePadding = 0.dp,
         selectedTabIndex = tabSelectedIndex,
-        containerColor = colorBackground,
-        contentColor = textColorPrimary,
+        containerColor = getAppColor(AppColors.COLOR_BACKGROUND),
+        contentColor = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
         indicator = {
             Box(
                 modifier = Modifier
                     .tabIndicatorOffset(it[tabSelectedIndex])
                     .padding(horizontal = 20.dp)
                     .height(2.dp)
-                    .background(color = textColorPrimary)
+                    .background(color = getAppColor(AppColors.TEXT_COLOR_PRIMARY))
             )
         },
         modifier = modifier
@@ -223,7 +223,7 @@ fun CategoryScrollableTabRow(
                             FontWeight.Light
                         }
                     ),
-                    color = textColorPrimary
+                    color = getAppColor(AppColors.TEXT_COLOR_PRIMARY)
                 )
             }
         }

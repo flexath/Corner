@@ -28,6 +28,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.flexath.corner.R
 import com.flexath.corner.core.presentation.nav_graphs.Route
+import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.features.main.presentation.events.MainWidgetEvent
 import com.flexath.corner.features.main.presentation.screens.BookmarkScreen
 import com.flexath.corner.features.main.presentation.screens.HomeScreen
@@ -36,8 +37,7 @@ import com.flexath.corner.features.main.presentation.screens.ProfileScreen
 import com.flexath.corner.features.main.presentation.screens.SearchScreen
 import com.flexath.corner.features.main.presentation.screens.common.MainBottomBar
 import com.flexath.corner.features.main.presentation.viewmodels.MainWidgetViewModel
-import com.flexath.corner.ui.theme.colorBackground
-import com.flexath.corner.ui.theme.colorPrimary
+import com.flexath.corner.ui.theme.getAppColor
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -72,8 +72,8 @@ fun MainSubGraph(
                     onClick = {
                         Toast.makeText(context,"It is clicked",Toast.LENGTH_SHORT).show()
                     },
-                    containerColor = colorPrimary,
-                    contentColor = colorBackground,
+                    containerColor = getAppColor(AppColors.COLOR_PRIMARY),
+                    contentColor = getAppColor(AppColors.COLOR_BACKGROUND),
                     modifier = Modifier.clip(CircleShape)
                 ) {
                     Icon(

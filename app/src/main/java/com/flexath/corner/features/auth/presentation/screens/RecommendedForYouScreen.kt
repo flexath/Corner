@@ -27,13 +27,12 @@ import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding5
 import com.flexath.corner.core.presentation.screens.common.TopAppBarWithNavButtonAndTitle
 import com.flexath.corner.core.presentation.screens.common.writerCardList
-import com.flexath.corner.features.auth.presentation.screens.model.WriterCardDummyList
+import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.features.auth.presentation.screens.common.CustomFilledButton
+import com.flexath.corner.features.auth.presentation.screens.model.WriterCardDummyList
 import com.flexath.corner.ui.theme.CustomFont
-import com.flexath.corner.ui.theme.colorBackground
+import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
-import com.flexath.corner.ui.theme.strokeColor
-import com.flexath.corner.ui.theme.textColorPrimary
 
 @Composable
 fun RecommendedForYouScreen(
@@ -45,7 +44,7 @@ fun RecommendedForYouScreen(
     Scaffold(
         topBar = {
             TopAppBarWithNavButtonAndTitle(
-                modifier = Modifier.fillMaxWidth().background(colorBackground),
+                modifier = Modifier.fillMaxWidth().background(getAppColor(AppColors.COLOR_BACKGROUND)),
                 title = stringResource(id = R.string.lbl_welcome_to_corner),
                 onNavigateBack = {
                     onNavigateBack()
@@ -57,7 +56,7 @@ fun RecommendedForYouScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .shadow(elevation = 2.dp)
-                    .background(colorBackground)
+                    .background(getAppColor(AppColors.COLOR_BACKGROUND))
                     .padding(vertical = Dimens.MediumPadding1),
                 contentAlignment = Alignment.Center
             ) {
@@ -93,7 +92,7 @@ fun RecommendedForYouScreen(
                         style = getTypography(CustomFont.Charter).headlineSmall.copy(
                             fontWeight = FontWeight.Bold
                         ),
-                        color = textColorPrimary
+                        color = getAppColor(AppColors.TEXT_COLOR_PRIMARY)
                     )
 
                     Spacer(modifier = Modifier.height(Dimens.MediumPadding1))
@@ -102,14 +101,14 @@ fun RecommendedForYouScreen(
                         text = stringResource(R.string.lbl_here_are_some_top_writers_based_on_your_interests),
                         style = getTypography(CustomFont.Charter).bodyLarge,
                         textAlign = TextAlign.Center,
-                        color = textColorPrimary
+                        color = getAppColor(AppColors.TEXT_COLOR_PRIMARY)
                     )
 
                     Spacer(modifier = Modifier.height(Dimens.MediumPadding1))
 
                     HorizontalDivider(
                         thickness = Dimens.SmallPadding0,
-                        color = strokeColor,
+                        color = getAppColor(AppColors.STROKE_COLOR),
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = MediumPadding5)

@@ -34,13 +34,14 @@ import com.flexath.corner.core.presentation.constants.Dimens.LargePadding6
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding1
 import com.flexath.corner.core.presentation.screens.common.TopAppBarWithNavButtonAndTitle
+import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.features.auth.presentation.screens.common.CustomFilledButton
 import com.flexath.corner.features.auth.presentation.screens.common.OutlinedTextFieldWithTitle
 import com.flexath.corner.features.auth.presentation.screens.common.getAnnotatedStringForServiceTerms
 import com.flexath.corner.features.auth.presentation.states.CreateAccountFormState
 import com.flexath.corner.ui.theme.CustomFont
+import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
-import com.flexath.corner.ui.theme.textColorPrimary
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -109,7 +110,7 @@ fun CreateAccountScreen(
                     style = getTypography(CustomFont.Charter).displaySmall.copy(
                         fontWeight = FontWeight.Bold
                     ),
-                    color = textColorPrimary,
+                    color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                     modifier = Modifier.padding(top = Dimens.SmallPadding2)
                 )
             }
@@ -119,7 +120,7 @@ fun CreateAccountScreen(
                 style = getTypography(CustomFont.Charter).headlineLarge.copy(
                     fontWeight = FontWeight.Normal
                 ),
-                color = textColorPrimary,
+                color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 modifier = Modifier.constrainAs(headlineTextRef) {
                     top.linkTo(appNameWithLogo.bottom, margin = LargePadding2)
                     start.linkTo(parent.start, margin = MediumPadding5)
@@ -179,7 +180,7 @@ fun CreateAccountScreen(
             Text(
                 text = getAnnotatedStringForServiceTerms(),
                 style = getTypography(CustomFont.Charter).bodyMedium,
-                color = textColorPrimary,
+                color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.constrainAs(agreeTermsOfServiceRef) {
                     top.linkTo(createAccountButtonRef.bottom, margin = ExtraLargePadding5)

@@ -24,10 +24,8 @@ import androidx.navigation.compose.rememberNavController
 import com.flexath.corner.R
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding4
 import com.flexath.corner.core.presentation.nav_graphs.Route
-import com.flexath.corner.ui.theme.colorBackground
-import com.flexath.corner.ui.theme.colorPrimary
-import com.flexath.corner.ui.theme.strokeColor
-import com.flexath.corner.ui.theme.textFieldStrokeColor
+import com.flexath.corner.core.presentation.utils.AppColors
+import com.flexath.corner.ui.theme.getAppColor
 
 @Composable
 fun MainBottomBar(
@@ -47,13 +45,13 @@ fun MainBottomBar(
     }
 
     BottomAppBar(
-        containerColor = colorBackground,
+        containerColor = getAppColor(AppColors.COLOR_BACKGROUND),
         modifier = Modifier
             .fillMaxWidth()
 
             .shadow(
                 elevation = SmallPadding4,
-                spotColor = strokeColor
+                spotColor = getAppColor(AppColors.STROKE_COLOR)
             ).height(60.dp)
 
     ) {
@@ -97,8 +95,8 @@ fun MainBottomBar(
                 },
                 colors = NavigationBarItemDefaults.colors(
                     indicatorColor = Color.Transparent,
-                    selectedIconColor = colorPrimary,
-                    unselectedIconColor = textFieldStrokeColor
+                    selectedIconColor = getAppColor(AppColors.COLOR_PRIMARY),
+                    unselectedIconColor = getAppColor(AppColors.TEXT_FIELD_STROKE_COLOR)
                 )
             )
         }

@@ -41,11 +41,11 @@ import com.flexath.corner.core.presentation.constants.Dimens.LargePadding5
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding1
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding2
+import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.features.auth.presentation.screens.common.getAnnotatedStringForServiceTerms
 import com.flexath.corner.ui.theme.CustomFont
-import com.flexath.corner.ui.theme.colorPrimary
+import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
-import com.flexath.corner.ui.theme.textColorPrimary
 
 @Composable
 fun RegisterScreen(
@@ -99,7 +99,7 @@ fun RegisterScreen(
                     style = getTypography(CustomFont.Charter).displaySmall.copy(
                         fontWeight = FontWeight.Bold
                     ),
-                    color = textColorPrimary,
+                    color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                     modifier = Modifier.padding(top = SmallPadding2)
                 )
             }
@@ -111,7 +111,7 @@ fun RegisterScreen(
                     lineHeight = 70.sp,
                     fontWeight = FontWeight.Normal
                 ),
-                color = textColorPrimary,
+                color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.constrainAs(headlineTextRef) {
                     top.linkTo(appNameWithLogo.bottom, margin = ExtraLargePadding7)
@@ -125,7 +125,7 @@ fun RegisterScreen(
             Text(
                 text = stringResource(R.string.lbl_fuel_your_potential_with_community_knowledge),
                 style = getTypography(CustomFont.Charter).bodyLarge,
-                color = textColorPrimary,
+                color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 maxLines = 1,
                 modifier = Modifier.constrainAs(descriptionTextRef) {
                     top.linkTo(headlineTextRef.bottom, margin = LargePadding2)
@@ -160,7 +160,7 @@ fun RegisterScreen(
                 Text(
                     text = stringResource(R.string.lbl_sign_up_with_google),
                     style = getTypography(CustomFont.Charter).bodyLarge,
-                    color = textColorPrimary,
+                    color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                     textAlign = TextAlign.Center,
                     maxLines = 1,
                     modifier = Modifier.weight(1f)
@@ -191,7 +191,7 @@ fun RegisterScreen(
                 Text(
                     text = stringResource(R.string.lbl_sign_up_with_facebook),
                     style = getTypography(CustomFont.Charter).bodyLarge,
-                    color = textColorPrimary,
+                    color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                     textAlign = TextAlign.Center,
                     maxLines = 1,
                     modifier = Modifier.weight(1f)
@@ -222,7 +222,7 @@ fun RegisterScreen(
                 Text(
                     text = stringResource(R.string.lbl_sign_up_with_email),
                     style = getTypography(CustomFont.Charter).bodyLarge,
-                    color = textColorPrimary,
+                    color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                     textAlign = TextAlign.Center,
                     maxLines = 1,
                     modifier = Modifier.weight(1f)
@@ -241,7 +241,7 @@ fun RegisterScreen(
                 Text(
                     text = "Already have an account?",
                     style = getTypography(CustomFont.Charter).bodyLarge,
-                    color = textColorPrimary,
+                    color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                     maxLines = 1
                 )
 
@@ -250,7 +250,7 @@ fun RegisterScreen(
                 Text(
                     text = "Sign in",
                     style = getTypography(CustomFont.Charter).bodyLarge,
-                    color = colorPrimary,
+                    color = getAppColor(AppColors.COLOR_PRIMARY),
                     maxLines = 1,
                     modifier = Modifier.clickable {
 
@@ -261,7 +261,7 @@ fun RegisterScreen(
             Text(
                 text = getAnnotatedStringForServiceTerms(),
                 style = getTypography(CustomFont.Charter).bodyMedium,
-                color = textColorPrimary,
+                color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.constrainAs(agreeTermsOfServiceRef) {
                     top.linkTo(alreadyHaveAnAccountTextRef.bottom, margin = DoubleExtraLargePadding10)

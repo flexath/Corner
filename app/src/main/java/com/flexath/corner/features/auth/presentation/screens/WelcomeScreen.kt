@@ -30,14 +30,13 @@ import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding3
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding0
 import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding4
+import com.flexath.corner.core.presentation.utils.AppColors
+import com.flexath.corner.features.auth.presentation.screens.common.CustomFilledButton
 import com.flexath.corner.features.auth.presentation.screens.model.WelcomeScreenConst.firstRowPeopleImageList
 import com.flexath.corner.features.auth.presentation.screens.model.WelcomeScreenConst.secondRowPeopleImageList
-import com.flexath.corner.features.auth.presentation.screens.common.CustomFilledButton
 import com.flexath.corner.ui.theme.CustomFont
+import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
-import com.flexath.corner.ui.theme.strokeColor
-import com.flexath.corner.ui.theme.textColorPrimary
-import com.flexath.corner.ui.theme.textColorSecondary
 
 @Composable
 fun WelcomeScreen(
@@ -62,7 +61,7 @@ fun WelcomeScreen(
             style = getTypography(CustomFont.Charter).titleSmall.copy(
                 fontWeight = FontWeight.ExtraBold
             ),
-            color = textColorPrimary,
+            color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             textAlign = TextAlign.Center,
@@ -81,7 +80,7 @@ fun WelcomeScreen(
                 fontWeight = FontWeight.SemiBold,
                 lineHeight = 40.sp,
             ),
-            color = textColorPrimary,
+            color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
             overflow = TextOverflow.Ellipsis,
             textAlign = TextAlign.Center,
             modifier = Modifier.constrainAs(makeCornerYoursTextRef) {
@@ -96,7 +95,7 @@ fun WelcomeScreen(
         Text(
             text = stringResource(R.string.lbl_let_s_find_people_to_follow_based_on_your_interests),
             style = getTypography(CustomFont.Charter).bodyLarge,
-            color = textColorPrimary,
+            color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
             textAlign = TextAlign.Center,
             modifier = Modifier.constrainAs(letFindPeopleTextRef) {
                 top.linkTo(makeCornerYoursTextRef.bottom, margin = LargePadding2)
@@ -109,7 +108,7 @@ fun WelcomeScreen(
 
         HorizontalDivider(
             thickness = SmallPadding0,
-            color = strokeColor,
+            color = getAppColor(AppColors.STROKE_COLOR),
             modifier = Modifier.constrainAs(horizontalLineRef) {
                 top.linkTo(letFindPeopleTextRef.bottom, margin = LargePadding2)
                 start.linkTo(parent.start, margin = MediumPadding5)
@@ -138,7 +137,7 @@ fun WelcomeScreen(
                             .padding(horizontal = SmallPadding4)
                             .size(60.dp)
                             .clip(CircleShape)
-                            .background(textColorSecondary)
+                            .background(getAppColor(AppColors.TEXT_COLOR_SECONDARY))
                     )
                 }
             }
@@ -163,7 +162,7 @@ fun WelcomeScreen(
                             .padding(horizontal = SmallPadding4)
                             .size(60.dp)
                             .clip(CircleShape)
-                            .background(textColorSecondary)
+                            .background(getAppColor(AppColors.TEXT_COLOR_SECONDARY))
                     )
                 }
             }

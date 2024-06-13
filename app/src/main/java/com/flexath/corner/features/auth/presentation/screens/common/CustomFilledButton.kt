@@ -12,12 +12,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.flexath.corner.core.presentation.constants.Dimens
 import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
+import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.ui.theme.CustomFont
-import com.flexath.corner.ui.theme.colorOnPrimary
-import com.flexath.corner.ui.theme.colorPrimary
+import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
-import com.flexath.corner.ui.theme.textColorPrimary
-import com.flexath.corner.ui.theme.textFieldUnFocusedBackground
 
 @Composable
 fun CustomFilledButton(
@@ -33,8 +31,8 @@ fun CustomFilledButton(
         shape = ButtonDefaults.outlinedShape,
         contentPadding = PaddingValues(vertical = Dimens.SmallPadding4),
         colors = ButtonDefaults.buttonColors(
-            containerColor = colorPrimary,
-            disabledContainerColor = textFieldUnFocusedBackground,
+            containerColor = getAppColor(AppColors.COLOR_PRIMARY),
+            disabledContainerColor = getAppColor(AppColors.TEXT_FIELD_UNFOCUSED_BACKGROUND),
         ),
         enabled = isEnabled,
         modifier = modifier
@@ -46,9 +44,9 @@ fun CustomFilledButton(
                 fontWeight = FontWeight.Bold
             ),
             color = if (isEnabled) {
-                colorOnPrimary
+                getAppColor(AppColors.COLOR_ON_PRIMARY)
             } else {
-                textColorPrimary
+                getAppColor(AppColors.TEXT_COLOR_PRIMARY)
             },
             maxLines = 1
         )

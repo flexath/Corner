@@ -13,9 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.IntSize
+import com.flexath.corner.core.presentation.utils.AppColors
+import com.flexath.corner.ui.theme.getAppColor
 
 fun Modifier.shimmerEffect() = composed {
     var size by remember {
@@ -35,9 +36,9 @@ fun Modifier.shimmerEffect() = composed {
     background(
         brush = Brush.linearGradient(
             colors = listOf(
-                Color(0xFFB8B5B5),
-                Color(0xFF8F8B8B),
-                Color(0xFFB8B5B5),
+                getAppColor(color = AppColors.SHIMMER_START_COLOR),
+                getAppColor(color = AppColors.SHIMMER_MIDDLE_COLOR),
+                getAppColor(color = AppColors.SHIMMER_END_COLOR),
             ),
             start = Offset(startOffsetX, 0f),
             end = Offset(startOffsetX + size.width.toFloat(), size.height.toFloat())
