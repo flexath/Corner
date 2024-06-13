@@ -24,8 +24,10 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -48,6 +50,7 @@ import com.flexath.corner.ui.theme.CustomFont
 import com.flexath.corner.ui.theme.colorBackground
 import com.flexath.corner.ui.theme.getTypography
 import com.flexath.corner.ui.theme.textColorPrimary
+import kotlinx.coroutines.delay
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -130,6 +133,15 @@ fun HomeScreen(
             mutableIntStateOf(0)
         }
 
+        var isLoading by remember {
+            mutableStateOf(true)
+        }
+
+        LaunchedEffect(key1 = isLoading) {
+            delay(5000)
+            isLoading = false
+        }
+
         Column(
             modifier = Modifier.padding(top = topPadding)
         ) {
@@ -150,6 +162,7 @@ fun HomeScreen(
                 getPostList(
                     modifier = Modifier.fillMaxWidth(),
                     postList = dummyPostList,
+                    isLoading = isLoading,
                     onClickPost = {
                         onClickPost()
                     }
