@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.runtime.Composable
@@ -22,9 +23,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.flexath.corner.R
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding4
 import com.flexath.corner.core.presentation.nav_graphs.Route
 import com.flexath.corner.core.presentation.utils.AppColors
+import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
 
 @Composable
@@ -32,6 +33,7 @@ fun MainBottomBar(
     navHostController: NavHostController
 ) {
     val backStackEntry = navHostController.currentBackStackEntryAsState().value
+    val dimens = MaterialTheme.dimens
 
     var selectedBottomItemIndex by remember {
         mutableIntStateOf(0)
@@ -50,7 +52,7 @@ fun MainBottomBar(
             .fillMaxWidth()
 
             .shadow(
-                elevation = SmallPadding4,
+                elevation = dimens.smallPadding4,
                 spotColor = getAppColor(AppColors.STROKE_COLOR)
             ).height(60.dp)
 

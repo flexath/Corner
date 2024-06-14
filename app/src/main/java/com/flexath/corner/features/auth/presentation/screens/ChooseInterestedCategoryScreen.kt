@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.SuggestionChipDefaults
@@ -37,17 +38,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.flexath.corner.R
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding1
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding3
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding2
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding5
 import com.flexath.corner.core.presentation.screens.common.TopAppBarWithNavButtonAndTitle
 import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.features.auth.presentation.screens.common.CustomFilledButton
 import com.flexath.corner.features.auth.presentation.screens.model.Category
 import com.flexath.corner.features.auth.presentation.screens.model.ChooseInterestedCategoryScreenConst
 import com.flexath.corner.ui.theme.CustomFont
+import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
 
@@ -62,6 +59,8 @@ fun ChooseInterestedCategoryScreen(
     val selectedCategoryList = remember {
         mutableStateListOf<Category>()
     }
+
+    val dimens = MaterialTheme.dimens
 
     LaunchedEffect(key1 = selectedCategoryList.size) {
         Log.i("CategoryList","List: ${selectedCategoryList.toList()}")
@@ -83,7 +82,7 @@ fun ChooseInterestedCategoryScreen(
                     .fillMaxWidth()
                     .shadow(elevation = 2.dp)
                     .background(getAppColor(AppColors.COLOR_BACKGROUND))
-                    .padding(vertical = MediumPadding1),
+                    .padding(vertical = dimens.mediumPadding1),
                 contentAlignment = Alignment.Center
             ) {
                 CustomFilledButton(
@@ -94,7 +93,7 @@ fun ChooseInterestedCategoryScreen(
                     },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = MediumPadding5)
+                        .padding(horizontal = dimens.mediumPadding5)
                 )
             }
         }
@@ -117,7 +116,7 @@ fun ChooseInterestedCategoryScreen(
                 color = getAppColor(AppColors.TEXT_COLOR_PRIMARY)
             )
 
-            Spacer(modifier = Modifier.height(MediumPadding1))
+            Spacer(modifier = Modifier.height(dimens.mediumPadding1))
 
             Text(
                 text = stringResource(R.string.lbl_choose_three_or_more),
@@ -125,7 +124,7 @@ fun ChooseInterestedCategoryScreen(
                 color = getAppColor(AppColors.TEXT_COLOR_PRIMARY)
             )
 
-            Spacer(modifier = Modifier.height(MediumPadding1))
+            Spacer(modifier = Modifier.height(dimens.mediumPadding1))
 
             FlowRow(
                 maxItemsInEachRow = 3,
@@ -170,13 +169,13 @@ fun ChooseInterestedCategoryScreen(
                             labelColor = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                             disabledContainerColor = Color.Transparent
                         ),
-                        shape = RoundedCornerShape(MediumPadding3),
-                        modifier = Modifier.padding(horizontal = SmallPadding2)
+                        shape = RoundedCornerShape(dimens.mediumPadding3),
+                        modifier = Modifier.padding(horizontal = dimens.smallPadding2)
                     )
                 }
             }
 
-            Spacer(modifier = modifier.height(bottomPadding + SmallPadding5))
+            Spacer(modifier = modifier.height(bottomPadding + dimens.smallPadding5))
         }
     }
 }

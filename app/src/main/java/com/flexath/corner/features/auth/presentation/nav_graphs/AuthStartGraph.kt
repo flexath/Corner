@@ -24,8 +24,10 @@ import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
+import com.flexath.corner.core.presentation.events.AuthEvent
 import com.flexath.corner.core.presentation.nav_graphs.Route
 import com.flexath.corner.core.presentation.utils.AppColors
+import com.flexath.corner.core.presentation.viewmodels.AppViewModel
 import com.flexath.corner.features.auth.presentation.events.CreateAccountFormEvent
 import com.flexath.corner.features.auth.presentation.events.SignOutEvent
 import com.flexath.corner.features.auth.presentation.events.SignUpEvent
@@ -228,13 +230,15 @@ fun AuthSubGraph(
         composable(
             route = Route.RecommendedForYouScreen.route
         ) {
+            val appViewModel: AppViewModel = hiltViewModel()
+
             RecommendedForYouScreen(
                 modifier = Modifier.fillMaxSize(),
                 onNavigateBack = {
                     navController.navigateUp()
                 },
                 onClickFinishButton = {
-
+                    appViewModel.onEvent(AuthEvent.SaveAppEntry)
                 }
             )
         }

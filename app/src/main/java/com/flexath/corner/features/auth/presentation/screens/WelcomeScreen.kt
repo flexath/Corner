@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -24,17 +25,12 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.flexath.corner.R
-import com.flexath.corner.core.presentation.constants.Dimens.DoubleExtraLargePadding10
-import com.flexath.corner.core.presentation.constants.Dimens.LargePadding2
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding3
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding0
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding4
 import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.features.auth.presentation.screens.common.CustomFilledButton
 import com.flexath.corner.features.auth.presentation.screens.model.WelcomeScreenConst.firstRowPeopleImageList
 import com.flexath.corner.features.auth.presentation.screens.model.WelcomeScreenConst.secondRowPeopleImageList
 import com.flexath.corner.ui.theme.CustomFont
+import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
 
@@ -43,6 +39,8 @@ fun WelcomeScreen(
     modifier: Modifier = Modifier,
     onClickContinueButton: () -> Unit
 ) {
+    val dimens = MaterialTheme.dimens
+
     ConstraintLayout(
         modifier = modifier
     ) {
@@ -66,9 +64,9 @@ fun WelcomeScreen(
             overflow = TextOverflow.Ellipsis,
             textAlign = TextAlign.Center,
             modifier = Modifier.constrainAs(welcomeToCornerTextRef) {
-                top.linkTo(parent.top,margin = MediumPadding3)
-                start.linkTo(parent.start,margin = MediumPadding5)
-                end.linkTo(parent.end,margin = MediumPadding5)
+                top.linkTo(parent.top,margin = dimens.mediumPadding3)
+                start.linkTo(parent.start,margin = dimens.mediumPadding5)
+                end.linkTo(parent.end,margin = dimens.mediumPadding5)
                 width = Dimension.wrapContent
                 height = Dimension.wrapContent
             }
@@ -84,9 +82,9 @@ fun WelcomeScreen(
             overflow = TextOverflow.Ellipsis,
             textAlign = TextAlign.Center,
             modifier = Modifier.constrainAs(makeCornerYoursTextRef) {
-                top.linkTo(welcomeToCornerTextRef.bottom,margin = DoubleExtraLargePadding10)
-                start.linkTo(parent.start,margin = MediumPadding5)
-                end.linkTo(parent.end,margin = MediumPadding5)
+                top.linkTo(welcomeToCornerTextRef.bottom,margin = dimens.doubleExtraLargePadding10)
+                start.linkTo(parent.start,margin = dimens.mediumPadding5)
+                end.linkTo(parent.end,margin = dimens.mediumPadding5)
                 width = Dimension.wrapContent
                 height = Dimension.wrapContent
             }
@@ -98,21 +96,21 @@ fun WelcomeScreen(
             color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
             textAlign = TextAlign.Center,
             modifier = Modifier.constrainAs(letFindPeopleTextRef) {
-                top.linkTo(makeCornerYoursTextRef.bottom, margin = LargePadding2)
-                start.linkTo(parent.start, margin = MediumPadding5)
-                end.linkTo(parent.end, margin = MediumPadding5)
+                top.linkTo(makeCornerYoursTextRef.bottom, margin = dimens.largePadding2)
+                start.linkTo(parent.start, margin = dimens.mediumPadding5)
+                end.linkTo(parent.end, margin = dimens.mediumPadding5)
                 width = Dimension.wrapContent
                 height = Dimension.wrapContent
             }
         )
 
         HorizontalDivider(
-            thickness = SmallPadding0,
+            thickness = dimens.smallPadding0,
             color = getAppColor(AppColors.STROKE_COLOR),
             modifier = Modifier.constrainAs(horizontalLineRef) {
-                top.linkTo(letFindPeopleTextRef.bottom, margin = LargePadding2)
-                start.linkTo(parent.start, margin = MediumPadding5)
-                end.linkTo(parent.end, margin = MediumPadding5)
+                top.linkTo(letFindPeopleTextRef.bottom, margin = dimens.largePadding2)
+                start.linkTo(parent.start, margin = dimens.mediumPadding5)
+                end.linkTo(parent.end, margin = dimens.mediumPadding5)
                 width = Dimension.fillToConstraints
                 height = Dimension.wrapContent
             }
@@ -120,9 +118,9 @@ fun WelcomeScreen(
 
         LazyRow(
             modifier = Modifier.constrainAs(peopleImagesUpperRef) {
-                top.linkTo(horizontalLineRef.bottom,margin = DoubleExtraLargePadding10)
-                start.linkTo(parent.start,margin = MediumPadding5)
-                end.linkTo(parent.end,margin = MediumPadding5)
+                top.linkTo(horizontalLineRef.bottom,margin = dimens.doubleExtraLargePadding10)
+                start.linkTo(parent.start,margin = dimens.mediumPadding5)
+                end.linkTo(parent.end,margin = dimens.mediumPadding5)
                 width = Dimension.wrapContent
                 height = Dimension.wrapContent
             }
@@ -134,7 +132,7 @@ fun WelcomeScreen(
                         contentDescription = "People's cover photos",
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
-                            .padding(horizontal = SmallPadding4)
+                            .padding(horizontal = dimens.smallPadding4)
                             .size(60.dp)
                             .clip(CircleShape)
                             .background(getAppColor(AppColors.TEXT_COLOR_SECONDARY))
@@ -145,9 +143,9 @@ fun WelcomeScreen(
 
         LazyRow(
             modifier = Modifier.constrainAs(peopleImagesLowerRef) {
-                top.linkTo(peopleImagesUpperRef.bottom,margin = LargePadding2)
-                start.linkTo(parent.start,margin = MediumPadding5)
-                end.linkTo(parent.end,margin = MediumPadding5)
+                top.linkTo(peopleImagesUpperRef.bottom,margin = dimens.largePadding2)
+                start.linkTo(parent.start,margin = dimens.mediumPadding5)
+                end.linkTo(parent.end,margin = dimens.mediumPadding5)
                 width = Dimension.wrapContent
                 height = Dimension.wrapContent
             }
@@ -159,7 +157,7 @@ fun WelcomeScreen(
                         contentDescription = "People's cover photos",
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
-                            .padding(horizontal = SmallPadding4)
+                            .padding(horizontal = dimens.smallPadding4)
                             .size(60.dp)
                             .clip(CircleShape)
                             .background(getAppColor(AppColors.TEXT_COLOR_SECONDARY))
@@ -170,9 +168,9 @@ fun WelcomeScreen(
 
         CustomFilledButton(
             modifier = Modifier.constrainAs(continueButtonRef) {
-                bottom.linkTo(parent.bottom, margin = LargePadding2)
-                start.linkTo(parent.start, margin = MediumPadding5)
-                end.linkTo(parent.end, margin = MediumPadding5)
+                bottom.linkTo(parent.bottom, margin = dimens.largePadding2)
+                start.linkTo(parent.start, margin = dimens.mediumPadding5)
+                end.linkTo(parent.end, margin = dimens.mediumPadding5)
                 width = Dimension.fillToConstraints
                 height = Dimension.wrapContent
             },

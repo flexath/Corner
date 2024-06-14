@@ -105,7 +105,7 @@ data class Dimensions(
     val extraLargeText20: TextUnit = 0.sp
 )
 
-val mediumDimensions = Dimensions(
+val mediumCompatDimensions = Dimensions(
     smallPadding0 = 1.dp,
     smallPadding1 = 2.dp,
     smallPadding2 = 4.dp,
@@ -463,36 +463,60 @@ object Dimens {
     val SmallText1 = 2.sp
     val SmallText2 = 4.sp
     val SmallText3 = 6.sp
+    val SmallText3_5 = 7.sp
     val SmallText4 = 8.sp
+    val SmallText4_5 = 9.sp
     val SmallText5 = 10.sp
+    val SmallText5_5 = 11.sp
 
     val MediumText1 = 12.sp
+    val MediumText1_5 = 13.sp
     val MediumText2 = 14.sp
+    val MediumText2_5 = 15.sp
     val MediumText3 = 16.sp
+    val MediumText3_5 = 17.sp
     val MediumText4 = 18.sp
+    val MediumText4_5 = 18.sp
     val MediumText5 = 20.sp
+    val MediumText5_5 = 21.sp
 
     val LargeText1 = 22.sp
+    val LargeText1_5 = 23.sp
     val LargeText2 = 24.sp
+    val LargeText2_5 = 25.sp
     val LargeText3 = 26.sp
+    val LargeText3_5 = 27.sp
     val LargeText4 = 28.sp
+    val LargeText4_5 = 29.sp
     val LargeText5 = 30.sp
+    val LargeText5_5 = 31.sp
     val LargeText6 = 32.sp
+    val LargeText6_5 = 33.sp
     val LargeText7 = 34.sp
+    val LargeText7_5 = 35.sp
     val LargeText8 = 36.sp
+    val LargeText8_5 = 37.sp
     val LargeText9 = 38.sp
+    val LargeText9_5 = 39.sp
     val LargeText10 = 40.sp
+    val LargeText10_5 = 41.sp
 
     val ExtraLargeText1 = 42.sp
+    val ExtraLargeText1_5 = 43.sp
     val ExtraLargeText2 = 44.sp
+    val ExtraLargeText2_5 = 45.sp
     val ExtraLargeText3 = 46.sp
+    val ExtraLargeText3_5 = 47.sp
     val ExtraLargeText4 = 48.sp
+    val ExtraLargeText4_5 = 49.sp
     val ExtraLargeText5 = 50.sp
+    val ExtraLargeText5_5 = 51.sp
     val ExtraLargeText6 = 52.sp
     val ExtraLargeText7 = 54.sp
     val ExtraLargeText8 = 56.sp
     val ExtraLargeText9 = 58.sp
     val ExtraLargeText10 = 60.sp
+    val ExtraLargeText10_5 = 61.sp
     val ExtraLargeText11 = 62.sp
     val ExtraLargeText12 = 64.sp
     val ExtraLargeText13 = 66.sp

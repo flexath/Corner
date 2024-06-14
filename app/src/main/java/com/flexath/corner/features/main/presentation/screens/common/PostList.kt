@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -32,22 +33,13 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import coil.compose.AsyncImage
 import com.flexath.corner.R
-import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargePadding5
-import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargePadding5_2x
-import com.flexath.corner.core.presentation.constants.Dimens.LargePadding4
-import com.flexath.corner.core.presentation.constants.Dimens.LargePadding9
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding1
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding4
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding2
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding4
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding5
 import com.flexath.corner.core.presentation.screens.extensions.shimmerEffect
 import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.features.main.data.remote.dto.dummy.PostVO
 import com.flexath.corner.features.main.data.remote.dto.dummy.dummyPostList
 import com.flexath.corner.features.main.presentation.utils.TimeFormatConverter
 import com.flexath.corner.ui.theme.CustomFont
+import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
 
@@ -87,9 +79,11 @@ fun Post(
     post: PostVO,
     onClickPost: () -> Unit
 ) {
+    val dimens = MaterialTheme.dimens
+
     ConstraintLayout(
         modifier = modifier
-            .padding(all = MediumPadding5)
+            .padding(all = dimens.mediumPadding5)
             .clickable {
                 onClickPost()
             }
@@ -120,12 +114,12 @@ fun Post(
 
         Text(
             text = post.authorName ?: "Author Name",
-            style = getTypography(CustomFont.Inter).bodyMedium,
+            style = MaterialTheme.typography.bodyMedium,
             color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
             modifier = Modifier.constrainAs(authorNameTextRef) {
                 top.linkTo(profileImageRef.top)
                 bottom.linkTo(profileImageRef.bottom)
-                start.linkTo(profileImageRef.end, margin = SmallPadding4)
+                start.linkTo(profileImageRef.end, margin = dimens.smallPadding4)
                 end.linkTo(parent.end)
                 width = Dimension.fillToConstraints
                 height = Dimension.wrapContent
@@ -134,16 +128,16 @@ fun Post(
 
         Text(
             text = post.title ?: "Post Title",
-            style = getTypography(CustomFont.Inter).titleLarge.copy(
+            style = MaterialTheme.typography.titleLarge.copy(
                 fontWeight = FontWeight.SemiBold
             ),
             maxLines = 3,
             overflow = TextOverflow.Ellipsis,
             color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
             modifier = Modifier.constrainAs(titleTextRef) {
-                top.linkTo(profileImageRef.bottom, margin = MediumPadding5)
+                top.linkTo(profileImageRef.bottom, margin = dimens.mediumPadding5)
                 start.linkTo(parent.start)
-                end.linkTo(postImageRef.start, margin = SmallPadding4)
+                end.linkTo(postImageRef.start, margin = dimens.smallPadding4)
                 width = Dimension.fillToConstraints
                 height = Dimension.wrapContent
             }
@@ -163,14 +157,14 @@ fun Post(
 
         Text(
             text = post.content ?: "Post Content",
-            style = getTypography(CustomFont.Inter).bodyLarge,
+            style = MaterialTheme.typography.bodyLarge,
             maxLines = 3,
             overflow = TextOverflow.Ellipsis,
             color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
             modifier = Modifier.constrainAs(descriptionTextRef) {
-                top.linkTo(titleTextRef.bottom, margin = SmallPadding5)
+                top.linkTo(titleTextRef.bottom, margin = dimens.smallPadding5)
                 start.linkTo(parent.start)
-                end.linkTo(postImageRef.start, margin = SmallPadding4)
+                end.linkTo(postImageRef.start, margin = dimens.smallPadding4)
                 width = Dimension.fillToConstraints
                 height = Dimension.wrapContent
             }
@@ -178,7 +172,7 @@ fun Post(
 
         Row(
             modifier = Modifier.constrainAs(startSectionRowRef) {
-                top.linkTo(descriptionTextRef.bottom, margin = MediumPadding5)
+                top.linkTo(descriptionTextRef.bottom, margin = dimens.mediumPadding5)
                 start.linkTo(parent.start)
                 width = Dimension.wrapContent
                 height = Dimension.wrapContent
@@ -191,22 +185,22 @@ fun Post(
                 tint = getAppColor(AppColors.STAR_COLOR)
             )
 
-            Spacer(modifier = Modifier.width(MediumPadding1))
+            Spacer(modifier = Modifier.width(dimens.mediumPadding1))
 
             Text(
                 text = TimeFormatConverter.formatMonthWithDay(post.createdDate),
-                style = getTypography(CustomFont.Inter).bodyMedium,
+                style = MaterialTheme.typography.bodyMedium,
                 color = getAppColor(AppColors.TEXT_COLOR_PRIMARY)
             )
 
-            Spacer(modifier = Modifier.width(MediumPadding1))
+            Spacer(modifier = Modifier.width(dimens.mediumPadding1))
 
             Icon(
                 painter = painterResource(id = R.drawable.ic_hand),
                 contentDescription = "Compass Icon"
             )
 
-            Spacer(modifier = Modifier.width(SmallPadding2))
+            Spacer(modifier = Modifier.width(dimens.smallPadding2))
 
             Text(
                 text = post.likeCount.toString()
@@ -234,7 +228,7 @@ fun Post(
                 )
             }
 
-            Spacer(modifier = Modifier.width(SmallPadding2))
+            Spacer(modifier = Modifier.width(dimens.smallPadding2))
 
             IconButton(onClick = {
 
@@ -254,10 +248,12 @@ fun PostShimmer(
     isLoading: Boolean,
     content: @Composable () -> Unit
 ) {
+    val dimens = MaterialTheme.dimens
+
     if (isLoading) {
         ConstraintLayout(
             modifier = modifier
-                .padding(all = MediumPadding5)
+                .padding(all = dimens.mediumPadding5)
         ) {
             val (
                 profileImageRef,
@@ -287,10 +283,10 @@ fun PostShimmer(
                     .constrainAs(authorNameTextRef) {
                         top.linkTo(profileImageRef.top)
                         bottom.linkTo(profileImageRef.bottom)
-                        start.linkTo(profileImageRef.end, margin = SmallPadding4)
+                        start.linkTo(profileImageRef.end, margin = dimens.smallPadding4)
                         end.linkTo(parent.end)
                         width = Dimension.fillToConstraints
-                        height = Dimension.value(MediumPadding4)
+                        height = Dimension.value(dimens.mediumPadding4)
                     }
                     .shimmerEffect()
             )
@@ -298,11 +294,11 @@ fun PostShimmer(
             Box(
                 modifier = Modifier
                     .constrainAs(titleTextRef) {
-                        top.linkTo(profileImageRef.bottom, margin = MediumPadding5)
+                        top.linkTo(profileImageRef.bottom, margin = dimens.mediumPadding5)
                         start.linkTo(parent.start)
-                        end.linkTo(postImageRef.start, margin = SmallPadding4)
+                        end.linkTo(postImageRef.start, margin = dimens.smallPadding4)
                         width = Dimension.fillToConstraints
-                        height = Dimension.value(LargePadding4)
+                        height = Dimension.value(dimens.largePadding4)
                     }
                     .shimmerEffect()
             )
@@ -321,11 +317,11 @@ fun PostShimmer(
             Box(
                 modifier = Modifier
                     .constrainAs(descriptionTextRef) {
-                        top.linkTo(titleTextRef.bottom, margin = SmallPadding5)
+                        top.linkTo(titleTextRef.bottom, margin = dimens.smallPadding5)
                         start.linkTo(parent.start)
-                        end.linkTo(postImageRef.start, margin = SmallPadding4)
+                        end.linkTo(postImageRef.start, margin = dimens.smallPadding4)
                         width = Dimension.fillToConstraints
-                        height = Dimension.value(LargePadding9)
+                        height = Dimension.value(dimens.largePadding9)
                     }
                     .shimmerEffect()
             )
@@ -333,10 +329,10 @@ fun PostShimmer(
             Row(
                 modifier = Modifier
                     .constrainAs(startSectionRowRef) {
-                        top.linkTo(descriptionTextRef.bottom, margin = MediumPadding5)
+                        top.linkTo(descriptionTextRef.bottom, margin = dimens.mediumPadding5)
                         start.linkTo(parent.start)
-                        width = Dimension.value(ExtraLargePadding5_2x)
-                        height = Dimension.value(SmallPadding5)
+                        width = Dimension.value(dimens.extraLargePadding5_2x)
+                        height = Dimension.value(dimens.smallPadding5)
                     }
                     .shimmerEffect(),
                 verticalAlignment = Alignment.CenterVertically
@@ -350,8 +346,8 @@ fun PostShimmer(
                         top.linkTo(startSectionRowRef.top)
                         bottom.linkTo(startSectionRowRef.bottom)
                         end.linkTo(parent.end)
-                        width = Dimension.value(ExtraLargePadding5)
-                        height = Dimension.value(SmallPadding5)
+                        width = Dimension.value(dimens.extraLargePadding5)
+                        height = Dimension.value(dimens.smallPadding5)
                     }
                     .shimmerEffect(),
                 verticalAlignment = Alignment.CenterVertically

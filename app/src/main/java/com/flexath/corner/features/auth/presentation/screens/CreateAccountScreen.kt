@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,13 +27,6 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import coil.compose.AsyncImage
 import com.flexath.corner.R
-import com.flexath.corner.core.presentation.constants.Dimens
-import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargePadding5
-import com.flexath.corner.core.presentation.constants.Dimens.LargePadding2
-import com.flexath.corner.core.presentation.constants.Dimens.LargePadding5
-import com.flexath.corner.core.presentation.constants.Dimens.LargePadding6
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding1
 import com.flexath.corner.core.presentation.screens.common.TopAppBarWithNavButtonAndTitle
 import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.features.auth.presentation.screens.common.CustomFilledButton
@@ -40,10 +34,10 @@ import com.flexath.corner.features.auth.presentation.screens.common.OutlinedText
 import com.flexath.corner.features.auth.presentation.screens.common.getAnnotatedStringForServiceTerms
 import com.flexath.corner.features.auth.presentation.states.CreateAccountFormState
 import com.flexath.corner.ui.theme.CustomFont
+import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CreateAccountScreen(
     modifier: Modifier = Modifier,
@@ -54,6 +48,7 @@ fun CreateAccountScreen(
     onEmailChanged: (query: String) -> Unit
 ) {
     val scrollState = rememberScrollState()
+    val dimens = MaterialTheme.dimens
 
     Column(
         modifier = modifier.verticalScroll(scrollState)
@@ -77,7 +72,7 @@ fun CreateAccountScreen(
                         top.linkTo(parent.top)
                         start.linkTo(parent.start)
                     }
-                    .padding(horizontal = SmallPadding1),
+                    .padding(horizontal = dimens.smallPadding1),
                 title = "",
                 onNavigateBack = {
                     onNavigateBack()
@@ -88,9 +83,9 @@ fun CreateAccountScreen(
                 modifier = Modifier
                     .wrapContentHeight()
                     .constrainAs(appNameWithLogo) {
-                        top.linkTo(topAppBarRef.bottom, margin = LargePadding5)
-                        start.linkTo(parent.start, margin = MediumPadding5)
-                        end.linkTo(parent.end, margin = MediumPadding5)
+                        top.linkTo(topAppBarRef.bottom, margin = dimens.largePadding5)
+                        start.linkTo(parent.start, margin = dimens.mediumPadding5)
+                        end.linkTo(parent.end, margin = dimens.mediumPadding5)
                         width = Dimension.wrapContent
                         height = Dimension.wrapContent
                     },
@@ -103,7 +98,7 @@ fun CreateAccountScreen(
                     modifier = Modifier.size(30.dp)
                 )
 
-                Spacer(modifier = Modifier.width(Dimens.SmallPadding4))
+                Spacer(modifier = Modifier.width(dimens.smallPadding4))
 
                 Text(
                     text = stringResource(id = R.string.app_name),
@@ -111,7 +106,7 @@ fun CreateAccountScreen(
                         fontWeight = FontWeight.Bold
                     ),
                     color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
-                    modifier = Modifier.padding(top = Dimens.SmallPadding2)
+                    modifier = Modifier.padding(top = dimens.smallPadding2)
                 )
             }
 
@@ -122,9 +117,9 @@ fun CreateAccountScreen(
                 ),
                 color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 modifier = Modifier.constrainAs(headlineTextRef) {
-                    top.linkTo(appNameWithLogo.bottom, margin = LargePadding2)
-                    start.linkTo(parent.start, margin = MediumPadding5)
-                    end.linkTo(parent.end, margin = MediumPadding5)
+                    top.linkTo(appNameWithLogo.bottom, margin = dimens.largePadding2)
+                    start.linkTo(parent.start, margin = dimens.mediumPadding5)
+                    end.linkTo(parent.end, margin = dimens.mediumPadding5)
                     width = Dimension.wrapContent
                     height = Dimension.wrapContent
                 }
@@ -132,9 +127,9 @@ fun CreateAccountScreen(
 
             OutlinedTextFieldWithTitle(
                 modifier = Modifier.constrainAs(fullNameTextFieldWithTitleRef) {
-                    top.linkTo(headlineTextRef.bottom, margin = LargePadding2)
-                    start.linkTo(parent.start, margin = MediumPadding5)
-                    end.linkTo(parent.end, margin = MediumPadding5)
+                    top.linkTo(headlineTextRef.bottom, margin = dimens.largePadding2)
+                    start.linkTo(parent.start, margin = dimens.mediumPadding5)
+                    end.linkTo(parent.end, margin = dimens.mediumPadding5)
                     width = Dimension.matchParent
                     height = Dimension.wrapContent
                 },
@@ -148,9 +143,9 @@ fun CreateAccountScreen(
 
             OutlinedTextFieldWithTitle(
                 modifier = Modifier.constrainAs(emailTextFieldWithTitleRef) {
-                    top.linkTo(fullNameTextFieldWithTitleRef.bottom, margin = LargePadding6)
-                    start.linkTo(parent.start, margin = MediumPadding5)
-                    end.linkTo(parent.end, margin = MediumPadding5)
+                    top.linkTo(fullNameTextFieldWithTitleRef.bottom, margin = dimens.largePadding6)
+                    start.linkTo(parent.start, margin = dimens.mediumPadding5)
+                    end.linkTo(parent.end, margin = dimens.mediumPadding5)
                     width = Dimension.matchParent
                     height = Dimension.wrapContent
                 },
@@ -164,9 +159,9 @@ fun CreateAccountScreen(
 
             CustomFilledButton(
                 modifier = Modifier.constrainAs(createAccountButtonRef) {
-                    top.linkTo(emailTextFieldWithTitleRef.bottom, LargePadding6)
-                    start.linkTo(parent.start, margin = MediumPadding5)
-                    end.linkTo(parent.end, margin = MediumPadding5)
+                    top.linkTo(emailTextFieldWithTitleRef.bottom, dimens.largePadding6)
+                    start.linkTo(parent.start, margin = dimens.mediumPadding5)
+                    end.linkTo(parent.end, margin = dimens.mediumPadding5)
                     width = Dimension.matchParent
                     height = Dimension.wrapContent
                 },
@@ -183,16 +178,16 @@ fun CreateAccountScreen(
                 color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.constrainAs(agreeTermsOfServiceRef) {
-                    top.linkTo(createAccountButtonRef.bottom, margin = ExtraLargePadding5)
-                    start.linkTo(parent.start, margin = MediumPadding5)
-                    end.linkTo(parent.end, margin = MediumPadding5)
+                    top.linkTo(createAccountButtonRef.bottom, margin = dimens.extraLargePadding5)
+                    start.linkTo(parent.start, margin = dimens.mediumPadding5)
+                    end.linkTo(parent.end, margin = dimens.mediumPadding5)
                     width = Dimension.fillToConstraints
                     height = Dimension.wrapContent
                 }
             )
         }
 
-        Spacer(modifier = Modifier.height(LargePadding2))
+        Spacer(modifier = Modifier.height(dimens.largePadding2))
     }
 }
 

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,15 +23,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.flexath.corner.R
-import com.flexath.corner.core.presentation.constants.Dimens
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding5
 import com.flexath.corner.core.presentation.screens.common.TopAppBarWithNavButtonAndTitle
 import com.flexath.corner.core.presentation.screens.common.writerCardList
 import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.features.auth.presentation.screens.common.CustomFilledButton
 import com.flexath.corner.features.auth.presentation.screens.model.WriterCardDummyList
 import com.flexath.corner.ui.theme.CustomFont
+import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
 
@@ -40,6 +39,7 @@ fun RecommendedForYouScreen(
     onNavigateBack: () -> Unit,
     onClickFinishButton: () -> Unit
 ) {
+    val dimens = MaterialTheme.dimens
 
     Scaffold(
         topBar = {
@@ -57,7 +57,7 @@ fun RecommendedForYouScreen(
                     .fillMaxWidth()
                     .shadow(elevation = 2.dp)
                     .background(getAppColor(AppColors.COLOR_BACKGROUND))
-                    .padding(vertical = Dimens.MediumPadding1),
+                    .padding(vertical = dimens.mediumPadding1),
                 contentAlignment = Alignment.Center
             ) {
                 CustomFilledButton(
@@ -68,7 +68,7 @@ fun RecommendedForYouScreen(
                     },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = MediumPadding5)
+                        .padding(horizontal = dimens.mediumPadding5)
                 )
             }
         }
@@ -95,7 +95,7 @@ fun RecommendedForYouScreen(
                         color = getAppColor(AppColors.TEXT_COLOR_PRIMARY)
                     )
 
-                    Spacer(modifier = Modifier.height(Dimens.MediumPadding1))
+                    Spacer(modifier = Modifier.height(dimens.mediumPadding1))
 
                     Text(
                         text = stringResource(R.string.lbl_here_are_some_top_writers_based_on_your_interests),
@@ -104,14 +104,14 @@ fun RecommendedForYouScreen(
                         color = getAppColor(AppColors.TEXT_COLOR_PRIMARY)
                     )
 
-                    Spacer(modifier = Modifier.height(Dimens.MediumPadding1))
+                    Spacer(modifier = Modifier.height(dimens.mediumPadding1))
 
                     HorizontalDivider(
-                        thickness = Dimens.SmallPadding0,
+                        thickness = dimens.smallPadding0,
                         color = getAppColor(AppColors.STROKE_COLOR),
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = MediumPadding5)
+                            .padding(horizontal = dimens.mediumPadding5)
                     )
                 }
 
@@ -124,7 +124,7 @@ fun RecommendedForYouScreen(
                 )
 
                 item {
-                    Spacer(modifier = modifier.height(bottomPadding + SmallPadding5))
+                    Spacer(modifier = modifier.height(bottomPadding + dimens.smallPadding5))
                 }
             }
         }

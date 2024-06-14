@@ -5,28 +5,44 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.flexath.corner.R
 import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargeText1
 import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargeText2
+import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargeText2_5
 import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargeText3
 import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargeText4
 import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargeText5
 import com.flexath.corner.core.presentation.constants.Dimens.LargeText1
 import com.flexath.corner.core.presentation.constants.Dimens.LargeText10
+import com.flexath.corner.core.presentation.constants.Dimens.LargeText1_5
 import com.flexath.corner.core.presentation.constants.Dimens.LargeText2
 import com.flexath.corner.core.presentation.constants.Dimens.LargeText3
+import com.flexath.corner.core.presentation.constants.Dimens.LargeText3_5
 import com.flexath.corner.core.presentation.constants.Dimens.LargeText4
+import com.flexath.corner.core.presentation.constants.Dimens.LargeText4_5
 import com.flexath.corner.core.presentation.constants.Dimens.LargeText5
 import com.flexath.corner.core.presentation.constants.Dimens.LargeText6
 import com.flexath.corner.core.presentation.constants.Dimens.LargeText7
+import com.flexath.corner.core.presentation.constants.Dimens.LargeText9
+import com.flexath.corner.core.presentation.constants.Dimens.LargeText9_5
 import com.flexath.corner.core.presentation.constants.Dimens.MediumText1
+import com.flexath.corner.core.presentation.constants.Dimens.MediumText1_5
 import com.flexath.corner.core.presentation.constants.Dimens.MediumText2
+import com.flexath.corner.core.presentation.constants.Dimens.MediumText2_5
 import com.flexath.corner.core.presentation.constants.Dimens.MediumText3
+import com.flexath.corner.core.presentation.constants.Dimens.MediumText3_5
 import com.flexath.corner.core.presentation.constants.Dimens.MediumText4
+import com.flexath.corner.core.presentation.constants.Dimens.MediumText4_5
 import com.flexath.corner.core.presentation.constants.Dimens.MediumText5
+import com.flexath.corner.core.presentation.constants.Dimens.MediumText5_5
+import com.flexath.corner.core.presentation.constants.Dimens.SmallText3
+import com.flexath.corner.core.presentation.constants.Dimens.SmallText3_5
 import com.flexath.corner.core.presentation.constants.Dimens.SmallText4
+import com.flexath.corner.core.presentation.constants.Dimens.SmallText4_5
 import com.flexath.corner.core.presentation.constants.Dimens.SmallText5
+import com.flexath.corner.core.presentation.constants.Dimens.SmallText5_5
 
 val Charter = FontFamily(
     fonts = listOf(
@@ -209,98 +225,98 @@ fun getSmallCompatTypography(font: CustomFont): Typography {
         displayLarge = TextStyle(
             fontFamily = getFont(font),
             fontWeight = FontWeight.Bold,
-            fontSize = ExtraLargeText3,
+            fontSize = ExtraLargeText2_5,
             lineHeight = 30.sp,
             letterSpacing = 0.sp
         ),
         displayMedium = TextStyle(
             fontFamily = getFont(font),
             fontWeight = FontWeight.SemiBold,
-            fontSize = LargeText10,
+            fontSize = LargeText9_5,
             lineHeight = 30.sp,
             letterSpacing = 2.sp
         ),
         displaySmall = TextStyle(
             fontFamily = getFont(font),
             fontWeight = FontWeight.Normal,
-            fontSize = LargeText5,
+            fontSize = LargeText4_5,
             lineHeight = 26.04.sp,
             letterSpacing = 0.sp
         ),
         headlineLarge = TextStyle(
             fontFamily = getFont(font),
             fontWeight = FontWeight.Bold,
-            fontSize = LargeText4,
+            fontSize = LargeText3_5,
             lineHeight = 26.04.sp,
             letterSpacing = 0.sp
         ),
         headlineMedium = TextStyle(
             fontFamily = getFont(font),
             fontWeight = FontWeight.Medium,
-            fontSize = LargeText2,
+            fontSize = LargeText1_5,
             lineHeight = 26.04.sp,
             letterSpacing = 0.sp
         ),
         headlineSmall = TextStyle(
             fontFamily = getFont(font),
             fontWeight = FontWeight.Medium,
-            fontSize = LargeText1,
+            fontSize = MediumText5_5,
             lineHeight = 26.04.sp,
             letterSpacing = 0.sp
         ),
         titleLarge = TextStyle(
             fontFamily = getFont(font),
             fontWeight = FontWeight.Bold,
-            fontSize = MediumText5,
+            fontSize = MediumText4_5,
             lineHeight = 23.44.sp,
             letterSpacing = 0.sp
         ),
         titleMedium = TextStyle(
             fontFamily = getFont(font),
             fontWeight = FontWeight.Medium,
-            fontSize = MediumText4,
+            fontSize = MediumText3_5,
             lineHeight = 24.sp,
             letterSpacing = 0.38.sp
         ),
         titleSmall = TextStyle(
             fontFamily = getFont(font),
             fontWeight = FontWeight.Medium,
-            fontSize = MediumText3,
+            fontSize = MediumText2_5,
             lineHeight = 20.sp,
             letterSpacing = 0.38.sp
         ),
         bodyLarge = TextStyle(
             fontFamily = getFont(font),
             fontWeight = FontWeight.Normal,
-            fontSize = MediumText2,
+            fontSize = MediumText1_5,
             lineHeight = 18.23.sp,
             letterSpacing = 0.2.sp
         ),
         bodyMedium = TextStyle(
             fontFamily = getFont(font),
             fontWeight = FontWeight.Normal,
-            fontSize = MediumText1,
+            fontSize = SmallText5_5,
             lineHeight = 18.23.sp,
             letterSpacing = 0.2.sp
         ),
         bodySmall = TextStyle(
             fontFamily = getFont(font),
             fontWeight = FontWeight.Normal,
-            fontSize = SmallText5,
+            fontSize = SmallText4_5,
             lineHeight = 15.62.sp,
             letterSpacing = 0.2.sp
         ),
         labelMedium = TextStyle(
             fontFamily = getFont(font),
             fontWeight = FontWeight.Normal,
-            fontSize = 11.sp,
+            fontSize = 10.sp,
             lineHeight = 15.62.sp,
             letterSpacing = 0.2.sp
         ),
         labelSmall = TextStyle(
             fontFamily = getFont(font),
             fontWeight = FontWeight.Normal,
-            fontSize = SmallText4,
+            fontSize = SmallText3_5,
             lineHeight = 13.02.sp,
             letterSpacing = 0.2.sp
         ),

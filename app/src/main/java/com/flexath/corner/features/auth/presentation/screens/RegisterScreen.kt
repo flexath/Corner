@@ -1,6 +1,7 @@
 package com.flexath.corner.features.auth.presentation.screens
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,6 +14,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,19 +33,11 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import coil.compose.AsyncImage
 import com.flexath.corner.R
-import com.flexath.corner.core.presentation.constants.Dimens.DoubleExtraLargePadding10
-import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargePadding2
-import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargePadding7
 import com.flexath.corner.core.presentation.constants.Dimens.ExtraLargeText10
-import com.flexath.corner.core.presentation.constants.Dimens.LargePadding10
-import com.flexath.corner.core.presentation.constants.Dimens.LargePadding2
-import com.flexath.corner.core.presentation.constants.Dimens.LargePadding5
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding1
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding2
 import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.features.auth.presentation.screens.common.getAnnotatedStringForServiceTerms
 import com.flexath.corner.ui.theme.CustomFont
+import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
 
@@ -55,12 +49,13 @@ fun RegisterScreen(
     onClickEmailSignUpButton: () -> Unit
 ) {
     val scrollState = rememberScrollState()
+    val dimens = MaterialTheme.dimens
 
     Column(
         modifier = modifier.verticalScroll(scrollState)
     ) {
         ConstraintLayout(
-            modifier = modifier.padding(vertical = LargePadding5)
+            modifier = modifier.padding(vertical = dimens.largePadding5)
         ) {
             val (
                 appNameWithLogo,
@@ -78,8 +73,8 @@ fun RegisterScreen(
                     .wrapContentHeight()
                     .constrainAs(appNameWithLogo) {
                         top.linkTo(parent.top)
-                        start.linkTo(parent.start, margin = MediumPadding5)
-                        end.linkTo(parent.end, margin = MediumPadding5)
+                        start.linkTo(parent.start, margin = dimens.mediumPadding5)
+                        end.linkTo(parent.end, margin = dimens.mediumPadding5)
                         width = Dimension.wrapContent
                         height = Dimension.wrapContent
                     },
@@ -92,7 +87,7 @@ fun RegisterScreen(
                     modifier = Modifier.size(30.dp)
                 )
 
-                Spacer(modifier = Modifier.width(SmallPadding2))
+                Spacer(modifier = Modifier.width(dimens.smallPadding2))
 
                 Text(
                     text = stringResource(id = R.string.app_name),
@@ -100,7 +95,7 @@ fun RegisterScreen(
                         fontWeight = FontWeight.Bold
                     ),
                     color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
-                    modifier = Modifier.padding(top = SmallPadding2)
+                    modifier = Modifier.padding(top = dimens.smallPadding2)
                 )
             }
 
@@ -114,9 +109,9 @@ fun RegisterScreen(
                 color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.constrainAs(headlineTextRef) {
-                    top.linkTo(appNameWithLogo.bottom, margin = ExtraLargePadding7)
-                    start.linkTo(parent.start, margin = MediumPadding5)
-                    end.linkTo(parent.end, margin = MediumPadding5)
+                    top.linkTo(appNameWithLogo.bottom, margin = dimens.extraLargePadding7)
+                    start.linkTo(parent.start, margin = dimens.mediumPadding5)
+                    end.linkTo(parent.end, margin = dimens.mediumPadding5)
                     width = Dimension.wrapContent
                     height = Dimension.wrapContent
                 }
@@ -128,9 +123,9 @@ fun RegisterScreen(
                 color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 maxLines = 1,
                 modifier = Modifier.constrainAs(descriptionTextRef) {
-                    top.linkTo(headlineTextRef.bottom, margin = LargePadding2)
-                    start.linkTo(parent.start, margin = MediumPadding5)
-                    end.linkTo(parent.end, margin = MediumPadding5)
+                    top.linkTo(headlineTextRef.bottom, margin = dimens.largePadding2)
+                    start.linkTo(parent.start, margin = dimens.mediumPadding5)
+                    end.linkTo(parent.end, margin = dimens.mediumPadding5)
                     width = Dimension.matchParent
                     height = Dimension.wrapContent
                 }
@@ -141,9 +136,9 @@ fun RegisterScreen(
                     containerColor = Color.Transparent
                 ),
                 modifier = Modifier.constrainAs(googleSignUpButtonRef) {
-                    top.linkTo(descriptionTextRef.bottom, margin = ExtraLargePadding2)
-                    start.linkTo(parent.start, margin = MediumPadding5)
-                    end.linkTo(parent.end, margin = MediumPadding5)
+                    top.linkTo(descriptionTextRef.bottom, margin = dimens.extraLargePadding2)
+                    start.linkTo(parent.start, margin = dimens.mediumPadding5)
+                    end.linkTo(parent.end, margin = dimens.mediumPadding5)
                     width = Dimension.matchParent
                     height = Dimension.wrapContent
                 },
@@ -172,9 +167,9 @@ fun RegisterScreen(
                     containerColor = Color.Transparent
                 ),
                 modifier = Modifier.constrainAs(facebookSignUpButtonRef) {
-                    top.linkTo(googleSignUpButtonRef.bottom, margin = MediumPadding1)
-                    start.linkTo(parent.start, margin = MediumPadding5)
-                    end.linkTo(parent.end, margin = MediumPadding5)
+                    top.linkTo(googleSignUpButtonRef.bottom, margin = dimens.mediumPadding1)
+                    start.linkTo(parent.start, margin = dimens.mediumPadding5)
+                    end.linkTo(parent.end, margin = dimens.mediumPadding5)
                     width = Dimension.matchParent
                     height = Dimension.wrapContent
                 },
@@ -203,9 +198,9 @@ fun RegisterScreen(
                     containerColor = Color.Transparent
                 ),
                 modifier = Modifier.constrainAs(emailSignUpButtonRef) {
-                    top.linkTo(facebookSignUpButtonRef.bottom, margin = MediumPadding1)
-                    start.linkTo(parent.start, margin = MediumPadding5)
-                    end.linkTo(parent.end, margin = MediumPadding5)
+                    top.linkTo(facebookSignUpButtonRef.bottom, margin = dimens.mediumPadding1)
+                    start.linkTo(parent.start, margin = dimens.mediumPadding5)
+                    end.linkTo(parent.end, margin = dimens.mediumPadding5)
                     width = Dimension.matchParent
                     height = Dimension.wrapContent
                 },
@@ -214,7 +209,12 @@ fun RegisterScreen(
                 }
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_mail_logo),
+                    painter = if (isSystemInDarkTheme()) {
+                        painterResource(id = R.drawable.ic_mail_logo_dark)
+                    } else {
+                        painterResource(id = R.drawable.ic_mail_logo)
+                    },
+
                     contentDescription = "Google Logo",
                     tint = Color.Unspecified
                 )
@@ -231,9 +231,9 @@ fun RegisterScreen(
 
             Row(
                 modifier = Modifier.constrainAs(alreadyHaveAnAccountTextRef) {
-                    top.linkTo(emailSignUpButtonRef.bottom, margin = LargePadding10)
-                    start.linkTo(parent.start, margin = MediumPadding5)
-                    end.linkTo(parent.end, margin = MediumPadding5)
+                    top.linkTo(emailSignUpButtonRef.bottom, margin = dimens.largePadding10)
+                    start.linkTo(parent.start, margin = dimens.mediumPadding5)
+                    end.linkTo(parent.end, margin = dimens.mediumPadding5)
                     width = Dimension.wrapContent
                     height = Dimension.wrapContent
                 }
@@ -245,7 +245,7 @@ fun RegisterScreen(
                     maxLines = 1
                 )
 
-                Spacer(modifier = Modifier.width(SmallPadding2))
+                Spacer(modifier = Modifier.width(dimens.smallPadding2))
 
                 Text(
                     text = "Sign in",
@@ -264,9 +264,12 @@ fun RegisterScreen(
                 color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.constrainAs(agreeTermsOfServiceRef) {
-                    top.linkTo(alreadyHaveAnAccountTextRef.bottom, margin = DoubleExtraLargePadding10)
-                    start.linkTo(parent.start, margin = MediumPadding5)
-                    end.linkTo(parent.end, margin = MediumPadding5)
+                    top.linkTo(
+                        alreadyHaveAnAccountTextRef.bottom,
+                        margin = dimens.doubleExtraLargePadding10
+                    )
+                    start.linkTo(parent.start, margin = dimens.mediumPadding5)
+                    end.linkTo(parent.end, margin = dimens.mediumPadding5)
                     width = Dimension.fillToConstraints
                     height = Dimension.wrapContent
                 }

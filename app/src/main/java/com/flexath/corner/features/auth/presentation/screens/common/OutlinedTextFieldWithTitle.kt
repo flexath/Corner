@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
@@ -15,10 +16,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding1
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.ui.theme.CustomFont
+import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
 
@@ -30,6 +30,8 @@ fun OutlinedTextFieldWithTitle(
     query: String,
     onQueryChange: (String) -> Unit
 ) {
+    val dimens = MaterialTheme.dimens
+
     Column(
         modifier = modifier
     ) {
@@ -40,7 +42,7 @@ fun OutlinedTextFieldWithTitle(
             maxLines = 1,
         )
 
-        Spacer(modifier = Modifier.height(MediumPadding1))
+        Spacer(modifier = Modifier.height(dimens.mediumPadding1))
 
         OutlinedTextField(
             value = query,
@@ -48,7 +50,7 @@ fun OutlinedTextFieldWithTitle(
             placeholder = {
                 Text(
                     text = placeholder,
-                    color = getAppColor(AppColors.TEXT_COLOR_SECONDARY),
+                    color = getAppColor(AppColors.TEXT_FIELD_STROKE_COLOR),
                     style = getTypography(CustomFont.Charter).bodyMedium,
                     maxLines = 1
                 )
@@ -79,7 +81,7 @@ private fun OutlinedTextFieldWithTitleWithTitle() {
     OutlinedTextFieldWithTitle(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = MediumPadding5),
+            .padding(horizontal = MaterialTheme.dimens.mediumPadding5),
         title = "Your full name",
         placeholder = "Input your first name and last name",
         query = "",

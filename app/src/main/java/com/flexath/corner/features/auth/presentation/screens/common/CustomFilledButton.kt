@@ -5,15 +5,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import com.flexath.corner.core.presentation.constants.Dimens
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
 import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.ui.theme.CustomFont
+import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
 
@@ -24,12 +24,14 @@ fun CustomFilledButton(
     onClick: () -> Unit,
     isEnabled: Boolean = true
 ) {
+    val dimens = MaterialTheme.dimens
+
     Button(
         onClick = {
             onClick()
         },
         shape = ButtonDefaults.outlinedShape,
-        contentPadding = PaddingValues(vertical = Dimens.SmallPadding4),
+        contentPadding = PaddingValues(vertical = dimens.smallPadding4),
         colors = ButtonDefaults.buttonColors(
             containerColor = getAppColor(AppColors.COLOR_PRIMARY),
             disabledContainerColor = getAppColor(AppColors.TEXT_FIELD_UNFOCUSED_BACKGROUND),
@@ -57,7 +59,7 @@ fun CustomFilledButton(
 @Composable
 private fun CustomFilledButtonPreview() {
     CustomFilledButton(
-        modifier = Modifier.fillMaxWidth().padding(MediumPadding5),
+        modifier = Modifier.fillMaxWidth().padding(MaterialTheme.dimens.mediumPadding5),
         text = "Continue",
         isEnabled = true,
         onClick = {

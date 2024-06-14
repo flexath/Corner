@@ -18,6 +18,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
@@ -39,15 +40,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.flexath.corner.R
-import com.flexath.corner.core.presentation.constants.Dimens.LargePadding2
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding2
 import com.flexath.corner.core.presentation.screens.extensions.isScrolled
 import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.features.main.data.remote.dto.dummy.dummyPostList
 import com.flexath.corner.features.main.presentation.screens.common.getPostList
 import com.flexath.corner.features.main.presentation.screens.widget.BecomeAFriendDialog
 import com.flexath.corner.ui.theme.CustomFont
+import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
 import kotlinx.coroutines.delay
@@ -62,6 +61,7 @@ fun HomeScreen(
     onClickPost: () -> Unit
 ) {
     val lazyListState = rememberLazyListState()
+    val dimens = MaterialTheme.dimens
 
     if (dialogIsShown) {
         BecomeAFriendDialog(
@@ -80,15 +80,14 @@ fun HomeScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .fillMaxWidth()
-                    .animateContentSize(
-                        animationSpec = tween(durationMillis = 300)
-                    )
                     .background(color = getAppColor(AppColors.COLOR_BACKGROUND))
                     .height(
-                        height = if (lazyListState.isScrolled()) 0.dp else 144.dp
+                        height = if (lazyListState.isScrolled()) 0.dp else 124.dp
                     )
-                    .padding(bottom = LargePadding2),
+                    .padding(bottom = dimens.largePadding2)
+                    .animateContentSize(
+                        animationSpec = tween(),
+                    ),
                 contentAlignment = Alignment.BottomCenter
             ) {
                 Row(
@@ -98,19 +97,19 @@ fun HomeScreen(
                 ) {
                     Text(
                         text = stringResource(R.string.lbl_home),
-                        style = getTypography(CustomFont.Inter).titleLarge.copy(
+                        style = MaterialTheme.typography.titleLarge.copy(
                             fontWeight = FontWeight.SemiBold
                         ),
                         textAlign = TextAlign.Center,
                         color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
-                        modifier = Modifier.padding(start = MediumPadding5)
+                        modifier = Modifier.padding(start = dimens.mediumPadding5)
                     )
 
                     IconButton(
                         onClick = {
 
                         },
-                        modifier = Modifier.padding(end = SmallPadding2)
+                        modifier = Modifier.padding(end = dimens.smallPadding2)
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_notification),
@@ -124,9 +123,9 @@ fun HomeScreen(
         val topPadding = paddingValues.calculateTopPadding()
 
         val animatedPadding by animateDpAsState(
-            targetValue = if (lazyListState.isScrolled()) 0.dp else 124.dp,
+            targetValue = if (lazyListState.isScrolled()) 0.dp else topPadding,
             label = "Padding",
-            animationSpec = tween(durationMillis = 300)
+            animationSpec = tween(300)
         )
 
         var tabSelectedIndex by remember {
@@ -138,12 +137,12 @@ fun HomeScreen(
         }
 
         LaunchedEffect(key1 = isLoading) {
-            delay(3000)
+            delay(1500)
             isLoading = false
         }
 
         Column(
-            modifier = Modifier.padding(top = topPadding)
+            modifier = Modifier.padding(top = animatedPadding)
         ) {
 
             CategoryScrollableTabRow(
@@ -178,6 +177,7 @@ fun CategoryScrollableTabRow(
     tabSelectedIndex: Int,
     onTabSelect: (Int) -> Unit
 ) {
+    val dimens = MaterialTheme.dimens
     val textList = listOf(
         "Android",
         "Ios",
@@ -212,11 +212,11 @@ fun CategoryScrollableTabRow(
                 onClick = {
                     onTabSelect(index)
                 },
-                modifier = Modifier.padding(vertical = MediumPadding5)
+                modifier = Modifier.padding(vertical = dimens.mediumPadding5)
             ) {
                 Text(
                     text = category,
-                    style = getTypography(CustomFont.Inter).bodyMedium.copy(
+                    style = MaterialTheme.typography.bodyMedium.copy(
                         fontWeight = if (index == tabSelectedIndex) {
                             FontWeight.Medium
                         } else {

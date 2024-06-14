@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,9 +32,6 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.flexath.corner.R
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding4
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding5
 import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.features.auth.presentation.screens.model.Writer
 import com.flexath.corner.features.auth.presentation.screens.model.WriterCardDummyList
@@ -42,6 +40,7 @@ import com.flexath.corner.ui.theme.colorBackgroundDarkMode
 import com.flexath.corner.ui.theme.colorBackgroundLightMode
 import com.flexath.corner.ui.theme.colorPrimaryDarkMode
 import com.flexath.corner.ui.theme.colorPrimaryLightMode
+import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
 import com.flexath.corner.ui.theme.textColorPrimaryDarkMode
@@ -62,7 +61,7 @@ fun LazyListScope.writerCardList(
 
         WriterCard(
             modifier = modifier
-                .padding(vertical = SmallPadding4, horizontal = MediumPadding5),
+                .padding(vertical = MaterialTheme.dimens.smallPadding4, horizontal = MaterialTheme.dimens.mediumPadding5),
             writer = writerList[index],
             isFollowed = isFollowed,
             onClickFollowButton = {
@@ -79,6 +78,7 @@ fun WriterCard(
     isFollowed: Boolean,
     onClickFollowButton: (Boolean) -> Unit
 ) {
+    val dimens = MaterialTheme.dimens
     ConstraintLayout(
         modifier = modifier
     ) {
@@ -113,8 +113,8 @@ fun WriterCard(
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier.constrainAs(nameTextRef) {
                 top.linkTo(parent.top)
-                start.linkTo(coverImageRef.end, margin = SmallPadding5)
-                end.linkTo(followButtonRef.start, margin = SmallPadding5)
+                start.linkTo(coverImageRef.end, margin = dimens.smallPadding5)
+                end.linkTo(followButtonRef.start, margin = dimens.smallPadding5)
                 width = Dimension.fillToConstraints
                 height = Dimension.wrapContent
             }
@@ -129,8 +129,8 @@ fun WriterCard(
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier.constrainAs(descriptionTextRef) {
                 top.linkTo(nameTextRef.bottom)
-                start.linkTo(coverImageRef.end, margin = SmallPadding5)
-                end.linkTo(followButtonRef.start, margin = SmallPadding5)
+                start.linkTo(coverImageRef.end, margin = dimens.smallPadding5)
+                end.linkTo(followButtonRef.start, margin = dimens.smallPadding5)
                 width = Dimension.fillToConstraints
                 height = Dimension.wrapContent
             }

@@ -2,8 +2,6 @@ package com.flexath.corner.features.auth.presentation.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.flexath.corner.core.domain.usecases.AppEntryUseCase
-import com.flexath.corner.core.presentation.events.AppCoreEvent
 import com.flexath.corner.features.auth.domain.usecases.CreateAccountUseCases
 import com.flexath.corner.features.auth.presentation.events.CreateAccountFormEvent
 import com.flexath.corner.features.auth.presentation.events.ValidationEvent
@@ -20,8 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CreateAccountViewModel @Inject constructor(
-    private val createAccountUseCases: CreateAccountUseCases,
-    private val appEntryUseCase: AppEntryUseCase
+    private val createAccountUseCases: CreateAccountUseCases
 ): ViewModel() {
 
     private var _createAccountState = MutableStateFlow(CreateAccountFormState())
@@ -29,20 +26,6 @@ class CreateAccountViewModel @Inject constructor(
 
     private var _validationEvent = Channel<ValidationEvent>()
     val validationEvent get() = _validationEvent.receiveAsFlow()
-
-    fun onEvent(event: AppCoreEvent) {
-        when(event) {
-            is AppCoreEvent.AuthEvent -> {
-                saveAppEntry()
-            }
-        }
-    }
-
-    private fun saveAppEntry() {
-        viewModelScope.launch {
-            appEntryUseCase.saveAppEntry.invoke()
-        }
-    }
 
     fun onCreateAccountEvent(event: CreateAccountFormEvent) {
         viewModelScope.launch(Dispatchers.Default) {

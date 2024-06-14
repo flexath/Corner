@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -28,11 +29,9 @@ import androidx.compose.ui.window.DialogProperties
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.flexath.corner.R
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding3
-import com.flexath.corner.core.presentation.constants.Dimens.MediumPadding5
-import com.flexath.corner.core.presentation.constants.Dimens.SmallPadding4
 import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.ui.theme.CustomFont
+import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
 import com.flexath.corner.ui.theme.getTypography
 
@@ -41,6 +40,8 @@ fun BecomeAFriendDialog(
     onDismiss: () -> Unit,
     onClickLearnMore: () -> Unit
 ) {
+    val dimens = MaterialTheme.dimens
+
     Dialog(
         onDismissRequest = {
 
@@ -52,8 +53,8 @@ fun BecomeAFriendDialog(
         ConstraintLayout(
             modifier = Modifier
                 .fillMaxWidth(0.8f)
-                .clip(RoundedCornerShape(MediumPadding3))
-                .background(color = getAppColor(AppColors.COLOR_BACKGROUND), shape = RoundedCornerShape(MediumPadding3))
+                .clip(RoundedCornerShape(dimens.mediumPadding3))
+                .background(color = getAppColor(AppColors.COLOR_BACKGROUND), shape = RoundedCornerShape(dimens.mediumPadding3))
         ) {
             val (
                 profileImageRef,
@@ -67,7 +68,7 @@ fun BecomeAFriendDialog(
                 contentDescription = "Profile Image",
                 modifier = Modifier
                     .constrainAs(profileImageRef) {
-                        top.linkTo(parent.top, margin = MediumPadding5)
+                        top.linkTo(parent.top, margin = dimens.mediumPadding5)
                         start.linkTo(parent.start)
                         end.linkTo(parent.end)
                         width = Dimension.value(80.dp)
@@ -79,15 +80,15 @@ fun BecomeAFriendDialog(
 
             Text(
                 text = stringResource(R.string.lbl_become_a_friend_of_corner),
-                style = getTypography(CustomFont.Inter).bodyLarge.copy(
+                style = MaterialTheme.typography.bodyLarge.copy(
                     fontWeight = FontWeight.Bold
                 ),
                 color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.constrainAs(titleTextRef) {
-                    top.linkTo(profileImageRef.bottom, margin = MediumPadding5)
-                    start.linkTo(parent.start, margin = MediumPadding3)
-                    end.linkTo(parent.end, margin = MediumPadding3)
+                    top.linkTo(profileImageRef.bottom, margin = dimens.mediumPadding5)
+                    start.linkTo(parent.start, margin = dimens.mediumPadding3)
+                    end.linkTo(parent.end, margin = dimens.mediumPadding3)
                     width = Dimension.fillToConstraints
                     height = Dimension.wrapContent
                 }
@@ -95,13 +96,13 @@ fun BecomeAFriendDialog(
 
             Text(
                 text = stringResource(R.string.lbl_join_our_new_membership),
-                style = getTypography(CustomFont.Inter).bodyMedium,
+                style = MaterialTheme.typography.bodyMedium,
                 color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.constrainAs(descriptionTextRef) {
-                    top.linkTo(titleTextRef.bottom, margin = MediumPadding5)
-                    start.linkTo(parent.start, margin = MediumPadding3)
-                    end.linkTo(parent.end, margin = MediumPadding3)
+                    top.linkTo(titleTextRef.bottom, margin = dimens.mediumPadding5)
+                    start.linkTo(parent.start, margin = dimens.mediumPadding3)
+                    end.linkTo(parent.end, margin = dimens.mediumPadding3)
                     width = Dimension.fillToConstraints
                     height = Dimension.wrapContent
                 }
@@ -111,9 +112,9 @@ fun BecomeAFriendDialog(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 modifier = Modifier.constrainAs(dialogButtonsRef) {
-                    top.linkTo(descriptionTextRef.bottom, margin = MediumPadding3)
-                    bottom.linkTo(parent.bottom, margin = MediumPadding3)
-                    end.linkTo(parent.end, margin = MediumPadding3)
+                    top.linkTo(descriptionTextRef.bottom, margin = dimens.mediumPadding3)
+                    bottom.linkTo(parent.bottom, margin = dimens.mediumPadding3)
+                    end.linkTo(parent.end, margin = dimens.mediumPadding3)
                     width = Dimension.fillToConstraints
                     height = Dimension.wrapContent
                 }
@@ -125,7 +126,7 @@ fun BecomeAFriendDialog(
                 ) {
                     Text(
                         text = stringResource(R.string.lbl_maybe_later),
-                        style = getTypography(CustomFont.Inter).bodyMedium.copy(
+                        style = MaterialTheme.typography.bodyMedium.copy(
                             fontWeight = FontWeight.Medium
                         ),
                         color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
@@ -133,7 +134,7 @@ fun BecomeAFriendDialog(
                     )
                 }
 
-                Spacer(modifier = Modifier.width(SmallPadding4))
+                Spacer(modifier = Modifier.width(dimens.smallPadding4))
 
                 TextButton(
                     onClick = {
@@ -142,7 +143,7 @@ fun BecomeAFriendDialog(
                 ) {
                     Text(
                         text = stringResource(R.string.lbl_learn_more),
-                        style = getTypography(CustomFont.Inter).bodyMedium.copy(
+                        style = MaterialTheme.typography.bodyMedium.copy(
                             fontWeight = FontWeight.Medium
                         ),
                         color = getAppColor(AppColors.COLOR_PRIMARY),
