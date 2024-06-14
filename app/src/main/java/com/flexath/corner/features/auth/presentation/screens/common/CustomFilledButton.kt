@@ -15,7 +15,7 @@ import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.ui.theme.CustomFont
 import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
-import com.flexath.corner.ui.theme.getTypography
+import com.flexath.corner.ui.theme.getFont
 
 @Composable
 fun CustomFilledButton(
@@ -42,8 +42,9 @@ fun CustomFilledButton(
     ) {
         Text(
             text = text,
-            style = getTypography(CustomFont.Charter).bodyMedium.copy(
-                fontWeight = FontWeight.Bold
+            style = MaterialTheme.typography.bodyMedium.copy(
+                fontWeight = FontWeight.Bold,
+                fontFamily = getFont(CustomFont.Charter)
             ),
             color = if (isEnabled) {
                 getAppColor(AppColors.COLOR_ON_PRIMARY)

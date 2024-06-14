@@ -31,7 +31,7 @@ import com.flexath.corner.features.auth.presentation.screens.model.WriterCardDum
 import com.flexath.corner.ui.theme.CustomFont
 import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
-import com.flexath.corner.ui.theme.getTypography
+import com.flexath.corner.ui.theme.getFont
 
 @Composable
 fun RecommendedForYouScreen(
@@ -89,8 +89,9 @@ fun RecommendedForYouScreen(
 
                     Text(
                         text = stringResource(R.string.lbl_recommended_for_you),
-                        style = getTypography(CustomFont.Charter).headlineSmall.copy(
-                            fontWeight = FontWeight.Bold
+                        style = MaterialTheme.typography.headlineSmall.copy(
+                            fontWeight = FontWeight.Bold,
+                            fontFamily = getFont(CustomFont.Charter)
                         ),
                         color = getAppColor(AppColors.TEXT_COLOR_PRIMARY)
                     )
@@ -99,7 +100,9 @@ fun RecommendedForYouScreen(
 
                     Text(
                         text = stringResource(R.string.lbl_here_are_some_top_writers_based_on_your_interests),
-                        style = getTypography(CustomFont.Charter).bodyLarge,
+                        style = MaterialTheme.typography.bodyLarge.copy(
+                            fontFamily = getFont(CustomFont.Charter)
+                        ),
                         textAlign = TextAlign.Center,
                         color = getAppColor(AppColors.TEXT_COLOR_PRIMARY)
                     )

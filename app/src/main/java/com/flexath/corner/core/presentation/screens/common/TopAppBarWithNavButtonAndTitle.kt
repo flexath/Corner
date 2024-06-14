@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -20,7 +21,7 @@ import com.flexath.corner.R
 import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.ui.theme.CustomFont
 import com.flexath.corner.ui.theme.getAppColor
-import com.flexath.corner.ui.theme.getTypography
+import com.flexath.corner.ui.theme.getFont
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -34,8 +35,9 @@ fun TopAppBarWithNavButtonAndTitle(
             if(title.isNotBlank()) {
                 Text(
                     text = title,
-                    style = getTypography(CustomFont.Charter).titleSmall.copy(
-                        fontWeight = FontWeight.ExtraBold
+                    style = MaterialTheme.typography.titleSmall.copy(
+                        fontWeight = FontWeight.ExtraBold,
+                        fontFamily = getFont(CustomFont.Charter)
                     ),
                     color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                     maxLines = 1,

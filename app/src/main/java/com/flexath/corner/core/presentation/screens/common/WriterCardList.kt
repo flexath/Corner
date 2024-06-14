@@ -42,10 +42,9 @@ import com.flexath.corner.ui.theme.colorPrimaryDarkMode
 import com.flexath.corner.ui.theme.colorPrimaryLightMode
 import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
-import com.flexath.corner.ui.theme.getTypography
+import com.flexath.corner.ui.theme.getFont
 import com.flexath.corner.ui.theme.textColorPrimaryDarkMode
 import com.flexath.corner.ui.theme.textColorPrimaryLightMode
-import com.flexath.corner.ui.theme.textColorSecondaryLightMode
 
 fun LazyListScope.writerCardList(
     modifier: Modifier,
@@ -106,8 +105,9 @@ fun WriterCard(
 
         Text(
             text = writer.name,
-            style = getTypography(CustomFont.Charter).bodyLarge.copy(
-                fontWeight = FontWeight.Bold
+            style = MaterialTheme.typography.bodyLarge.copy(
+                fontWeight = FontWeight.Bold,
+                fontFamily = getFont(CustomFont.Charter)
             ),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
@@ -122,8 +122,9 @@ fun WriterCard(
 
         Text(
             text = writer.description,
-            style = getTypography(CustomFont.Charter).bodyMedium.copy(
-                fontWeight = FontWeight.Normal
+            style = MaterialTheme.typography.bodyMedium.copy(
+                fontWeight = FontWeight.Normal,
+                fontFamily = getFont(CustomFont.Charter)
             ),
             maxLines = 3,
             overflow = TextOverflow.Ellipsis,
@@ -177,8 +178,9 @@ fun WriterCard(
                 } else {
                     stringResource(id = R.string.lbl_follow)
                 },
-                style = getTypography(CustomFont.Charter).bodyMedium.copy(
-                    fontWeight = FontWeight.Bold
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = getFont(CustomFont.Charter)
                 ),
                 color = if (isFollowed) {
                     if(!isSystemInDarkTheme()) {

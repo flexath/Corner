@@ -32,6 +32,7 @@ import com.flexath.corner.features.auth.presentation.screens.model.WelcomeScreen
 import com.flexath.corner.ui.theme.CustomFont
 import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
+import com.flexath.corner.ui.theme.getFont
 import com.flexath.corner.ui.theme.getTypography
 
 @Composable
@@ -56,8 +57,9 @@ fun WelcomeScreen(
 
         Text(
             text = stringResource(R.string.lbl_welcome_to_corner),
-            style = getTypography(CustomFont.Charter).titleSmall.copy(
-                fontWeight = FontWeight.ExtraBold
+            style = MaterialTheme.typography.titleSmall.copy(
+                fontWeight = FontWeight.ExtraBold,
+                fontFamily = getFont(CustomFont.Charter)
             ),
             color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
             maxLines = 1,
@@ -92,7 +94,9 @@ fun WelcomeScreen(
 
         Text(
             text = stringResource(R.string.lbl_let_s_find_people_to_follow_based_on_your_interests),
-            style = getTypography(CustomFont.Charter).bodyLarge,
+            style = MaterialTheme.typography.bodyLarge.copy(
+                fontFamily = getFont(CustomFont.Charter)
+            ),
             color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
             textAlign = TextAlign.Center,
             modifier = Modifier.constrainAs(letFindPeopleTextRef) {

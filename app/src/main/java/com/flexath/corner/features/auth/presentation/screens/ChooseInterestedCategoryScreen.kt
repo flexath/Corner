@@ -46,7 +46,7 @@ import com.flexath.corner.features.auth.presentation.screens.model.ChooseInteres
 import com.flexath.corner.ui.theme.CustomFont
 import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
-import com.flexath.corner.ui.theme.getTypography
+import com.flexath.corner.ui.theme.getFont
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -110,8 +110,9 @@ fun ChooseInterestedCategoryScreen(
             
             Text(
                 text = stringResource(R.string.lbl_what_are_you_interested_in),
-                style = getTypography(CustomFont.Charter).headlineSmall.copy(
-                    fontWeight = FontWeight.Bold
+                style = MaterialTheme.typography.headlineSmall.copy(
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = getFont(CustomFont.Charter)
                 ),
                 color = getAppColor(AppColors.TEXT_COLOR_PRIMARY)
             )
@@ -120,7 +121,9 @@ fun ChooseInterestedCategoryScreen(
 
             Text(
                 text = stringResource(R.string.lbl_choose_three_or_more),
-                style = getTypography(CustomFont.Charter).bodyLarge,
+                style = MaterialTheme.typography.bodyLarge.copy(
+                    fontFamily = getFont(CustomFont.Charter)
+                ),
                 color = getAppColor(AppColors.TEXT_COLOR_PRIMARY)
             )
 
@@ -146,7 +149,9 @@ fun ChooseInterestedCategoryScreen(
                         label = {
                             Text(
                                 text = category.name,
-                                style = getTypography(CustomFont.Charter).bodyLarge,
+                                style = MaterialTheme.typography.bodyLarge.copy(
+                                    fontFamily = getFont(CustomFont.Charter)
+                                ),
                                 textAlign = TextAlign.Center,
                                 color = if (isSelected) {
                                     getAppColor(AppColors.COLOR_ON_PRIMARY)

@@ -20,7 +20,7 @@ import com.flexath.corner.core.presentation.utils.AppColors
 import com.flexath.corner.ui.theme.CustomFont
 import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
-import com.flexath.corner.ui.theme.getTypography
+import com.flexath.corner.ui.theme.getFont
 
 @Composable
 fun OutlinedTextFieldWithTitle(
@@ -37,7 +37,9 @@ fun OutlinedTextFieldWithTitle(
     ) {
         Text(
             text = title,
-            style = getTypography(CustomFont.Charter).bodyLarge,
+            style = MaterialTheme.typography.bodyLarge.copy(
+                fontFamily = getFont(CustomFont.Charter)
+            ),
             color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
             maxLines = 1,
         )
@@ -51,7 +53,9 @@ fun OutlinedTextFieldWithTitle(
                 Text(
                     text = placeholder,
                     color = getAppColor(AppColors.TEXT_FIELD_STROKE_COLOR),
-                    style = getTypography(CustomFont.Charter).bodyMedium,
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        fontFamily = getFont(CustomFont.Charter)
+                    ),
                     maxLines = 1
                 )
             },

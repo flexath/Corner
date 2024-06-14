@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -36,7 +35,7 @@ import com.flexath.corner.features.auth.presentation.states.CreateAccountFormSta
 import com.flexath.corner.ui.theme.CustomFont
 import com.flexath.corner.ui.theme.dimens
 import com.flexath.corner.ui.theme.getAppColor
-import com.flexath.corner.ui.theme.getTypography
+import com.flexath.corner.ui.theme.getFont
 
 @Composable
 fun CreateAccountScreen(
@@ -102,8 +101,9 @@ fun CreateAccountScreen(
 
                 Text(
                     text = stringResource(id = R.string.app_name),
-                    style = getTypography(CustomFont.Charter).displaySmall.copy(
-                        fontWeight = FontWeight.Bold
+                    style = MaterialTheme.typography.displaySmall.copy(
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = getFont(CustomFont.Charter)
                     ),
                     color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                     modifier = Modifier.padding(top = dimens.smallPadding2)
@@ -112,8 +112,9 @@ fun CreateAccountScreen(
 
             Text(
                 text = stringResource(R.string.lbl_create_your_account),
-                style = getTypography(CustomFont.Charter).headlineLarge.copy(
-                    fontWeight = FontWeight.Normal
+                style = MaterialTheme.typography.headlineLarge.copy(
+                    fontWeight = FontWeight.Normal,
+                    fontFamily = getFont(CustomFont.Charter)
                 ),
                 color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 modifier = Modifier.constrainAs(headlineTextRef) {
@@ -174,7 +175,9 @@ fun CreateAccountScreen(
 
             Text(
                 text = getAnnotatedStringForServiceTerms(),
-                style = getTypography(CustomFont.Charter).bodyMedium,
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontFamily = getFont(CustomFont.Charter)
+                ),
                 color = getAppColor(AppColors.TEXT_COLOR_PRIMARY),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.constrainAs(agreeTermsOfServiceRef) {
