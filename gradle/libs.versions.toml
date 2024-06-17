@@ -41,6 +41,7 @@ mockk = "1.10.5"
 mockkAndroid = "1.10.5"
 mockwebserver = "4.9.1"
 navVersion = "2.7.7"
+composeAnimation = "1.7.0-beta03"
 okhttp = "4.11.0"
 pagingCompose = "3.3.0-beta01"
 pagingVersion = "3.2.1"
@@ -101,6 +102,7 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-compose-animation = { group = "androidx.compose.animation", name = "animation", version.ref = "composeAnimation" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
