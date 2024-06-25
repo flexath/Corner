@@ -1,5 +1,11 @@
 package com.flexath.corner.core.presentation.screens.common
 
+import androidx.compose.animation.animateColor
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.EaseInBounce
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -29,6 +35,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.flexath.corner.R
@@ -77,6 +84,53 @@ fun WriterCard(
     isFollowed: Boolean,
     onClickFollowButton: (Boolean) -> Unit
 ) {
+    var followButtonState: FollowButtonState by remember {
+        mutableStateOf(FollowButtonState.UNFOLLOW)
+    }
+
+    val followButtonTransition = updateTransition(
+        targetState = followButtonState,
+        label = null
+    )
+
+    val followedButtonBackground: Color by followButtonTransition.animateColor(
+        transitionSpec = { tween(300) },
+        label = "Follow Button Background"
+    ) { state ->
+        if(state == FollowButtonState.FOLLOW) {
+            if(!isSystemInDarkTheme()) {
+                Color.Transparent
+            } else {
+                Color.Transparent
+            }
+        } else {
+            if(!isSystemInDarkTheme()) {
+                colorBackgroundDarkMode
+            } else {
+                colorBackgroundLightMode
+            }
+        }
+    }
+
+    val followButtonTextColor: Color by followButtonTransition.animateColor(
+        transitionSpec = { tween(300) },
+        label = "",
+    ) { state ->
+        if(state == FollowButtonState.FOLLOW) {
+            if(!isSystemInDarkTheme()) {
+                colorPrimaryLightMode
+            } else {
+                colorPrimaryDarkMode
+            }
+        } else {
+            if(!isSystemInDarkTheme()) {
+                textColorPrimaryDarkMode
+            } else {
+                textColorPrimaryLightMode
+            }
+        }
+    }
+
     val dimens = MaterialTheme.dimens
     ConstraintLayout(
         modifier = modifier
@@ -139,7 +193,13 @@ fun WriterCard(
 
         Button(
             onClick = {
-                onClickFollowButton(!isFollowed)
+                followButtonState = if(followButtonState == FollowButtonState.UNFOLLOW) {
+                    onClickFollowButton(true)
+                    FollowButtonState.FOLLOW
+                } else {
+                    onClickFollowButton(false)
+                    FollowButtonState.UNFOLLOW
+                }
             },
             shape = ButtonDefaults.outlinedShape,
             border = BorderStroke(
@@ -151,19 +211,7 @@ fun WriterCard(
                 }
             ),
             colors = ButtonDefaults.buttonColors(
-                containerColor = if (isFollowed) {
-                    if(!isSystemInDarkTheme()) {
-                        Color.Transparent
-                    } else {
-                        Color.Transparent
-                    }
-                } else {
-                    if(!isSystemInDarkTheme()) {
-                        colorBackgroundDarkMode
-                    } else {
-                        colorBackgroundLightMode
-                    }
-                }
+                containerColor = followedButtonBackground
             ),
             modifier = Modifier
                 .constrainAs(followButtonRef) {
@@ -182,23 +230,16 @@ fun WriterCard(
                     fontWeight = FontWeight.Bold,
                     fontFamily = getFont(CustomFont.Charter)
                 ),
-                color = if (isFollowed) {
-                    if(!isSystemInDarkTheme()) {
-                        colorPrimaryLightMode
-                    } else {
-                        colorPrimaryDarkMode
-                    }
-                } else {
-                    if(!isSystemInDarkTheme()) {
-                        textColorPrimaryDarkMode
-                    } else {
-                        textColorPrimaryLightMode
-                    }
-                },
+                color = followButtonTextColor,
                 maxLines = 1
             )
         }
     }
+}
+
+enum class FollowButtonState{
+    FOLLOW,
+    UNFOLLOW
 }
 
 @Preview(showBackground = true, showSystemUi = true)
